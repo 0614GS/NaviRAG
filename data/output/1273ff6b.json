@@ -1,0 +1,115 @@
+{
+  "doc_id": "1273ff6b",
+  "doc_name": "overview",
+  "summary": "Overview of the deepagents library for building agents with planning, subagents, and file system capabilities to handle complex multi-step tasks.",
+  "keywords": [
+    "deepagents",
+    "LangGraph",
+    "subagents",
+    "planning",
+    "context management",
+    "LangChain",
+    "LangSmith",
+    "multi-step tasks",
+    "memory persistence",
+    "file system"
+  ],
+  "structure": [
+    {
+      "node_id": "0a7d3a",
+      "path": "overview > Deep Agents overview",
+      "title": "Deep Agents overview",
+      "keywords": [
+        "deepagents",
+        "LangGraph",
+        "subagents",
+        "planning",
+        "context management",
+        "LangChain",
+        "LangSmith",
+        "multi-step tasks",
+        "memory persistence",
+        "file system"
+      ],
+      "summary": "Overview of deepagents library for building agents with planning, subagents, and file system capabilities for complex multi-step tasks.",
+      "nodes": [
+        {
+          "node_id": "1ae533",
+          "path": "overview > Deep Agents overview > When to use deep agents",
+          "title": "When to use deep agents",
+          "keywords": [
+            "deep agents",
+            "multi-step tasks",
+            "context management",
+            "subagents",
+            "memory persistence",
+            "LangChain",
+            "create_agent",
+            "LangGraph",
+            "planning",
+            "delegation"
+          ],
+          "summary": "Guidelines for using deep agents in complex scenarios requiring multi-step planning, large context management, delegation, and memory persistence.",
+          "nodes": []
+        },
+        {
+          "node_id": "f05b90",
+          "path": "overview > Deep Agents overview > Core capabilities",
+          "title": "Core capabilities",
+          "keywords": [
+            "write_todos",
+            "ls",
+            "read_file",
+            "write_file",
+            "edit_file",
+            "task",
+            "LangGraph's Store",
+            "context management",
+            "subagent",
+            "long-term memory"
+          ],
+          "summary": "Deep agents' core capabilities include task planning, context management, subagent spawning, and long-term memory for efficient AI workflows.",
+          "nodes": []
+        },
+        {
+          "node_id": "5c2a6c",
+          "path": "overview > Deep Agents overview > Relationship to the LangChain ecosystem",
+          "title": "Relationship to the LangChain ecosystem",
+          "keywords": [
+            "Deep agents",
+            "LangGraph",
+            "LangChain",
+            "LangSmith",
+            "LangSmith Deployment",
+            "LangSmith Observability",
+            "graph execution",
+            "state management",
+            "model integrations",
+            "tools"
+          ],
+          "summary": "Deep agents is built on LangGraph for execution, LangChain for tools, and LangSmith for observability and deployment.",
+          "nodes": []
+        },
+        {
+          "node_id": "f9166c",
+          "path": "overview > Deep Agents overview > Get started",
+          "title": "Get started",
+          "keywords": [
+            "Deep Agents",
+            "Quickstart",
+            "Customization",
+            "Middleware",
+            "API reference",
+            "deepagents",
+            "LangChain",
+            "MCP",
+            "Claude",
+            "VSCode"
+          ],
+          "summary": "Introduction to getting started with Deep Agents, including quickstart, customization, middleware, and API reference.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "doc_id": "69fe4318",
+  "doc_name": "backends",
+  "summary": "Introduction to configurable filesystem backends for deep agents, covering backend selection, routing, virtual filesystem implementation, and policy enforcement.",
+  "keywords": [
+    "BackendProtocol",
+    "CompositeBackend",
+    "FilesystemBackend",
+    "StateBackend",
+    "StoreBackend",
+    "route",
+    "virtual filesystem",
+    "policy hooks",
+    "ls_info",
+    "grep_raw"
+  ],
+  "structure": [
+    {
+      "node_id": "49995f",
+      "path": "backends > Backends",
+      "title": "Backends",
+      "keywords": [
+        "BackendProtocol",
+        "CompositeBackend",
+        "FilesystemBackend",
+        "StateBackend",
+        "StoreBackend",
+        "route",
+        "virtual filesystem",
+        "policy hooks",
+        "ls_info",
+        "grep_raw"
+      ],
+      "summary": "Introduction to configurable filesystem backends for deep agents, covering backend selection, routing, virtual filesystem implementation, and policy enforcement.",
+      "nodes": [
+        {
+          "node_id": "a03988",
+          "path": "backends > Backends > Quickstart",
+          "title": "Quickstart",
+          "keywords": [
+            "FilesystemBackend",
+            "StoreBackend",
+            "CompositeBackend",
+            "root_dir",
+            "ephemeral",
+            "persistence",
+            "LangGraph",
+            "deep agent",
+            "routing",
+            "thread"
+          ],
+          "summary": "Introduces pre-built filesystem backends for deep agents, including ephemeral, local, durable, and composite options.",
+          "nodes": []
+        },
+        {
+          "node_id": "ead735",
+          "path": "backends > Backends > Built-in backends",
+          "title": "Built-in backends",
+          "keywords": [
+            "StateBackend",
+            "FilesystemBackend",
+            "StoreBackend",
+            "CompositeBackend",
+            "LangGraph",
+            "BaseStore",
+            "checkpoints",
+            "root_dir",
+            "path prefix",
+            "InMemoryStore"
+          ],
+          "summary": "Overview of built-in backends in LangGraph for file storage, including ephemeral state, local disk, durable store, and composite routing.",
+          "nodes": [
+            {
+              "node_id": "ea3778",
+              "path": "backends > Backends > Built-in backends > StateBackend (ephemeral)",
+              "title": "StateBackend (ephemeral)",
+              "keywords": [
+                "StateBackend",
+                "ephemeral",
+                "LangGraph",
+                "agent state",
+                "checkpoints",
+                "runtime.state",
+                "intermediate results",
+                "tool outputs",
+                "automatic eviction",
+                "scratch pad"
+              ],
+              "summary": "Describes the ephemeral StateBackend, a built-in backend for storing files in LangGraph agent state, persisting across turns via checkpoints, ideal for intermediate results and managing large tool outputs.",
+              "nodes": []
+            },
+            {
+              "node_id": "05ed35",
+              "path": "backends > Backends > Built-in backends > FilesystemBackend (local disk)",
+              "title": "FilesystemBackend (local disk)",
+              "keywords": [
+                "FilesystemBackend",
+                "root_dir",
+                "virtual_mode",
+                "sandbox",
+                "path resolution",
+                "symlink traversal",
+                "ripgrep",
+                "grep",
+                "local disk",
+                "persistent volumes"
+              ],
+              "summary": "A local disk backend for file operations with configurable root directory, virtual mode for sandboxing, and secure path resolution.",
+              "nodes": []
+            },
+            {
+              "node_id": "e2d530",
+              "path": "backends > Backends > Built-in backends > StoreBackend (LangGraph Store)",
+              "title": "StoreBackend (LangGraph Store)",
+              "keywords": [
+                "StoreBackend",
+                "LangGraph",
+                "BaseStore",
+                "InMemoryStore",
+                "runtime.store",
+                "cross-thread storage",
+                "durable storage",
+                "LangSmith Deployment",
+                "Redis",
+                "Postgres"
+              ],
+              "summary": "StoreBackend uses a LangGraph BaseStore for durable, cross-thread file storage, ideal for existing LangGraph store setups or LangSmith Deployment.",
+              "nodes": []
+            },
+            {
+              "node_id": "d1c6d5",
+              "path": "backends > Backends > Built-in backends > CompositeBackend (router)",
+              "title": "CompositeBackend (router)",
+              "keywords": [
+                "CompositeBackend",
+                "StateBackend",
+                "StoreBackend",
+                "routes",
+                "path prefix",
+                "file operations",
+                "InMemoryStore",
+                "create_deep_agent"
+              ],
+              "summary": "CompositeBackend routes file operations to different backends based on path prefixes, enabling combined storage like StateBackend and StoreBackend.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "80e6e8",
+          "path": "backends > Backends > Specify a backend",
+          "title": "Specify a backend",
+          "keywords": [
+            "create_deep_agent",
+            "BackendProtocol",
+            "FilesystemBackend",
+            "BackendFactory",
+            "ToolRuntime",
+            "StateBackend",
+            "StoreBackend",
+            "backend parameter",
+            "filesystem middleware",
+            "default backend"
+          ],
+          "summary": "Explains how to specify a backend for the filesystem middleware in Deep Agent, including direct instances and factory functions.",
+          "nodes": []
+        },
+        {
+          "node_id": "ae3ff8",
+          "path": "backends > Backends > Route to different backends",
+          "title": "Route to different backends",
+          "keywords": [
+            "CompositeBackend",
+            "StateBackend",
+            "FilesystemBackend",
+            "route",
+            "/memories/",
+            "ephemeral",
+            "persistent",
+            "virtual_mode",
+            "namespace",
+            "backend"
+          ],
+          "summary": "Configures a composite backend to route specific namespace paths (e.g., /memories/*) to persistent storage while keeping others ephemeral.",
+          "nodes": []
+        },
+        {
+          "node_id": "c90fe8",
+          "path": "backends > Backends > Use a virtual filesystem",
+          "title": "Use a virtual filesystem",
+          "keywords": [
+            "BackendProtocol",
+            "ls_info",
+            "glob_info",
+            "grep_raw",
+            "FileInfo",
+            "WriteResult",
+            "EditResult",
+            "S3Backend",
+            "virtual filesystem",
+            "server-side listing"
+          ],
+          "summary": "Guidelines and code outlines for building custom backends to project remote or database filesystems (e.g., S3, Postgres) into the tools namespace.",
+          "nodes": []
+        },
+        {
+          "node_id": "e0430a",
+          "path": "backends > Backends > Add policy hooks",
+          "title": "Add policy hooks",
+          "keywords": [
+            "FilesystemBackend",
+            "BackendProtocol",
+            "PolicyWrapper",
+            "WriteResult",
+            "EditResult",
+            "deny_prefixes",
+            "write",
+            "edit",
+            "GuardedBackend",
+            "policy hooks"
+          ],
+          "summary": "Demonstrates two methods to enforce enterprise policy hooks: subclassing FilesystemBackend or wrapping any BackendProtocol to block writes/edits under specified prefixes.",
+          "nodes": []
+        },
+        {
+          "node_id": "c75a9e",
+          "path": "backends > Backends > Protocol reference",
+          "title": "Protocol reference",
+          "keywords": [
+            "BackendProtocol",
+            "ls_info",
+            "grep_raw",
+            "WriteResult",
+            "EditResult",
+            "FileInfo",
+            "GrepMatch",
+            "glob_info",
+            "read",
+            "write"
+          ],
+          "summary": "Specifies the required endpoints and supporting types for implementing the BackendProtocol, including file operations and search functions.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

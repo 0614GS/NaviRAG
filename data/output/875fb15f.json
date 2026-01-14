@@ -1,0 +1,151 @@
+{
+  "doc_id": "875fb15f",
+  "doc_name": "use-subgraphs",
+  "summary": "Explains subgraphs in LangGraph for modular graph design, covering invocation, embedding, persistence, state viewing, and output streaming.",
+  "keywords": [
+    "subgraph",
+    "StateGraph",
+    "node",
+    "TypedDict",
+    "invoke",
+    "add_node",
+    "state key",
+    "persistence",
+    "stream",
+    "multi-agent"
+  ],
+  "structure": [
+    {
+      "node_id": "c949a2b3",
+      "path": "use-subgraphs > Subgraphs",
+      "title": "Subgraphs",
+      "keywords": [
+        "subgraph",
+        "StateGraph",
+        "node",
+        "TypedDict",
+        "invoke",
+        "add_node",
+        "state key",
+        "persistence",
+        "stream",
+        "multi-agent"
+      ],
+      "summary": "Explains subgraphs in LangGraph for modular graph design, including invocation, embedding, persistence, state viewing, and output streaming.",
+      "nodes": [
+        {
+          "node_id": "3fd05555",
+          "path": "use-subgraphs > Subgraphs > Setup",
+          "title": "Setup",
+          "keywords": [
+            "LangGraph",
+            "pip",
+            "uv",
+            "installation",
+            "LangSmith",
+            "debugging",
+            "development",
+            "trace data",
+            "LLM apps"
+          ],
+          "summary": "Installation instructions for LangGraph using pip or uv, with a tip to set up LangSmith for development and debugging.",
+          "nodes": []
+        },
+        {
+          "node_id": "0dbc2396",
+          "path": "use-subgraphs > Subgraphs > Invoke a graph from a node",
+          "title": "Invoke a graph from a node",
+          "keywords": [
+            "subgraph",
+            "StateGraph",
+            "invoke",
+            "TypedDict",
+            "state transformation",
+            "node",
+            "parent graph",
+            "multi-agent",
+            "schema",
+            "LangGraph"
+          ],
+          "summary": "Explains how to invoke a subgraph from a node in a parent graph, including state transformation between different schemas, with Python code examples.",
+          "nodes": []
+        },
+        {
+          "node_id": "de1b9aed",
+          "path": "use-subgraphs > Subgraphs > Add a graph as a node",
+          "title": "Add a graph as a node",
+          "keywords": [
+            "subgraph",
+            "StateGraph",
+            "add_node",
+            "state key",
+            "TypedDict",
+            "compile",
+            "parent graph",
+            "shared state",
+            "node",
+            "multi-agent"
+          ],
+          "summary": "Explains how to embed a subgraph as a node within a parent graph in LangGraph, requiring shared state keys for communication, with code examples.",
+          "nodes": []
+        },
+        {
+          "node_id": "ca691712",
+          "path": "use-subgraphs > Subgraphs > Add persistence",
+          "title": "Add persistence",
+          "keywords": [
+            "LangGraph",
+            "checkpointer",
+            "MemorySaver",
+            "subgraph",
+            "StateGraph",
+            "persistence",
+            "compile",
+            "multi-agent",
+            "parent graph",
+            "State"
+          ],
+          "summary": "Explains how to add persistence to subgraphs in LangGraph, covering automatic propagation from parent graphs and independent subgraph memory configuration.",
+          "nodes": []
+        },
+        {
+          "node_id": "5ae62bbc",
+          "path": "use-subgraphs > Subgraphs > View subgraph state",
+          "title": "View subgraph state",
+          "keywords": [
+            "graph.get_state",
+            "subgraphs",
+            "interrupt",
+            "checkpoint",
+            "MemorySaver",
+            "StateGraph",
+            "resume",
+            "persistence",
+            "configurable",
+            "thread_id"
+          ],
+          "summary": "Explains how to view the state of an interrupted subgraph in LangGraph using `graph.get_state(config, subgraphs=True)`, with a code example and a key limitation.",
+          "nodes": []
+        },
+        {
+          "node_id": "e03bba8d",
+          "path": "use-subgraphs > Subgraphs > Stream subgraph outputs",
+          "title": "Stream subgraph outputs",
+          "keywords": [
+            "subgraphs",
+            "stream",
+            "StateGraph",
+            "stream_mode",
+            "TypedDict",
+            "compile",
+            "node",
+            "updates",
+            "parent graph"
+          ],
+          "summary": "Explains how to stream outputs from both parent graphs and subgraphs in LangGraph by setting the `subgraphs=True` parameter.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

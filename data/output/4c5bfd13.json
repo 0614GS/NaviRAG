@@ -1,0 +1,571 @@
+{
+  "doc_id": "4c5bfd13",
+  "doc_name": "use-graph-api",
+  "summary": "A guide to LangGraph's Graph API covering state management, graph structures (sequences, branches, loops), and control features like Send and Command APIs.",
+  "keywords": [
+    "StateGraph",
+    "TypedDict",
+    "add_conditional_edges",
+    "Send API",
+    "Command",
+    "reducer",
+    "add_node",
+    "add_edge",
+    "conditional edge",
+    "map-reduce"
+  ],
+  "structure": [
+    {
+      "node_id": "52dda7e5",
+      "path": "use-graph-api > Use the graph API",
+      "title": "Use the graph API",
+      "keywords": [
+        "StateGraph",
+        "TypedDict",
+        "add_conditional_edges",
+        "Send API",
+        "Command",
+        "reducer",
+        "add_node",
+        "add_edge",
+        "conditional edge",
+        "map-reduce"
+      ],
+      "summary": "A guide to LangGraph's Graph API covering state management, graph structures (sequences, branches, loops), and control features like Send and Command APIs.",
+      "nodes": [
+        {
+          "node_id": "b09dc8a3",
+          "path": "use-graph-api > Use the graph API > Setup",
+          "title": "Setup",
+          "keywords": [
+            "langgraph",
+            "pip",
+            "uv",
+            "LangSmith",
+            "debugging",
+            "monitoring",
+            "installation",
+            "trace data",
+            "LLM apps"
+          ],
+          "summary": "Instructions for installing the LangGraph library via pip or uv, with a recommendation to set up LangSmith for debugging and monitoring.",
+          "nodes": []
+        },
+        {
+          "node_id": "b5a79a0a",
+          "path": "use-graph-api > Use the graph API > Define and update state",
+          "title": "Define and update state",
+          "keywords": [
+            "State",
+            "TypedDict",
+            "Pydantic",
+            "reducer",
+            "StateGraph",
+            "MessagesState",
+            "Overwrite",
+            "input_schema",
+            "output_schema",
+            "AnyMessage"
+          ],
+          "summary": "Explains how to define and update state in LangGraph using schemas, reducers, and various data structures like TypedDict and Pydantic models.",
+          "nodes": [
+            {
+              "node_id": "99227ff5",
+              "path": "use-graph-api > Use the graph API > Define and update state > Define state",
+              "title": "Define state",
+              "keywords": [
+                "State",
+                "TypedDict",
+                "Pydantic",
+                "dataclass",
+                "messages",
+                "AnyMessage",
+                "input schema",
+                "output schema",
+                "graph state",
+                "LangGraph"
+              ],
+              "summary": "Defines state in LangGraph using TypedDict, Pydantic, or dataclass, with an example using messages and an extra field.",
+              "nodes": []
+            },
+            {
+              "node_id": "a548becd",
+              "path": "use-graph-api > Use the graph API > Define and update state > Update state",
+              "title": "Update state",
+              "keywords": [
+                "StateGraph",
+                "add_node",
+                "node",
+                "invoke",
+                "State",
+                "AIMessage",
+                "HumanMessage",
+                "compile",
+                "messages",
+                "update"
+              ],
+              "summary": "Demonstrates how to define a node that updates graph state by appending messages and adding fields, and how to compile and invoke a simple single-node graph.",
+              "nodes": []
+            },
+            {
+              "node_id": "a4069130",
+              "path": "use-graph-api > Use the graph API > Define and update state > Process state updates with reducers",
+              "title": "Process state updates with reducers",
+              "keywords": [
+                "reducer",
+                "TypedDict",
+                "Annotated",
+                "StateGraph",
+                "MessagesState",
+                "add_messages",
+                "AnyMessage",
+                "AIMessage",
+                "HumanMessage",
+                "state updates"
+              ],
+              "summary": "Explains how to use reducer functions to manage state updates in LangGraph, including built-in MessagesState for chat applications.",
+              "nodes": [
+                {
+                  "node_id": "bd4446c6",
+                  "path": "use-graph-api > Use the graph API > Define and update state > Process state updates with reducers > MessagesState",
+                  "title": "MessagesState",
+                  "keywords": [
+                    "MessagesState",
+                    "add_messages",
+                    "reducer",
+                    "TypedDict",
+                    "Annotated",
+                    "StateGraph",
+                    "AnyMessage",
+                    "AIMessage",
+                    "chat models",
+                    "OpenAI format"
+                  ],
+                  "summary": "MessagesState is a built-in state representation for chat applications, handling message list updates and shorthand formats with the add_messages reducer.",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "1c564bed",
+              "path": "use-graph-api > Use the graph API > Define and update state > Bypass reducers with `Overwrite`",
+              "title": "Bypass reducers with `Overwrite`",
+              "keywords": [
+                "Overwrite",
+                "reducer",
+                "StateGraph",
+                "InvalidUpdateError",
+                "state management",
+                "bypass",
+                "parallel execution",
+                "super-step",
+                "LangGraph",
+                "TypedDict"
+              ],
+              "summary": "Explains how to use the `Overwrite` type in LangGraph to bypass reducers and directly set state values, with code examples and a warning about parallel execution conflicts.",
+              "nodes": []
+            },
+            {
+              "node_id": "79b2ddf5",
+              "path": "use-graph-api > Use the graph API > Define and update state > Define input and output schemas",
+              "title": "Define input and output schemas",
+              "keywords": [
+                "StateGraph",
+                "input_schema",
+                "output_schema",
+                "TypedDict",
+                "OverallState",
+                "add_node",
+                "compile",
+                "invoke",
+                "schema"
+              ],
+              "summary": "Explains how to define distinct input and output schemas in StateGraph for structured data handling, with a Python example.",
+              "nodes": []
+            },
+            {
+              "node_id": "24b822e4",
+              "path": "use-graph-api > Use the graph API > Define and update state > Pass private state between nodes",
+              "title": "Pass private state between nodes",
+              "keywords": [
+                "StateGraph",
+                "TypedDict",
+                "private state",
+                "OverallState",
+                "add_sequence",
+                "node",
+                "graph.invoke",
+                "sequential graph",
+                "public state",
+                "intermediate logic"
+              ],
+              "summary": "Demonstrates how to pass private state between specific nodes in a LangGraph sequential graph, using separate TypedDict classes to manage intermediate data not part of the overall public schema.",
+              "nodes": []
+            },
+            {
+              "node_id": "bdca2b05",
+              "path": "use-graph-api > Use the graph API > Define and update state > Use Pydantic models for graph state",
+              "title": "Use Pydantic models for graph state",
+              "keywords": [
+                "StateGraph",
+                "state_schema",
+                "Pydantic BaseModel",
+                "TypedDict",
+                "dataclass",
+                "runtime validation",
+                "serialization",
+                "type coercion",
+                "AnyMessage",
+                "LangGraph"
+              ],
+              "summary": "Explains using Pydantic BaseModel as state_schema in LangGraph's StateGraph for runtime input validation, with notes on limitations and advanced features like serialization, type coercion, and message models.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "4aac2995",
+          "path": "use-graph-api > Use the graph API > Add runtime configuration",
+          "title": "Add runtime configuration",
+          "keywords": [
+            "Runtime",
+            "context_schema",
+            "StateGraph",
+            "invoke",
+            "TypedDict",
+            "MessagesState",
+            "init_chat_model",
+            "SystemMessage",
+            "model_provider",
+            "system_message"
+          ],
+          "summary": "Explains how to add runtime configuration to LangGraph graphs, allowing dynamic specification of parameters like LLM models and system prompts without modifying graph state.",
+          "nodes": []
+        },
+        {
+          "node_id": "430039d2",
+          "path": "use-graph-api > Use the graph API > Add retry policies",
+          "title": "Add retry policies",
+          "keywords": [
+            "RetryPolicy",
+            "add_node",
+            "retry_on",
+            "default_retry_on",
+            "max_attempts",
+            "sqlite3.OperationalError",
+            "StateGraph",
+            "langgraph.types",
+            "5xx status codes",
+            "retry_policy parameter"
+          ],
+          "summary": "Explains how to add custom retry policies to nodes in LangGraph for API calls, database queries, and LLM interactions, including default exception handling and customization examples.",
+          "nodes": []
+        },
+        {
+          "node_id": "bf5afe6f",
+          "path": "use-graph-api > Use the graph API > Add node caching",
+          "title": "Add node caching",
+          "keywords": [
+            "node caching",
+            "cache_policy",
+            "CachePolicy",
+            "add_node",
+            "InMemoryCache",
+            "ttl",
+            "key_func",
+            "SqliteCache",
+            "graph compilation"
+          ],
+          "summary": "Explains how to add node caching in LangGraph to avoid repeating expensive operations, including configuring cache policies and enabling caching with InMemoryCache.",
+          "nodes": []
+        },
+        {
+          "node_id": "63b311b8",
+          "path": "use-graph-api > Use the graph API > Create a sequence of steps",
+          "title": "Create a sequence of steps",
+          "keywords": [
+            "StateGraph",
+            "add_node",
+            "add_edge",
+            "add_sequence",
+            "START",
+            "node",
+            "edge",
+            "sequence",
+            "LangGraph",
+            "graph API"
+          ],
+          "summary": "Demonstrates how to create a sequential graph in LangGraph using add_node and add_edge methods, and introduces the add_sequence shorthand for building similar graphs.",
+          "nodes": []
+        },
+        {
+          "node_id": "0678412a",
+          "path": "use-graph-api > Use the graph API > Create branches",
+          "title": "Create branches",
+          "keywords": [
+            "parallel execution",
+            "StateGraph",
+            "add_conditional_edges",
+            "reducer",
+            "defer",
+            "superstep",
+            "max_concurrency",
+            "conditional branching",
+            "TypedDict",
+            "State"
+          ],
+          "summary": "Explains parallel execution, deferred node execution, and conditional branching in LangGraph to optimize graph workflows.",
+          "nodes": [
+            {
+              "node_id": "f3625fc3",
+              "path": "use-graph-api > Use the graph API > Create branches > Run graph nodes in parallel",
+              "title": "Run graph nodes in parallel",
+              "keywords": [
+                "StateGraph",
+                "reducer",
+                "parallel execution",
+                "superstep",
+                "max_concurrency",
+                "exception handling",
+                "checkpointer",
+                "retry_policy",
+                "State",
+                "TypedDict"
+              ],
+              "summary": "Demonstrates parallel execution of graph nodes (B and C) after Node A, using state reducers to accumulate values, and discusses concurrency, exception handling, and max concurrency settings.",
+              "nodes": []
+            },
+            {
+              "node_id": "6b4312e4",
+              "path": "use-graph-api > Use the graph API > Create branches > Defer node execution",
+              "title": "Defer node execution",
+              "keywords": [
+                "defer",
+                "node execution",
+                "StateGraph",
+                "branches",
+                "workflow",
+                "map-reduce",
+                "concurrent execution",
+                "superstep",
+                "langgraph",
+                "pending tasks"
+              ],
+              "summary": "Explains how to defer node execution in a graph workflow to wait for all pending tasks, using a Python example with branches of different lengths.",
+              "nodes": []
+            },
+            {
+              "node_id": "56ff5138",
+              "path": "use-graph-api > Use the graph API > Create branches > Conditional branching",
+              "title": "Conditional branching",
+              "keywords": [
+                "add_conditional_edges",
+                "StateGraph",
+                "conditional branching",
+                "graph state",
+                "LangGraph",
+                "runtime routing",
+                "TypedDict",
+                "State",
+                "conditional_edge",
+                "dynamic path selection"
+              ],
+              "summary": "Explains how to use `add_conditional_edges` in LangGraph to dynamically route execution paths based on runtime state, with a code example.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "32145ddc",
+          "path": "use-graph-api > Use the graph API > Map-Reduce and the Send API",
+          "title": "Map-Reduce and the Send API",
+          "keywords": [
+            "LangGraph",
+            "Send API",
+            "map-reduce",
+            "StateGraph",
+            "add_node",
+            "add_conditional_edges",
+            "TypedDict",
+            "Annotated",
+            "stream"
+          ],
+          "summary": "Demonstrates using LangGraph's Send API to implement a map-reduce pattern for parallel joke generation and selection.",
+          "nodes": []
+        },
+        {
+          "node_id": "e3f86cf4",
+          "path": "use-graph-api > Use the graph API > Create and control loops",
+          "title": "Create and control loops",
+          "keywords": [
+            "conditional edge",
+            "END node",
+            "recursion_limit",
+            "GraphRecursionError",
+            "StateGraph",
+            "supersteps",
+            "add_conditional_edges",
+            "invoke",
+            "loop",
+            "termination condition"
+          ],
+          "summary": "Explains how to create and control loops in LangGraph using conditional edges for termination and setting recursion limits to prevent infinite execution.",
+          "nodes": [
+            {
+              "node_id": "bf576447",
+              "path": "use-graph-api > Use the graph API > Create and control loops > Impose a recursion limit",
+              "title": "Impose a recursion limit",
+              "keywords": [
+                "recursion_limit",
+                "GraphRecursionError",
+                "RemainingSteps",
+                "supersteps",
+                "StateGraph",
+                "ManagedValue",
+                "conditional_edges",
+                "invoke",
+                "graph",
+                "loop"
+              ],
+              "summary": "Explains how to set a recursion limit in LangGraph to prevent infinite loops, including handling GraphRecursionError and using RemainingSteps for controlled termination.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "12e1cc28",
+          "path": "use-graph-api > Use the graph API > Async",
+          "title": "Async",
+          "keywords": [
+            "async",
+            "ainvoke",
+            "astream",
+            "Runnable Protocol",
+            "LangGraph",
+            "StateGraph",
+            "MessagesState",
+            "ChatOpenAI",
+            "ChatAnthropic",
+            "ChatGoogleGenerativeAI"
+          ],
+          "summary": "Guide to converting a synchronous LangGraph implementation to asynchronous for performance gains in IO-bound tasks, with examples for multiple chat model providers.",
+          "nodes": []
+        },
+        {
+          "node_id": "52ae6878",
+          "path": "use-graph-api > Use the graph API > Combine control flow and state updates with `Command`",
+          "title": "Combine control flow and state updates with `Command`",
+          "keywords": [
+            "Command",
+            "StateGraph",
+            "control flow",
+            "state updates",
+            "goto",
+            "conditional edges",
+            "TypedDict",
+            "node functions",
+            "graph navigation",
+            "LangGraph"
+          ],
+          "summary": "Explains how to use the Command object in LangGraph to combine state updates and control flow decisions within a single node, enabling dynamic graph navigation.",
+          "nodes": [
+            {
+              "node_id": "0f4e597c",
+              "path": "use-graph-api > Use the graph API > Combine control flow and state updates with `Command` > Navigate to a node in a parent graph",
+              "title": "Navigate to a node in a parent graph",
+              "keywords": [
+                "Command.PARENT",
+                "subgraph",
+                "parent graph",
+                "reducer",
+                "StateGraph",
+                "goto",
+                "state updates",
+                "TypedDict",
+                "operator.add",
+                "graph navigation"
+              ],
+              "summary": "Explains how to navigate from a subgraph node to a parent graph node using Command.PARENT, including state updates and reducer requirements.",
+              "nodes": []
+            },
+            {
+              "node_id": "e54a3bd3",
+              "path": "use-graph-api > Use the graph API > Combine control flow and state updates with `Command` > Use inside tools",
+              "title": "Use inside tools",
+              "keywords": [
+                "Command",
+                "ToolNode",
+                "graph state",
+                "ToolMessage",
+                "update",
+                "RunnableConfig",
+                "tool_call_id",
+                "message history",
+                "state updates",
+                "prebuilt node"
+              ],
+              "summary": "Explains how to update graph state from within a tool using the Command object, including required message handling and recommended ToolNode usage.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "cd24b76f",
+          "path": "use-graph-api > Use the graph API > Visualize your graph",
+          "title": "Visualize your graph",
+          "keywords": [
+            "StateGraph",
+            "Mermaid",
+            "draw_mermaid",
+            "graphviz",
+            "Pyppeteer",
+            "Mermaid.ink",
+            "conditional_edges",
+            "Graph",
+            "visualization",
+            "flowchart"
+          ],
+          "summary": "Demonstrates how to visualize LangGraph graphs, including creating fractal graphs and converting them to Mermaid diagrams or PNG images.",
+          "nodes": [
+            {
+              "node_id": "bdf1ae7f",
+              "path": "use-graph-api > Use the graph API > Visualize your graph > Mermaid",
+              "title": "Mermaid",
+              "keywords": [
+                "Mermaid",
+                "graph API",
+                "draw_mermaid",
+                "flowchart",
+                "graph TD",
+                "class diagram",
+                "syntax conversion",
+                "visualization"
+              ],
+              "summary": "Demonstrates converting a graph class to Mermaid syntax for visualization using a Python code example.",
+              "nodes": []
+            },
+            {
+              "node_id": "04cfc67b",
+              "path": "use-graph-api > Use the graph API > Visualize your graph > PNG",
+              "title": "PNG",
+              "keywords": [
+                "draw_mermaid_png",
+                "Mermaid.ink",
+                "Pyppeteer",
+                "graphviz",
+                "MermaidDrawMethod",
+                "CurveStyle",
+                "NodeStyles",
+                "IPython.display",
+                "Image",
+                "display"
+              ],
+              "summary": "Describes three methods to render a graph as a PNG image: using Mermaid.ink API, Mermaid with Pyppeteer, and Graphviz, including code examples.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

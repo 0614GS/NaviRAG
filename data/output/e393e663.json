@@ -1,0 +1,114 @@
+{
+  "doc_id": "e393e663",
+  "doc_name": "middleware",
+  "summary": "Introduces the modular middleware architecture for deep agents, covering planning, filesystem, and subagent capabilities, and explains their composability.",
+  "keywords": [
+    "TodoListMiddleware",
+    "FilesystemMiddleware",
+    "SubAgentMiddleware",
+    "create_deep_agent",
+    "planning",
+    "filesystem",
+    "subagents",
+    "middleware",
+    "context isolation",
+    "LangGraph"
+  ],
+  "structure": [
+    {
+      "node_id": "8b1030",
+      "path": "middleware > Deep Agents Middleware",
+      "title": "Deep Agents Middleware",
+      "keywords": [
+        "TodoListMiddleware",
+        "FilesystemMiddleware",
+        "SubAgentMiddleware",
+        "create_deep_agent",
+        "planning",
+        "filesystem",
+        "subagents",
+        "middleware",
+        "context isolation",
+        "LangGraph"
+      ],
+      "summary": "Introduces the modular middleware architecture for deep agents, including planning, filesystem, and subagent capabilities, and explains their composability.",
+      "nodes": [
+        {
+          "node_id": "70e64f",
+          "path": "middleware > Deep Agents Middleware > To-do list middleware",
+          "title": "To-do list middleware",
+          "keywords": [
+            "TodoListMiddleware",
+            "write_todos",
+            "planning",
+            "agent",
+            "middleware",
+            "system_prompt",
+            "multi-part tasks",
+            "Claude Code"
+          ],
+          "summary": "TodoListMiddleware provides agents with a tool to create and update to-do lists for planning and tracking multi-part tasks, similar to Claude Code's approach.",
+          "nodes": []
+        },
+        {
+          "node_id": "8e9864",
+          "path": "middleware > Deep Agents Middleware > Filesystem middleware",
+          "title": "Filesystem middleware",
+          "keywords": [
+            "FilesystemMiddleware",
+            "ls",
+            "read_file",
+            "write_file",
+            "edit_file",
+            "CompositeBackend",
+            "StoreBackend",
+            "StateBackend",
+            "InMemoryStore",
+            "persistent storage"
+          ],
+          "summary": "Filesystem middleware provides tools for file operations to manage context in agents, supporting both short-term and long-term memory.",
+          "nodes": [
+            {
+              "node_id": "1eb772",
+              "path": "middleware > Deep Agents Middleware > Filesystem middleware > Short-term vs. long-term filesystem",
+              "title": "Short-term vs. long-term filesystem",
+              "keywords": [
+                "CompositeBackend",
+                "StoreBackend",
+                "StateBackend",
+                "FilesystemMiddleware",
+                "InMemoryStore",
+                "persistent storage",
+                "ephemeral state",
+                "/memories/",
+                "create_agent",
+                "middleware"
+              ],
+              "summary": "Explains how to configure a CompositeBackend with StoreBackend for persistent storage of specific paths (e.g., /memories/) across threads, while other files remain in ephemeral state.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "45c78e",
+          "path": "middleware > Deep Agents Middleware > Subagent middleware",
+          "title": "Subagent middleware",
+          "keywords": [
+            "SubAgentMiddleware",
+            "subagents",
+            "task tool",
+            "CompiledSubAgent",
+            "LangGraph",
+            "context isolation",
+            "general-purpose subagent",
+            "system prompt",
+            "middleware",
+            "default_model"
+          ],
+          "summary": "Subagent middleware enables task delegation to specialized subagents for context isolation, keeping the main agent's context clean. It supports defining subagents with custom tools, models, and middleware, or using pre-built LangGraph graphs.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

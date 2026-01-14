@@ -1,0 +1,38 @@
+{
+  "doc_id": "03f5ba36",
+  "doc_name": "case-studies",
+  "summary": "A collection of case studies showcasing how various companies leverage LangGraph to build AI agent workflows for tasks like automation, copilots, and customer support.",
+  "keywords": [
+    "LangGraph",
+    "AI agents",
+    "copilot",
+    "code generation",
+    "customer support",
+    "data extraction",
+    "automation",
+    "GenAI",
+    "multi-agent systems",
+    "workflows"
+  ],
+  "structure": [
+    {
+      "node_id": "b03c571f",
+      "path": "case-studies > Case studies",
+      "title": "Case studies",
+      "keywords": [
+        "LangGraph",
+        "AI agents",
+        "copilot",
+        "code generation",
+        "customer support",
+        "data extraction",
+        "search",
+        "automation",
+        "GenAI",
+        "multi-agent systems"
+      ],
+      "summary": "A list of companies across various industries using LangGraph for AI agent workflows, including browser automation, copilots, code generation, and customer support.",
+      "nodes": []
+    }
+  ]
+}

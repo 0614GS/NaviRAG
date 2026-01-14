@@ -1,0 +1,210 @@
+{
+  "doc_id": "9ec051f5",
+  "doc_name": "choosing-apis",
+  "summary": "Guidance on selecting between Graph API for complex workflows and Functional API for rapid prototyping in LangGraph.",
+  "keywords": [
+    "Graph API",
+    "Functional API",
+    "StateGraph",
+    "conditional edges",
+    "workflow",
+    "rapid prototyping",
+    "state management",
+    "parallel processing",
+    "LangGraph",
+    "migration"
+  ],
+  "structure": [
+    {
+      "node_id": "486adf59",
+      "path": "choosing-apis > Choosing between Graph and Functional APIs",
+      "title": "Choosing between Graph and Functional APIs",
+      "keywords": [
+        "Graph API",
+        "Functional API",
+        "StateGraph",
+        "conditional edges",
+        "workflow",
+        "rapid prototyping",
+        "state management",
+        "parallel processing",
+        "LangGraph",
+        "migration"
+      ],
+      "summary": "Guidance on selecting between Graph API for complex workflows and Functional API for rapid prototyping in LangGraph.",
+      "nodes": [
+        {
+          "node_id": "cee4df9f",
+          "path": "choosing-apis > Choosing between Graph and Functional APIs > Quick decision guide",
+          "title": "Quick decision guide",
+          "keywords": [
+            "Graph API",
+            "Functional API",
+            "workflow visualization",
+            "state management",
+            "conditional branching",
+            "parallel execution",
+            "team collaboration",
+            "procedural code",
+            "control flow",
+            "rapid prototyping"
+          ],
+          "summary": "A guide to help choose between Graph API for complex workflows and state management, and Functional API for minimal code changes and rapid prototyping.",
+          "nodes": []
+        },
+        {
+          "node_id": "089c8dc0",
+          "path": "choosing-apis > Choosing between Graph and Functional APIs > Detailed comparison",
+          "title": "Detailed comparison",
+          "keywords": [
+            "Graph API",
+            "Functional API",
+            "StateGraph",
+            "conditional edges",
+            "parallel processing",
+            "state management",
+            "LangGraph",
+            "checkpointer",
+            "rapid prototyping",
+            "linear workflows"
+          ],
+          "summary": "Compares Graph API and Functional API in LangGraph, detailing optimal use cases for each based on workflow complexity and development needs.",
+          "nodes": [
+            {
+              "node_id": "51fd40e8",
+              "path": "choosing-apis > Choosing between Graph and Functional APIs > Detailed comparison > When to use the Graph API",
+              "title": "When to use the Graph API",
+              "keywords": [
+                "Graph API",
+                "StateGraph",
+                "conditional edges",
+                "parallel processing",
+                "state management",
+                "nodes",
+                "edges",
+                "declarative approach",
+                "workflow",
+                "visual graph"
+              ],
+              "summary": "Describes scenarios where the Graph API is advantageous: complex decision trees, state management, parallel processing, and team collaboration.",
+              "nodes": []
+            },
+            {
+              "node_id": "ab48e525",
+              "path": "choosing-apis > Choosing between Graph and Functional APIs > Detailed comparison > When to use the Functional API",
+              "title": "When to use the Functional API",
+              "keywords": [
+                "Functional API",
+                "LangGraph",
+                "entrypoint",
+                "task",
+                "checkpointer",
+                "procedural code",
+                "state management",
+                "rapid prototyping",
+                "linear workflows"
+              ],
+              "summary": "Describes scenarios for using the Functional API in LangGraph, including integrating with existing procedural code, linear workflows, rapid prototyping, and function-scoped state management.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "fc261e2a",
+          "path": "choosing-apis > Choosing between Graph and Functional APIs > Combining both APIs",
+          "title": "Combining both APIs",
+          "keywords": [
+            "StateGraph",
+            "entrypoint",
+            "orchestrator",
+            "multi-agent coordination",
+            "data processing",
+            "Graph API",
+            "Functional API",
+            "invoke",
+            "node",
+            "LangGraph"
+          ],
+          "summary": "Demonstrates how to combine Graph and Functional APIs in LangGraph for complex multi-agent coordination and simple data processing tasks.",
+          "nodes": []
+        },
+        {
+          "node_id": "a0575863",
+          "path": "choosing-apis > Choosing between Graph and Functional APIs > Migration between APIs",
+          "title": "Migration between APIs",
+          "keywords": [
+            "Graph API",
+            "Functional API",
+            "StateGraph",
+            "conditional_edges",
+            "TypedDict",
+            "workflow",
+            "migration",
+            "entrypoint",
+            "checkpointer",
+            "linear processes"
+          ],
+          "summary": "Demonstrates bidirectional migration between Graph and Functional APIs, covering complex workflows with conditional logic and linear process simplification.",
+          "nodes": [
+            {
+              "node_id": "12ab82de",
+              "path": "choosing-apis > Choosing between Graph and Functional APIs > Migration between APIs > From Functional to Graph API",
+              "title": "From Functional to Graph API",
+              "keywords": [
+                "Graph API",
+                "Functional API",
+                "StateGraph",
+                "conditional_edges",
+                "TypedDict",
+                "workflow",
+                "migration",
+                "node",
+                "entrypoint",
+                "checkpointer"
+              ],
+              "summary": "Demonstrates migrating a complex functional workflow to the Graph API using conditional logic and state management.",
+              "nodes": []
+            },
+            {
+              "node_id": "7b953b4c",
+              "path": "choosing-apis > Choosing between Graph and Functional APIs > Migration between APIs > From Graph to Functional API",
+              "title": "From Graph to Functional API",
+              "keywords": [
+                "Graph API",
+                "Functional API",
+                "migration",
+                "workflow",
+                "entrypoint",
+                "checkpointer",
+                "TypedDict",
+                "linear processes",
+                "simplification"
+              ],
+              "summary": "Demonstrates migration from Graph API to Functional API for simplifying complex linear workflows.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "3ebf5810",
+          "path": "choosing-apis > Choosing between Graph and Functional APIs > Summary",
+          "title": "Summary",
+          "keywords": [
+            "Graph API",
+            "Functional API",
+            "LangGraph",
+            "workflow",
+            "parallel processing",
+            "prototyping",
+            "persistence",
+            "streaming",
+            "human-in-the-loop",
+            "memory"
+          ],
+          "summary": "Guidelines for choosing between Graph API (explicit control, complex workflows) and Functional API (minimal changes, simple workflows) in LangGraph.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

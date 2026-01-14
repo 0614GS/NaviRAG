@@ -1,0 +1,163 @@
+{
+  "doc_id": "5c9d7f86",
+  "doc_name": "application-structure",
+  "summary": "Overview of LangGraph application structure, including graphs, configuration files, dependencies, and environment variables for deployment.",
+  "keywords": [
+    "LangGraph",
+    "langgraph.json",
+    "graphs",
+    "dependencies",
+    "environment variables",
+    "deployment",
+    "configuration file",
+    "LangSmith",
+    "pyproject.toml",
+    "requirements.txt"
+  ],
+  "structure": [
+    {
+      "node_id": "557575e9",
+      "path": "application-structure > Application structure",
+      "title": "Application structure",
+      "keywords": [
+        "LangGraph",
+        "langgraph.json",
+        "graphs",
+        "dependencies",
+        "environment variables",
+        "deployment",
+        "configuration file",
+        "LangSmith",
+        "pyproject.toml",
+        "requirements.txt"
+      ],
+      "summary": "Overview of LangGraph application structure, including graphs, configuration files, dependencies, and environment variables for deployment.",
+      "nodes": [
+        {
+          "node_id": "902664cf",
+          "path": "application-structure > Application structure > Key Concepts",
+          "title": "Key Concepts",
+          "keywords": [
+            "LangSmith",
+            "LangGraph",
+            "langgraph.json",
+            "graphs",
+            "dependencies",
+            "environment variables",
+            "deployment",
+            "configuration file"
+          ],
+          "summary": "Key concepts for deploying with LangSmith: LangGraph configuration, graphs, dependencies, and environment variables.",
+          "nodes": []
+        },
+        {
+          "node_id": "133d7e36",
+          "path": "application-structure > Application structure > File structure",
+          "title": "File structure",
+          "keywords": [
+            "LangGraph",
+            "agent.py",
+            "langgraph.json",
+            "requirements.txt",
+            "pyproject.toml",
+            "nodes.py",
+            "tools.py",
+            "state.py",
+            ".env"
+          ],
+          "summary": "Examples of directory structures for LangGraph applications in Python, showing file organization for both requirements.txt and pyproject.toml based projects.",
+          "nodes": []
+        },
+        {
+          "node_id": "e67bdca3",
+          "path": "application-structure > Application structure > Configuration file",
+          "title": "Configuration file",
+          "keywords": [
+            "langgraph.json",
+            "dependencies",
+            "graphs",
+            "environment variables",
+            "LangGraph CLI",
+            "configuration",
+            "JSON",
+            "deployment",
+            "langchain_openai",
+            "my_agent"
+          ],
+          "summary": "The `langgraph.json` file configures dependencies, graphs, and environment variables for deploying LangGraph applications.",
+          "nodes": [
+            {
+              "node_id": "cfc74c7d",
+              "path": "application-structure > Application structure > Configuration file > Examples",
+              "title": "Examples",
+              "keywords": [
+                "dependencies",
+                "langchain_openai",
+                "graphs",
+                "my_agent",
+                "env",
+                ".env",
+                "configuration",
+                "variable"
+              ],
+              "summary": "Example configuration for loading a graph from a local package, specifying dependencies, and setting environment variables.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "bb7a71a2",
+          "path": "application-structure > Application structure > Dependencies",
+          "title": "Dependencies",
+          "keywords": [
+            "LangGraph",
+            "dependencies",
+            "requirements.txt",
+            "pyproject.toml",
+            "package.json",
+            "configuration file",
+            "dockerfile_lines",
+            "Python packages",
+            "system libraries"
+          ],
+          "summary": "Specifies how to set up dependencies for a LangGraph application, including dependency files and configuration keys.",
+          "nodes": []
+        },
+        {
+          "node_id": "6a6e1e80",
+          "path": "application-structure > Application structure > Graphs",
+          "title": "Graphs",
+          "keywords": [
+            "graphs",
+            "LangGraph",
+            "configuration file",
+            "compiled graph",
+            "graph function",
+            "deployment",
+            "unique name",
+            "path"
+          ],
+          "summary": "Defines how to specify available graphs in a LangGraph application using the 'graphs' key in the configuration file.",
+          "nodes": []
+        },
+        {
+          "node_id": "1d721f6b",
+          "path": "application-structure > Application structure > Environment variables",
+          "title": "Environment variables",
+          "keywords": [
+            "LangGraph",
+            "environment variables",
+            "configuration file",
+            "deployment",
+            "env key",
+            "production deployment",
+            "local development",
+            "LangGraph configuration"
+          ],
+          "summary": "Describes how to configure environment variables for LangGraph applications locally via config file and in production via deployment environment.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

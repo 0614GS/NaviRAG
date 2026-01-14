@@ -1,0 +1,286 @@
+{
+  "doc_id": "6e564920",
+  "doc_name": "streaming",
+  "summary": "LangGraph's streaming system provides real-time updates for LLM applications, covering graph state, subgraph outputs, LLM tokens, and custom data across multiple streaming modes.",
+  "keywords": [
+    "stream",
+    "astream",
+    "stream_mode",
+    "updates",
+    "values",
+    "messages",
+    "custom",
+    "subgraphs",
+    "get_stream_writer",
+    "StateGraph"
+  ],
+  "structure": [
+    {
+      "node_id": "ce24af3f",
+      "path": "streaming > Streaming",
+      "title": "Streaming",
+      "keywords": [
+        "stream",
+        "astream",
+        "stream_mode",
+        "updates",
+        "values",
+        "messages",
+        "custom",
+        "subgraphs",
+        "get_stream_writer",
+        "StateGraph"
+      ],
+      "summary": "LangGraph's streaming system enables real-time updates for LLM applications, covering graph state, subgraph outputs, LLM tokens, custom data, and multiple streaming modes.",
+      "nodes": [
+        {
+          "node_id": "89a935b0",
+          "path": "streaming > Streaming > Supported stream modes",
+          "title": "Supported stream modes",
+          "keywords": [
+            "stream",
+            "astream",
+            "values",
+            "updates",
+            "custom",
+            "messages",
+            "debug",
+            "state",
+            "graph nodes"
+          ],
+          "summary": "Describes the different stream modes available for the `stream` and `astream` methods in LangGraph, including values, updates, custom, messages, and debug.",
+          "nodes": []
+        },
+        {
+          "node_id": "a2cc53b2",
+          "path": "streaming > Streaming > Basic usage example",
+          "title": "Basic usage example",
+          "keywords": [
+            "stream",
+            "astream",
+            "Pregel",
+            "StateGraph",
+            "stream_mode",
+            "updates",
+            "iterator",
+            "TypedDict",
+            "node",
+            "graph"
+          ],
+          "summary": "Demonstrates how to use the `stream` and `astream` methods in LangGraph to iterate over graph state updates during execution, with a code example.",
+          "nodes": []
+        },
+        {
+          "node_id": "35eea0b3",
+          "path": "streaming > Streaming > Stream multiple modes",
+          "title": "Stream multiple modes",
+          "keywords": [
+            "stream_mode",
+            "graph.stream",
+            "updates",
+            "custom",
+            "chunk",
+            "mode",
+            "streaming",
+            "parameter",
+            "output",
+            "tuple"
+          ],
+          "summary": "Explains how to stream multiple modes simultaneously by passing a list to the `stream_mode` parameter, with outputs as tuples of mode and chunk.",
+          "nodes": []
+        },
+        {
+          "node_id": "6f7287d7",
+          "path": "streaming > Streaming > Stream graph state",
+          "title": "Stream graph state",
+          "keywords": [
+            "stream_mode",
+            "updates",
+            "values",
+            "StateGraph",
+            "graph.stream",
+            "state updates",
+            "full state",
+            "TypedDict",
+            "add_node",
+            "add_edge"
+          ],
+          "summary": "Explains how to use 'updates' and 'values' stream modes in LangGraph to monitor graph state changes during execution.",
+          "nodes": []
+        },
+        {
+          "node_id": "b730d72a",
+          "path": "streaming > Streaming > Stream subgraph outputs",
+          "title": "Stream subgraph outputs",
+          "keywords": [
+            "subgraphs",
+            "stream",
+            "namespace",
+            "StateGraph",
+            "TypedDict",
+            "stream_mode",
+            "node",
+            "parent graph",
+            "outputs",
+            "debug"
+          ],
+          "summary": "Explains how to stream outputs from subgraphs in a parent graph by setting `subgraphs=True` in the `.stream()` method, including output format and examples.",
+          "nodes": [
+            {
+              "node_id": "74ba4746",
+              "path": "streaming > Streaming > Stream subgraph outputs > Debugging",
+              "title": "Debugging",
+              "keywords": [
+                "debug streaming mode",
+                "stream",
+                "graph",
+                "node",
+                "execution",
+                "state",
+                "stream_mode",
+                "outputs"
+              ],
+              "summary": "Explains how to use debug streaming mode to output detailed node execution information and full state during graph execution.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "a2b72b16",
+          "path": "streaming > Streaming > LLM tokens",
+          "title": "LLM tokens",
+          "keywords": [
+            "messages",
+            "stream_mode",
+            "LLM tokens",
+            "metadata",
+            "StateGraph",
+            "init_chat_model",
+            "langgraph_node",
+            "RunnableConfig",
+            "ainvoke",
+            "graph.stream"
+          ],
+          "summary": "Stream LLM outputs token by token using 'messages' mode in LangGraph, with metadata for filtering by node or LLM invocation.",
+          "nodes": [
+            {
+              "node_id": "20b42b72",
+              "path": "streaming > Streaming > LLM tokens > Filter by LLM invocation",
+              "title": "Filter by LLM invocation",
+              "keywords": [
+                "tags",
+                "LLM invocation",
+                "metadata",
+                "astream",
+                "stream_mode",
+                "init_chat_model",
+                "StateGraph",
+                "LangGraph",
+                "filter",
+                "tokens"
+              ],
+              "summary": "Explains how to filter streamed LLM tokens by associating tags with LLM invocations and using metadata in LangGraph.",
+              "nodes": []
+            },
+            {
+              "node_id": "e3e4bef7",
+              "path": "streaming > Streaming > LLM tokens > Filter by node",
+              "title": "Filter by node",
+              "keywords": [
+                "stream_mode",
+                "messages",
+                "langgraph_node",
+                "metadata",
+                "graph.stream",
+                "LLM tokens",
+                "filter",
+                "node",
+                "StateGraph",
+                "ChatOpenAI"
+              ],
+              "summary": "Explains how to filter streaming LLM tokens by specific graph nodes using `stream_mode='messages'` and the `langgraph_node` metadata field.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "edcc2fba",
+          "path": "streaming > Streaming > Stream custom data",
+          "title": "Stream custom data",
+          "keywords": [
+            "get_stream_writer",
+            "stream_mode",
+            "custom",
+            "node",
+            "tool",
+            "stream",
+            "LangGraph",
+            "StateGraph",
+            "async",
+            "writer"
+          ],
+          "summary": "Explains how to stream custom user-defined data from LangGraph nodes or tools using get_stream_writer and stream_mode='custom'.",
+          "nodes": []
+        },
+        {
+          "node_id": "a574bd96",
+          "path": "streaming > Streaming > Use with any LLM",
+          "title": "Use with any LLM",
+          "keywords": [
+            "stream_mode=\"custom\"",
+            "get_stream_writer",
+            "custom_llm_chunk",
+            "StateGraph",
+            "stream_tokens",
+            "AsyncOpenAI",
+            "tool_calling",
+            "astream",
+            "LangGraph",
+            "arbitrary model"
+          ],
+          "summary": "Enables streaming from any LLM API using custom mode, integrating external clients and services for flexible workflows.",
+          "nodes": []
+        },
+        {
+          "node_id": "d3960729",
+          "path": "streaming > Streaming > Disable streaming for specific chat models",
+          "title": "Disable streaming for specific chat models",
+          "keywords": [
+            "streaming",
+            "init_chat_model",
+            "ChatOpenAI",
+            "disable_streaming",
+            "streaming=False",
+            "chat model",
+            "LangChain",
+            "async",
+            "RunnableConfig",
+            "LangGraph"
+          ],
+          "summary": "How to disable streaming for specific chat models in LangChain by setting streaming=False or disable_streaming=True.",
+          "nodes": [
+            {
+              "node_id": "375803fd",
+              "path": "streaming > Streaming > Disable streaming for specific chat models > Async with Python \\< 3.11",
+              "title": "Async with Python \\< 3.11",
+              "keywords": [
+                "asyncio",
+                "RunnableConfig",
+                "ainvoke",
+                "get_stream_writer",
+                "StreamWriter",
+                "async nodes",
+                "context propagation",
+                "stream_mode",
+                "LangGraph",
+                "Python < 3.11"
+              ],
+              "summary": "Limitations and workarounds for async streaming in LangGraph with Python < 3.11, including manual RunnableConfig passing and direct writer usage.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

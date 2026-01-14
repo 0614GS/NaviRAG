@@ -1,0 +1,404 @@
+{
+  "doc_id": "bdc4f88f",
+  "doc_name": "thinking-in-langgraph",
+  "summary": "A guide to building a customer support email agent with LangGraph, covering workflow mapping, node design, state management, and implementation.",
+  "keywords": [
+    "LangGraph",
+    "nodes",
+    "state",
+    "workflow",
+    "LLM steps",
+    "Data steps",
+    "Action steps",
+    "User input steps",
+    "EmailAgentState",
+    "RetryPolicy"
+  ],
+  "structure": [
+    {
+      "node_id": "7d4407e1",
+      "path": "thinking-in-langgraph > Thinking in LangGraph",
+      "title": "Thinking in LangGraph",
+      "keywords": [
+        "LangGraph",
+        "nodes",
+        "state",
+        "workflow",
+        "LLM steps",
+        "Data steps",
+        "Action steps",
+        "User input steps",
+        "EmailAgentState",
+        "RetryPolicy"
+      ],
+      "summary": "A guide to building a customer support email agent with LangGraph, covering workflow mapping, node design, state management, and implementation.",
+      "nodes": [
+        {
+          "node_id": "dc1bd9c6",
+          "path": "thinking-in-langgraph > Thinking in LangGraph > Start with the process you want to automate",
+          "title": "Start with the process you want to automate",
+          "keywords": [
+            "AI agent",
+            "customer support",
+            "email classification",
+            "documentation search",
+            "response drafting",
+            "escalation",
+            "follow-up scheduling",
+            "urgency",
+            "topic classification",
+            "LangGraph"
+          ],
+          "summary": "Describes the process of building a customer support email AI agent with requirements like reading emails, classifying urgency, searching documentation, drafting responses, escalating issues, and scheduling follow-ups, along with example scenarios.",
+          "nodes": []
+        },
+        {
+          "node_id": "84ea0546",
+          "path": "thinking-in-langgraph > Thinking in LangGraph > Step 1: Map out your workflow as discrete steps",
+          "title": "Step 1: Map out your workflow as discrete steps",
+          "keywords": [
+            "node",
+            "LangGraph",
+            "workflow",
+            "Classify Intent",
+            "Human Review",
+            "Draft Reply",
+            "Doc Search",
+            "Bug Track",
+            "Read Email",
+            "Send Reply"
+          ],
+          "summary": "Describes the initial step of designing a LangGraph workflow: identifying discrete steps as nodes and mapping their connections, using an email processing example.",
+          "nodes": []
+        },
+        {
+          "node_id": "2af2a430",
+          "path": "thinking-in-langgraph > Thinking in LangGraph > Step 2: Identify what each step needs to do",
+          "title": "Step 2: Identify what each step needs to do",
+          "keywords": [
+            "LLM steps",
+            "Data steps",
+            "Action steps",
+            "User input steps",
+            "Static context",
+            "Dynamic context",
+            "Retry strategy",
+            "Exponential backoff",
+            "Human review node",
+            "LangGraph"
+          ],
+          "summary": "Identifies four types of nodes in LangGraph: LLM steps for text generation, Data steps for retrieval, Action steps for external actions, and User input steps for human intervention.",
+          "nodes": [
+            {
+              "node_id": "87d68473",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Step 2: Identify what each step needs to do > LLM steps",
+              "title": "LLM steps",
+              "keywords": [
+                "LLM steps",
+                "Classify intent",
+                "Draft reply",
+                "Static context",
+                "Dynamic context",
+                "Prompt",
+                "Classification categories",
+                "Response format",
+                "Tone guidelines",
+                "Response templates"
+              ],
+              "summary": "Describes LLM steps for classifying intent and drafting replies in LangGraph, detailing static/dynamic contexts and desired outcomes.",
+              "nodes": []
+            },
+            {
+              "node_id": "c30c5a05",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Step 2: Identify what each step needs to do > Data steps",
+              "title": "Data steps",
+              "keywords": [
+                "Document search",
+                "Customer history lookup",
+                "Parameters",
+                "Retry strategy",
+                "Caching",
+                "Exponential backoff",
+                "Time-to-live",
+                "API calls",
+                "State",
+                "Query"
+              ],
+              "summary": "Describes data retrieval steps in LangGraph, including document search and customer history lookup, detailing parameters, retry strategies, and caching mechanisms.",
+              "nodes": []
+            },
+            {
+              "node_id": "dc9ca9c6",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Step 2: Identify what each step needs to do > Action steps",
+              "title": "Action steps",
+              "keywords": [
+                "LangGraph",
+                "Action steps",
+                "Send reply",
+                "Bug track",
+                "Retry strategy",
+                "Exponential backoff",
+                "Ticket ID",
+                "External action",
+                "Node execution",
+                "Network issues"
+              ],
+              "summary": "Describes action steps in LangGraph for external actions: sending replies after approval and bug tracking with retry strategies.",
+              "nodes": []
+            },
+            {
+              "node_id": "abcc3ed9",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Step 2: Identify what each step needs to do > User input steps",
+              "title": "User input steps",
+              "keywords": [
+                "Human review node",
+                "Context for decision",
+                "Expected input format",
+                "Approval boolean",
+                "Edited response",
+                "Urgency",
+                "Complex issues",
+                "Quality concerns",
+                "Human intervention",
+                "LangGraph"
+              ],
+              "summary": "Describes the human review node in LangGraph, including its context, input format, and triggering conditions.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "ac003b8d",
+          "path": "thinking-in-langgraph > Thinking in LangGraph > Step 3: Design your state",
+          "title": "Step 3: Design your state",
+          "keywords": [
+            "state",
+            "EmailAgentState",
+            "TypedDict",
+            "prompt templates",
+            "nodes",
+            "raw data",
+            "email agent",
+            "downstream nodes",
+            "execution metadata"
+          ],
+          "summary": "Guidelines for designing agent state: determining what data to include and advocating for storing raw data with on-demand prompt formatting.",
+          "nodes": [
+            {
+              "node_id": "2e55b014",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Step 3: Design your state > What belongs in state?",
+              "title": "What belongs in state?",
+              "keywords": [
+                "state",
+                "persist",
+                "derive",
+                "email agent",
+                "classification results",
+                "search results",
+                "draft response",
+                "execution metadata",
+                "data storage",
+                "downstream nodes"
+              ],
+              "summary": "Guidelines for determining what data to include in state: persist across steps, avoid storing derivable data, and examples for an email agent.",
+              "nodes": []
+            },
+            {
+              "node_id": "5718629a",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Step 3: Design your state > Keep state raw, format prompts on-demand",
+              "title": "Keep state raw, format prompts on-demand",
+              "keywords": [
+                "state",
+                "raw data",
+                "prompt templates",
+                "nodes",
+                "EmailAgentState",
+                "EmailClassification",
+                "TypedDict",
+                "formatting",
+                "debugging",
+                "agent evolution"
+              ],
+              "summary": "Advocates storing raw data in state and formatting prompts within nodes for flexibility, clarity, and maintainability in agent design.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "9f77ebe9",
+          "path": "thinking-in-langgraph > Thinking in LangGraph > Step 4: Build your nodes",
+          "title": "Step 4: Build your nodes",
+          "keywords": [
+            "LangGraph",
+            "RetryPolicy",
+            "interrupt",
+            "Command",
+            "ToolError",
+            "EmailAgentState",
+            "ChatOpenAI",
+            "structured_output",
+            "search_documentation",
+            "human_review"
+          ],
+          "summary": "Implements LangGraph nodes as Python functions for state updates, covering error handling strategies and email agent node implementation.",
+          "nodes": [
+            {
+              "node_id": "66c996cf",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Step 4: Build your nodes > Handle errors appropriately",
+              "title": "Handle errors appropriately",
+              "keywords": [
+                "RetryPolicy",
+                "interrupt()",
+                "Command",
+                "ToolError",
+                "transient errors",
+                "LLM-recoverable errors",
+                "user-fixable errors",
+                "unexpected errors",
+                "state",
+                "workflow.add_node"
+              ],
+              "summary": "A guide to error handling strategies in LangGraph, covering transient, LLM-recoverable, user-fixable, and unexpected errors with corresponding code examples.",
+              "nodes": []
+            },
+            {
+              "node_id": "d82be646",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Step 4: Build your nodes > Implementing our email agent nodes",
+              "title": "Implementing our email agent nodes",
+              "keywords": [
+                "LangGraph",
+                "EmailAgentState",
+                "Command",
+                "interrupt",
+                "ChatOpenAI",
+                "structured_output",
+                "search_documentation",
+                "bug_tracking",
+                "human_review",
+                "draft_response"
+              ],
+              "summary": "Implements email agent nodes in LangGraph for reading, classifying, searching, drafting, and sending email responses, including human review.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "706fc415",
+          "path": "thinking-in-langgraph > Thinking in LangGraph > Step 5: Wire it together",
+          "title": "Step 5: Wire it together",
+          "keywords": [
+            "StateGraph",
+            "MemorySaver",
+            "RetryPolicy",
+            "checkpointer",
+            "interrupt",
+            "Command",
+            "workflow.compile",
+            "human_review",
+            "edges",
+            "nodes"
+          ],
+          "summary": "Connects nodes into a LangGraph workflow with error handling and checkpointer for human-in-the-loop interrupts, enabling state persistence.",
+          "nodes": [
+            {
+              "node_id": "62843401",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Step 5: Wire it together > Try out your agent",
+              "title": "Try out your agent",
+              "keywords": [
+                "agent",
+                "human_review",
+                "interrupt",
+                "thread_id",
+                "checkpointer",
+                "resume",
+                "Command",
+                "initial_state",
+                "invoke",
+                "LangGraph"
+              ],
+              "summary": "Demonstrates testing an agent with an urgent billing issue, showing how the graph pauses for human review and resumes with input.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "a1032072",
+          "path": "thinking-in-langgraph > Thinking in LangGraph > Summary and next steps",
+          "title": "Summary and next steps",
+          "keywords": [
+            "LangGraph",
+            "nodes",
+            "state",
+            "error handling",
+            "human input",
+            "durable execution",
+            "observability",
+            "retry logic",
+            "subgraphs",
+            "agents"
+          ],
+          "summary": "Summarizes key insights and advanced considerations for building LangGraph agents, and introduces next steps for extending agents with advanced features.",
+          "nodes": [
+            {
+              "node_id": "f7469d8d",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Summary and next steps > Key Insights",
+              "title": "Key Insights",
+              "keywords": [
+                "LangGraph",
+                "nodes",
+                "state",
+                "interrupt()",
+                "routing logic",
+                "durable execution",
+                "error handling",
+                "human input",
+                "graph structure",
+                "discrete steps"
+              ],
+              "summary": "Key insights from building an email agent with LangGraph: break workflows into discrete steps, use shared state, treat nodes as functions, handle errors as part of flow, prioritize human input, and let graph structure emerge naturally.",
+              "nodes": []
+            },
+            {
+              "node_id": "a2d415e0",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Summary and next steps > Advanced considerations",
+              "title": "Advanced considerations",
+              "keywords": [
+                "LangGraph",
+                "node granularity",
+                "durable execution",
+                "checkpoints",
+                "resilience",
+                "observability",
+                "retry policies",
+                "external services",
+                "async durability mode",
+                "workflow"
+              ],
+              "summary": "Discusses trade-offs in node granularity design in LangGraph, focusing on resilience, observability, and performance considerations for workflow nodes.",
+              "nodes": []
+            },
+            {
+              "node_id": "50e0bec3",
+              "path": "thinking-in-langgraph > Thinking in LangGraph > Summary and next steps > Where to go from here",
+              "title": "Where to go from here",
+              "keywords": [
+                "LangGraph",
+                "Human-in-the-loop",
+                "Subgraphs",
+                "Streaming",
+                "Observability",
+                "LangSmith",
+                "Tool Integration",
+                "Retry Logic",
+                "Exponential Backoff",
+                "Agents"
+              ],
+              "summary": "Introduction to extending LangGraph agents with advanced features like human-in-the-loop patterns, subgraphs, streaming, observability, tool integration, and retry logic.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

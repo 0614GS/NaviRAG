@@ -1,0 +1,320 @@
+{
+  "doc_id": "cc71a61d",
+  "doc_name": "interrupts",
+  "summary": "LangGraph中的中断机制允许动态暂停图执行以等待外部输入，并通过线程ID实现状态持久化和恢复。",
+  "keywords": [
+    "interrupt",
+    "LangGraph",
+    "checkpointer",
+    "thread_id",
+    "StateGraph",
+    "Command",
+    "JSON-serializable",
+    "persistence",
+    "resume",
+    "subgraph"
+  ],
+  "structure": [
+    {
+      "node_id": "8d25d7da",
+      "path": "interrupts > Interrupts",
+      "title": "Interrupts",
+      "keywords": [
+        "interrupt",
+        "LangGraph",
+        "checkpointer",
+        "thread_id",
+        "StateGraph",
+        "Command",
+        "JSON-serializable",
+        "persistence",
+        "resume",
+        "subgraph"
+      ],
+      "summary": "Interrupts in LangGraph allow dynamic pausing of graph execution for external input, with state persistence and resumption via thread IDs.",
+      "nodes": [
+        {
+          "node_id": "ed4f1995",
+          "path": "interrupts > Interrupts > Pause using `interrupt`",
+          "title": "Pause using `interrupt`",
+          "keywords": [
+            "interrupt",
+            "LangGraph",
+            "checkpointer",
+            "thread ID",
+            "graph execution",
+            "JSON-serializable",
+            "state persistence",
+            "resume"
+          ],
+          "summary": "Explains how to use the `interrupt` function in LangGraph to pause graph execution, save state, and later resume with input.",
+          "nodes": []
+        },
+        {
+          "node_id": "0fdb01d1",
+          "path": "interrupts > Interrupts > Resuming interrupts",
+          "title": "Resuming interrupts",
+          "keywords": [
+            "Command",
+            "interrupt",
+            "resume",
+            "thread_id",
+            "graph.invoke",
+            "JSON-serializable",
+            "node",
+            "execution",
+            "langgraph.types"
+          ],
+          "summary": "Explains how to resume a paused graph execution by invoking it with a Command containing a resume value, which is passed back to the interrupt call.",
+          "nodes": []
+        },
+        {
+          "node_id": "d2febb6e",
+          "path": "interrupts > Interrupts > Common patterns",
+          "title": "Common patterns",
+          "keywords": [
+            "interrupt",
+            "StateGraph",
+            "Command",
+            "resume",
+            "checkpointer",
+            "approval_node",
+            "review_node",
+            "tool",
+            "MemorySaver",
+            "LangGraph"
+          ],
+          "summary": "Describes common interrupt patterns in LangGraph for pausing workflows to enable human-in-the-loop actions like approvals, reviews, and input validation.",
+          "nodes": [
+            {
+              "node_id": "6ad17f47",
+              "path": "interrupts > Interrupts > Common patterns > Approve or reject",
+              "title": "Approve or reject",
+              "keywords": [
+                "interrupt",
+                "approval_node",
+                "Command",
+                "resume",
+                "StateGraph",
+                "checkpointer",
+                "MemorySaver",
+                "TypedDict",
+                "goto",
+                "langgraph"
+              ],
+              "summary": "Demonstrates using interrupts to pause execution for human approval before critical actions, with code examples for approval/rejection logic and graph resumption.",
+              "nodes": []
+            },
+            {
+              "node_id": "17b9e1ac",
+              "path": "interrupts > Interrupts > Common patterns > Review and edit state",
+              "title": "Review and edit state",
+              "keywords": [
+                "interrupt",
+                "review_node",
+                "StateGraph",
+                "Command",
+                "MemorySaver",
+                "resume",
+                "checkpointer",
+                "LangGraph",
+                "graph state",
+                "human-in-the-loop"
+              ],
+              "summary": "Demonstrates how to pause a LangGraph workflow for human review and editing of state content, using the interrupt() function to capture edits and resume with updated values.",
+              "nodes": []
+            },
+            {
+              "node_id": "97e01819",
+              "path": "interrupts > Interrupts > Common patterns > Interrupts in tools",
+              "title": "Interrupts in tools",
+              "keywords": [
+                "interrupt",
+                "tool",
+                "send_email",
+                "approval",
+                "pause",
+                "resume",
+                "human review",
+                "LangGraph",
+                "Command",
+                "SqliteSaver"
+              ],
+              "summary": "Explains how to embed interrupts within tool functions to pause execution for human approval, editing, or cancellation before the tool executes, using a send_email example.",
+              "nodes": []
+            },
+            {
+              "node_id": "f5604eda",
+              "path": "interrupts > Interrupts > Common patterns > Validating human input",
+              "title": "Validating human input",
+              "keywords": [
+                "interrupt",
+                "StateGraph",
+                "SqliteSaver",
+                "Command",
+                "validate",
+                "loop",
+                "resume",
+                "checkpointer",
+                "node",
+                "graph.invoke"
+              ],
+              "summary": "Demonstrates using interrupt calls in a loop to validate human input, such as age, within a LangGraph application.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "64442f12",
+          "path": "interrupts > Interrupts > Rules of interrupts",
+          "title": "Rules of interrupts",
+          "keywords": [
+            "interrupt",
+            "LangGraph",
+            "node",
+            "exception",
+            "JSON-serializable",
+            "idempotent",
+            "resume",
+            "State",
+            "NetworkException",
+            "checkpointer"
+          ],
+          "summary": "Explains rules for using interrupts in LangGraph, including avoiding try/except blocks, maintaining call order, using serializable values, and ensuring idempotent side effects.",
+          "nodes": [
+            {
+              "node_id": "0d6df740",
+              "path": "interrupts > Interrupts > Rules of interrupts > Do not wrap `interrupt` calls in try/except",
+              "title": "Do not wrap `interrupt` calls in try/except",
+              "keywords": [
+                "interrupt",
+                "try/except",
+                "exception",
+                "graph execution",
+                "pause",
+                "error handling",
+                "NetworkException",
+                "State",
+                "langgraph",
+                "interrupt exception"
+              ],
+              "summary": "Explains that wrapping `interrupt` calls in bare try/except blocks prevents proper graph execution, as `interrupt` uses a special exception to pause. Recommends separating `interrupt` from error handling or using specific exception types.",
+              "nodes": []
+            },
+            {
+              "node_id": "a1606727",
+              "path": "interrupts > Interrupts > Rules of interrupts > Do not reorder `interrupt` calls within a node",
+              "title": "Do not reorder `interrupt` calls within a node",
+              "keywords": [
+                "interrupt",
+                "LangGraph",
+                "node",
+                "resume values",
+                "index-based matching",
+                "deterministic",
+                "execution",
+                "task",
+                "resume list",
+                "strict order"
+              ],
+              "summary": "Explains that interrupt calls within a LangGraph node must maintain a consistent, deterministic order across executions due to strict index-based matching of resume values.",
+              "nodes": []
+            },
+            {
+              "node_id": "76d66914",
+              "path": "interrupts > Interrupts > Rules of interrupts > Do not return complex values in `interrupt` calls",
+              "title": "Do not return complex values in `interrupt` calls",
+              "keywords": [
+                "interrupt",
+                "serializable",
+                "JSON-serializable",
+                "LangGraph",
+                "checkpointer",
+                "deployment",
+                "dictionaries",
+                "functions",
+                "class instances",
+                "State"
+              ],
+              "summary": "Guidelines for using interrupt calls in LangGraph: only pass JSON-serializable values like simple types or dictionaries, and avoid complex objects like functions or class instances to ensure compatibility across deployments.",
+              "nodes": []
+            },
+            {
+              "node_id": "9d622f6d",
+              "path": "interrupts > Interrupts > Rules of interrupts > Side effects called before `interrupt` must be idempotent",
+              "title": "Side effects called before `interrupt` must be idempotent",
+              "keywords": [
+                "interrupt",
+                "idempotent",
+                "side effects",
+                "LangGraph",
+                "node",
+                "API call",
+                "upsert",
+                "audit log",
+                "resume",
+                "duplicate records"
+              ],
+              "summary": "Side effects before `interrupt` must be idempotent to prevent duplicate operations when nodes are re-run, with best practices and code examples provided.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "f760f0cc",
+          "path": "interrupts > Interrupts > Using with subgraphs called as functions",
+          "title": "Using with subgraphs called as functions",
+          "keywords": [
+            "interrupt",
+            "subgraph",
+            "parent graph",
+            "node",
+            "resume",
+            "invoke",
+            "State",
+            "execution",
+            "LangGraph"
+          ],
+          "summary": "Explains how interrupts work when a subgraph is called as a function, detailing resume points in both parent and subgraph nodes.",
+          "nodes": []
+        },
+        {
+          "node_id": "ff47a529",
+          "path": "interrupts > Interrupts > Debugging with interrupts",
+          "title": "Debugging with interrupts",
+          "keywords": [
+            "static interrupts",
+            "interrupt_before",
+            "interrupt_after",
+            "graph.invoke",
+            "checkpointer",
+            "breakpoints",
+            "compile",
+            "thread_id",
+            "LangGraph Studio"
+          ],
+          "summary": "Explains how to use static interrupts as breakpoints for debugging graph execution, detailing compile-time and run-time configuration methods.",
+          "nodes": [
+            {
+              "node_id": "51017f43",
+              "path": "interrupts > Interrupts > Debugging with interrupts > Using LangGraph Studio",
+              "title": "Using LangGraph Studio",
+              "keywords": [
+                "LangGraph Studio",
+                "static interrupts",
+                "graph",
+                "UI",
+                "inspect",
+                "execution",
+                "state",
+                "debugging"
+              ],
+              "summary": "Using LangGraph Studio to set static interrupts and inspect graph state via UI.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

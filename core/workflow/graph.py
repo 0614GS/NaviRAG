@@ -1,4 +1,6 @@
-from langgraph.constants import START, END
+import time
+
+from langgraph.constants import START
 from langgraph.graph import StateGraph
 
 from core.workflow.nodes import *
@@ -32,6 +34,11 @@ if __name__ == "__main__":
     #         stream_mode="updates",
     # ):
     #     print(chunk)
-
-    res = search_workflow.invoke({"query": "什么是长期记忆？"})
-    print(res)
+    print("开始")
+    beg = time.time()
+    for chunk in search_workflow.stream(
+        {"query": "怎么使用长期记忆？"},
+        stream_mode="updates"
+    ):
+        print(chunk)
+        print(time.time() - beg)

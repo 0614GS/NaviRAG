@@ -1,0 +1,393 @@
+{
+  "doc_id": "8cce166c",
+  "doc_name": "long-term-memory",
+  "summary": "Extends deep agents with persistent memory across threads using CompositeBackend for hybrid storage, enabling file persistence in specific directories like /memories/.",
+  "keywords": [
+    "CompositeBackend",
+    "StoreBackend",
+    "StateBackend",
+    "InMemoryStore",
+    "PostgresStore",
+    "/memories/",
+    "long-term memory",
+    "BaseStore",
+    "thread_id",
+    "persistent storage"
+  ],
+  "structure": [
+    {
+      "node_id": "d431e8",
+      "path": "long-term-memory > Long-term memory",
+      "title": "Long-term memory",
+      "keywords": [
+        "CompositeBackend",
+        "StoreBackend",
+        "StateBackend",
+        "InMemoryStore",
+        "PostgresStore",
+        "/memories/",
+        "long-term memory",
+        "BaseStore",
+        "thread_id",
+        "persistent storage"
+      ],
+      "summary": "Extends deep agents with persistent memory across threads using CompositeBackend for hybrid storage, enabling file persistence in specific directories like /memories/.",
+      "nodes": [
+        {
+          "node_id": "bb7900",
+          "path": "long-term-memory > Long-term memory > Setup",
+          "title": "Setup",
+          "keywords": [
+            "CompositeBackend",
+            "StoreBackend",
+            "StateBackend",
+            "InMemoryStore",
+            "MemorySaver",
+            "create_deep_agent",
+            "/memories/",
+            "persistent storage",
+            "ephemeral storage",
+            "checkpointer"
+          ],
+          "summary": "Configures long-term memory using a CompositeBackend to route /memories/ to a StoreBackend for persistent storage.",
+          "nodes": []
+        },
+        {
+          "node_id": "e7e84e",
+          "path": "long-term-memory > Long-term memory > How it works",
+          "title": "How it works",
+          "keywords": [
+            "CompositeBackend",
+            "StateBackend",
+            "LangGraph Store",
+            "transient filesystem",
+            "persistent filesystem",
+            "/memories/",
+            "/notes.txt",
+            "path routing",
+            "StoreBackend",
+            "long-term memory"
+          ],
+          "summary": "CompositeBackend uses two filesystems: transient (in agent state) and persistent (via LangGraph Store), with path-based routing.",
+          "nodes": [
+            {
+              "node_id": "4c0ae2",
+              "path": "long-term-memory > Long-term memory > How it works > 1. Short-term (transient) filesystem",
+              "title": "1. Short-term (transient) filesystem",
+              "keywords": [
+                "StateBackend",
+                "transient filesystem",
+                "agent state",
+                "thread",
+                "/notes.txt",
+                "/workspace/draft.md",
+                "agent state",
+                "thread",
+                "filesystem"
+              ],
+              "summary": "Describes a transient filesystem stored in the agent's state, persisting only within a single thread and accessed via standard paths like /notes.txt.",
+              "nodes": []
+            },
+            {
+              "node_id": "3df5e1",
+              "path": "long-term-memory > Long-term memory > How it works > 2. Long-term (persistent) filesystem",
+              "title": "2. Long-term (persistent) filesystem",
+              "keywords": [
+                "LangGraph Store",
+                "StoreBackend",
+                "persistent filesystem",
+                "/memories/",
+                "long-term memory",
+                "agent restarts",
+                "threads",
+                "conversations",
+                "paths"
+              ],
+              "summary": "Describes the persistent filesystem for long-term memory, stored via LangGraph Store, accessible through /memories/ paths, and surviving across threads and restarts.",
+              "nodes": []
+            },
+            {
+              "node_id": "d09242",
+              "path": "long-term-memory > Long-term memory > How it works > Path routing",
+              "title": "Path routing",
+              "keywords": [
+                "CompositeBackend",
+                "path prefixes",
+                "/memories/",
+                "persistent storage",
+                "transient state",
+                "filesystem tools",
+                "ls",
+                "read_file",
+                "write_file",
+                "edit_file"
+              ],
+              "summary": "CompositeBackend routes file operations by path prefix: /memories/ for persistent storage, others for transient state.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "52b8a6",
+          "path": "long-term-memory > Long-term memory > Cross-thread persistence",
+          "title": "Cross-thread persistence",
+          "keywords": [
+            "/memories/",
+            "thread_id",
+            "agent.invoke",
+            "long-term memory",
+            "cross-thread",
+            "persistence",
+            "configurable",
+            "uuid",
+            "preferences.txt",
+            "conversation thread"
+          ],
+          "summary": "Demonstrates how files in the `/memories/` directory can be accessed and shared across different conversation threads using unique thread IDs.",
+          "nodes": []
+        },
+        {
+          "node_id": "e6f33d",
+          "path": "long-term-memory > Long-term memory > Use cases",
+          "title": "Use cases",
+          "keywords": [
+            "long-term memory",
+            "create_deep_agent",
+            "InMemoryStore",
+            "CompositeBackend",
+            "knowledge base",
+            "StateBackend",
+            "StoreBackend",
+            "system_prompt",
+            "agent.invoke",
+            "research projects"
+          ],
+          "summary": "Use cases for long-term memory include storing user preferences, enabling self-improving instructions, building knowledge bases, and managing research projects across sessions.",
+          "nodes": [
+            {
+              "node_id": "12010e",
+              "path": "long-term-memory > Long-term memory > Use cases > User preferences",
+              "title": "User preferences",
+              "keywords": [
+                "create_deep_agent",
+                "InMemoryStore",
+                "CompositeBackend",
+                "StateBackend",
+                "StoreBackend",
+                "system_prompt",
+                "user_preferences.txt",
+                "persistent storage"
+              ],
+              "summary": "Stores user preferences across sessions using a memory backend for persistent data retention.",
+              "nodes": []
+            },
+            {
+              "node_id": "84b48e",
+              "path": "long-term-memory > Long-term memory > Use cases > Self-improving instructions",
+              "title": "Self-improving instructions",
+              "keywords": [
+                "agent",
+                "instructions",
+                "feedback",
+                "store",
+                "backend",
+                "system_prompt",
+                "edit_file",
+                "preferences",
+                "InMemoryStore",
+                "CompositeBackend"
+              ],
+              "summary": "An agent can self-improve by updating its instructions file based on user feedback, accumulating preferences over time.",
+              "nodes": []
+            },
+            {
+              "node_id": "75be67",
+              "path": "long-term-memory > Long-term memory > Use cases > Knowledge base",
+              "title": "Knowledge base",
+              "keywords": [
+                "long-term memory",
+                "knowledge base",
+                "agent.invoke",
+                "conversation",
+                "React",
+                "web app",
+                "project notes",
+                "memories",
+                "framework",
+                "query"
+              ],
+              "summary": "Demonstrates how to build and query a knowledge base across multiple conversations using long-term memory.",
+              "nodes": []
+            },
+            {
+              "node_id": "4acb02",
+              "path": "long-term-memory > Long-term memory > Use cases > Research projects",
+              "title": "Research projects",
+              "keywords": [
+                "long-term memory",
+                "research projects",
+                "create_deep_agent",
+                "InMemoryStore",
+                "CompositeBackend",
+                "StateBackend",
+                "StoreBackend",
+                "system_prompt",
+                "research assistant",
+                "memories/research"
+              ],
+              "summary": "Describes using long-term memory to maintain research state across sessions, with code example for saving progress to specific memory paths.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "010fec",
+          "path": "long-term-memory > Long-term memory > Store implementations",
+          "title": "Store implementations",
+          "keywords": [
+            "BaseStore",
+            "InMemoryStore",
+            "PostgresStore",
+            "StateBackend",
+            "StoreBackend",
+            "DATABASE_URL",
+            "CompositeBackend",
+            "create_deep_agent",
+            "langgraph",
+            "persistent store"
+          ],
+          "summary": "Overview of LangGraph BaseStore implementations, including InMemoryStore for development/testing and PostgresStore for production use.",
+          "nodes": [
+            {
+              "node_id": "2115ff",
+              "path": "long-term-memory > Long-term memory > Store implementations > InMemoryStore (development)",
+              "title": "InMemoryStore (development)",
+              "keywords": [
+                "InMemoryStore",
+                "langgraph",
+                "store",
+                "testing",
+                "development",
+                "data loss",
+                "memory",
+                "backend",
+                "StateBackend",
+                "StoreBackend"
+              ],
+              "summary": "InMemoryStore is a development-only storage solution for testing, where data is not persisted across restarts.",
+              "nodes": []
+            },
+            {
+              "node_id": "f07fbb",
+              "path": "long-term-memory > Long-term memory > Store implementations > PostgresStore (production)",
+              "title": "PostgresStore (production)",
+              "keywords": [
+                "PostgresStore",
+                "production",
+                "persistent store",
+                "DATABASE_URL",
+                "setup",
+                "create_deep_agent",
+                "CompositeBackend",
+                "StateBackend",
+                "StoreBackend",
+                "langgraph"
+              ],
+              "summary": "Instructions for using PostgresStore in production, including setup and integration with an agent.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "815ab5",
+          "path": "long-term-memory > Long-term memory > Best practices",
+          "title": "Best practices",
+          "keywords": [
+            "persistent files",
+            "descriptive paths",
+            "persistent memory",
+            "system prompt",
+            "storage management",
+            "InMemoryStore",
+            "PostgresStore",
+            "multi-tenant",
+            "cleanup",
+            "memory structure"
+          ],
+          "summary": "Best practices for organizing, documenting, pruning, and selecting storage for long-term memory systems.",
+          "nodes": [
+            {
+              "node_id": "3d2d3b",
+              "path": "long-term-memory > Long-term memory > Best practices > Use descriptive paths",
+              "title": "Use descriptive paths",
+              "keywords": [
+                "persistent files",
+                "descriptive paths",
+                "memories",
+                "user_preferences.txt",
+                "research",
+                "project",
+                "requirements.md",
+                "notes.txt",
+                "sources.txt"
+              ],
+              "summary": "Organize persistent files with clear, descriptive paths for better long-term memory management.",
+              "nodes": []
+            },
+            {
+              "node_id": "f6d6db",
+              "path": "long-term-memory > Long-term memory > Best practices > Document the memory structure",
+              "title": "Document the memory structure",
+              "keywords": [
+                "persistent memory",
+                "system prompt",
+                "/memories/preferences.txt",
+                "/memories/context/",
+                "/memories/knowledge/",
+                "user preferences",
+                "long-term context",
+                "facts",
+                "information",
+                "memory structure"
+              ],
+              "summary": "Describes the persistent memory structure in the system prompt, including file paths for user preferences, long-term context, and learned knowledge.",
+              "nodes": []
+            },
+            {
+              "node_id": "5223cd",
+              "path": "long-term-memory > Long-term memory > Best practices > Prune old data",
+              "title": "Prune old data",
+              "keywords": [
+                "persistent files",
+                "cleanup",
+                "storage management",
+                "periodic maintenance",
+                "outdated data"
+              ],
+              "summary": "Periodically clean up outdated persistent files to manage storage effectively.",
+              "nodes": []
+            },
+            {
+              "node_id": "b404ea",
+              "path": "long-term-memory > Long-term memory > Best practices > Choose the right storage",
+              "title": "Choose the right storage",
+              "keywords": [
+                "InMemoryStore",
+                "PostgresStore",
+                "persistent stores",
+                "multi-tenant",
+                "assistant_id-based namespacing",
+                "storage",
+                "development",
+                "production",
+                "iteration"
+              ],
+              "summary": "Guidelines for selecting appropriate storage solutions based on development, production, and multi-tenant scenarios.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

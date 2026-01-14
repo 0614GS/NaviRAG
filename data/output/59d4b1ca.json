@@ -1,0 +1,398 @@
+{
+  "doc_id": "59d4b1ca",
+  "doc_name": "functional-api",
+  "summary": "Introduces LangGraph's Functional API for adding persistence, memory, human-in-the-loop, and streaming to applications with minimal code changes, using @entrypoint and @task decorators.",
+  "keywords": [
+    "Functional API",
+    "@entrypoint",
+    "@task",
+    "LangGraph",
+    "checkpointing",
+    "workflow",
+    "persistence",
+    "human-in-the-loop",
+    "streaming",
+    "determinism"
+  ],
+  "structure": [
+    {
+      "node_id": "c02a8fc6",
+      "path": "functional-api > Functional API overview",
+      "title": "Functional API overview",
+      "keywords": [
+        "Functional API",
+        "@entrypoint",
+        "@task",
+        "LangGraph",
+        "checkpointing",
+        "workflow",
+        "persistence",
+        "human-in-the-loop",
+        "streaming",
+        "determinism"
+      ],
+      "summary": "Introduces LangGraph's Functional API for adding persistence, memory, human-in-the-loop, and streaming to applications with minimal code changes, using @entrypoint and @task decorators.",
+      "nodes": [
+        {
+          "node_id": "4c064129",
+          "path": "functional-api > Functional API overview > Functional API vs. Graph API",
+          "title": "Functional API vs. Graph API",
+          "keywords": [
+            "LangGraph",
+            "Functional API",
+            "Graph API",
+            "State",
+            "Reducers",
+            "Checkpointing",
+            "Superstep",
+            "Entrypoint",
+            "Tasks",
+            "Visualization"
+          ],
+          "summary": "Compares LangGraph's Functional API and Graph API, highlighting differences in control flow, state management, checkpointing, and visualization.",
+          "nodes": []
+        },
+        {
+          "node_id": "036db76a",
+          "path": "functional-api > Functional API overview > Example",
+          "title": "Example",
+          "keywords": [
+            "LangGraph",
+            "workflow",
+            "interrupt",
+            "checkpoint",
+            "InMemorySaver",
+            "entrypoint",
+            "task",
+            "stream",
+            "resume",
+            "Command"
+          ],
+          "summary": "A LangGraph workflow example that writes an essay, interrupts for human review, and resumes using checkpoints.",
+          "nodes": []
+        },
+        {
+          "node_id": "068025e1",
+          "path": "functional-api > Functional API overview > Entrypoint",
+          "title": "Entrypoint",
+          "keywords": [
+            "@entrypoint",
+            "Pregel",
+            "checkpointer",
+            "workflow",
+            "JSON-serializable",
+            "Injectable parameters",
+            "invoke",
+            "stream",
+            "resume",
+            "thread_id"
+          ],
+          "summary": "Overview of the @entrypoint decorator in LangGraph's Functional API for creating and managing workflows, including execution, resumption, and state persistence.",
+          "nodes": [
+            {
+              "node_id": "88e0c8d7",
+              "path": "functional-api > Functional API overview > Entrypoint > Definition",
+              "title": "Definition",
+              "keywords": [
+                "@entrypoint",
+                "Pregel",
+                "checkpointer",
+                "workflow",
+                "JSON-serializable",
+                "human-in-the-loop",
+                "streaming",
+                "resumption",
+                "checkpointing",
+                "entrypoint decorator"
+              ],
+              "summary": "Defines an entrypoint in LangGraph's Functional API using the @entrypoint decorator, which creates a Pregel instance for workflow management, requiring a single JSON-serializable input and supporting checkpoints for persistence.",
+              "nodes": []
+            },
+            {
+              "node_id": "ec324073",
+              "path": "functional-api > Functional API overview > Entrypoint > Injectable parameters",
+              "title": "Injectable parameters",
+              "keywords": [
+                "entrypoint",
+                "previous",
+                "store",
+                "writer",
+                "config",
+                "BaseStore",
+                "RunnableConfig",
+                "StreamWriter",
+                "checkpoint",
+                "Injectable parameters"
+              ],
+              "summary": "Describes injectable parameters (previous, store, writer, config) for entrypoints in LangGraph's Functional API, including their purposes and usage examples.",
+              "nodes": []
+            },
+            {
+              "node_id": "2c26e12b",
+              "path": "functional-api > Functional API overview > Entrypoint > Executing",
+              "title": "Executing",
+              "keywords": [
+                "@entrypoint",
+                "Pregel",
+                "invoke",
+                "ainvoke",
+                "stream",
+                "astream",
+                "configurable",
+                "thread_id",
+                "workflow",
+                "LangGraph"
+              ],
+              "summary": "Explains how to execute a LangGraph workflow using the @entrypoint decorator, covering synchronous and asynchronous methods (invoke, ainvoke, stream, astream) with configurable thread IDs.",
+              "nodes": []
+            },
+            {
+              "node_id": "0d4be022",
+              "path": "functional-api > Functional API overview > Entrypoint > Resuming",
+              "title": "Resuming",
+              "keywords": [
+                "Command",
+                "resume",
+                "interrupt",
+                "thread_id",
+                "configurable",
+                "invoke",
+                "stream",
+                "ainvoke",
+                "astream",
+                "entrypoint"
+              ],
+              "summary": "Explains how to resume a LangGraph workflow execution after an interrupt or an error using the Command primitive and specific thread configurations.",
+              "nodes": []
+            },
+            {
+              "node_id": "45ec3f4f",
+              "path": "functional-api > Functional API overview > Entrypoint > Short-term memory",
+              "title": "Short-term memory",
+              "keywords": [
+                "entrypoint",
+                "checkpointer",
+                "thread id",
+                "previous parameter",
+                "state persistence",
+                "checkpoints",
+                "invocation",
+                "Functional API",
+                "langgraph",
+                "entrypoint.final"
+              ],
+              "summary": "Explains how entrypoints with checkpoints store state between invocations using thread IDs, enabling access to previous state via the 'previous' parameter.",
+              "nodes": [
+                {
+                  "node_id": "17afb5ae",
+                  "path": "functional-api > Functional API overview > Entrypoint > Short-term memory > `entrypoint.final`",
+                  "title": "`entrypoint.final`",
+                  "keywords": [
+                    "entrypoint.final",
+                    "checkpoint",
+                    "decoupling",
+                    "return value",
+                    "save value",
+                    "type annotation",
+                    "entrypoint",
+                    "state persistence",
+                    "Functional API",
+                    "langgraph"
+                  ],
+                  "summary": "The `entrypoint.final` primitive decouples the entrypoint's return value from the value saved in the checkpoint, enabling separate control over output and state persistence.",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "16c6717d",
+          "path": "functional-api > Functional API overview > Task",
+          "title": "Task",
+          "keywords": [
+            "task",
+            "@task",
+            "asynchronous",
+            "checkpointing",
+            "JSON-serializable",
+            "entrypoint",
+            "future",
+            "decorator",
+            "persistence"
+          ],
+          "summary": "A task is a unit of work (e.g., API call) that runs asynchronously and supports checkpointing for workflow resumption. It is defined with a decorator and invoked within entrypoints.",
+          "nodes": [
+            {
+              "node_id": "e13452e2",
+              "path": "functional-api > Functional API overview > Task > Definition",
+              "title": "Definition",
+              "keywords": [
+                "@task",
+                "decorator",
+                "JSON-serializable",
+                "checkpointing",
+                "slow_computation",
+                "task",
+                "outputs",
+                "serialization"
+              ],
+              "summary": "Defines tasks using the @task decorator in LangGraph, requiring JSON-serializable outputs for checkpointing.",
+              "nodes": []
+            },
+            {
+              "node_id": "9459eca1",
+              "path": "functional-api > Functional API overview > Task > Execution",
+              "title": "Execution",
+              "keywords": [
+                "task",
+                "entrypoint",
+                "future",
+                "result()",
+                "await",
+                "synchronous",
+                "asynchronous",
+                "state graph node",
+                "invocation"
+              ],
+              "summary": "Explains how tasks are invoked within entrypoints or other tasks, returning futures for asynchronous or synchronous result retrieval.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "863ce2cb",
+          "path": "functional-api > Functional API overview > When to use a task",
+          "title": "When to use a task",
+          "keywords": [
+            "tasks",
+            "checkpointing",
+            "human-in-the-loop",
+            "parallel execution",
+            "observability",
+            "retryable work",
+            "determinism",
+            "LangSmith",
+            "I/O-bound tasks",
+            "workflow"
+          ],
+          "summary": "Tasks are used for checkpointing, human-in-the-loop workflows, parallel execution, observability, and retryable work in functional APIs.",
+          "nodes": []
+        },
+        {
+          "node_id": "7a065db5",
+          "path": "functional-api > Functional API overview > Serialization",
+          "title": "Serialization",
+          "keywords": [
+            "LangGraph",
+            "serialization",
+            "JSON-serializable",
+            "entrypoint",
+            "task",
+            "checkpointing",
+            "workflow resumption",
+            "fault tolerance",
+            "runtime error",
+            "python primitives"
+          ],
+          "summary": "LangGraph serialization requires JSON-serializable inputs and outputs for entrypoints and tasks to support checkpointing, workflow resumption, and fault tolerance.",
+          "nodes": []
+        },
+        {
+          "node_id": "4f63d7aa",
+          "path": "functional-api > Functional API overview > Determinism",
+          "title": "Determinism",
+          "keywords": [
+            "LangGraph",
+            "determinism",
+            "tasks",
+            "subgraph",
+            "human-in-the-loop",
+            "workflow",
+            "non-deterministic",
+            "execution",
+            "persistence",
+            "resume"
+          ],
+          "summary": "LangGraph ensures deterministic execution by encapsulating randomness within tasks and persisting results, enabling resumption without recomputation.",
+          "nodes": []
+        },
+        {
+          "node_id": "e4ff2438",
+          "path": "functional-api > Functional API overview > Idempotency",
+          "title": "Idempotency",
+          "keywords": [
+            "Idempotency",
+            "API calls",
+            "tasks",
+            "checkpointing",
+            "re-execution",
+            "idempotency keys",
+            "workflow",
+            "duplicate",
+            "failure",
+            "results"
+          ],
+          "summary": "Idempotency ensures repeated operations yield the same result, preventing duplicate API calls and redundant processing in case of task re-execution.",
+          "nodes": []
+        },
+        {
+          "node_id": "0adf48f8",
+          "path": "functional-api > Functional API overview > Common Pitfalls",
+          "title": "Common Pitfalls",
+          "keywords": [
+            "side effects",
+            "tasks",
+            "workflow",
+            "non-deterministic",
+            "LangGraph",
+            "interrupt",
+            "resume",
+            "determinism",
+            "checkpointer",
+            "entrypoint"
+          ],
+          "summary": "Explains handling side effects and non-deterministic control flow in LangGraph workflows to ensure deterministic resumption after interrupts.",
+          "nodes": [
+            {
+              "node_id": "016db293",
+              "path": "functional-api > Functional API overview > Common Pitfalls > Handling side effects",
+              "title": "Handling side effects",
+              "keywords": [
+                "side effects",
+                "tasks",
+                "workflow",
+                "resuming",
+                "encapsulation",
+                "checkpointer",
+                "entrypoint",
+                "interrupt"
+              ],
+              "summary": "Explains how to encapsulate side effects in tasks to prevent multiple executions when resuming a workflow, with code examples.",
+              "nodes": []
+            },
+            {
+              "node_id": "3727d21d",
+              "path": "functional-api > Functional API overview > Common Pitfalls > Non-deterministic control flow",
+              "title": "Non-deterministic control flow",
+              "keywords": [
+                "LangGraph",
+                "non-deterministic",
+                "interrupt",
+                "resume",
+                "task",
+                "determinism",
+                "human-in-the-loop",
+                "entrypoint",
+                "checkpointer",
+                "control flow"
+              ],
+              "summary": "Explains the importance of encapsulating non-deterministic operations (e.g., random numbers, time) within tasks in LangGraph to ensure deterministic resumption after interrupts, using code examples to illustrate correct and incorrect patterns.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

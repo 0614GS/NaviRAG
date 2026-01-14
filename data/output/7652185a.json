@@ -1,0 +1,754 @@
+{
+  "doc_id": "7652185a",
+  "doc_name": "graph-api",
+  "summary": "Overview of LangGraph's Graph API, covering core concepts like State, Nodes, Edges, and execution models for building agent workflows.",
+  "keywords": [
+    "StateGraph",
+    "Nodes",
+    "Edges",
+    "message passing",
+    "reducer",
+    "TypedDict",
+    "Pydantic",
+    "Send",
+    "Command",
+    "graph migrations"
+  ],
+  "structure": [
+    {
+      "node_id": "0d818bee",
+      "path": "graph-api > Graph API overview",
+      "title": "Graph API overview",
+      "keywords": [
+        "StateGraph",
+        "Nodes",
+        "Edges",
+        "message passing",
+        "reducer",
+        "TypedDict",
+        "Pydantic",
+        "Send",
+        "Command",
+        "graph migrations"
+      ],
+      "summary": "Overview of LangGraph's Graph API, covering core concepts like State, Nodes, Edges, and execution models for building agent workflows.",
+      "nodes": [
+        {
+          "node_id": "b5a757f6",
+          "path": "graph-api > Graph API overview > Graphs",
+          "title": "Graphs",
+          "keywords": [
+            "State",
+            "Nodes",
+            "Edges",
+            "StateGraph",
+            "message passing",
+            "super-step",
+            "graph",
+            "workflow",
+            "Pregel",
+            "compile"
+          ],
+          "summary": "Introduces LangGraph's core concepts: State, Nodes, and Edges for building agent workflows as graphs, and explains the message-passing execution model with super-steps.",
+          "nodes": [
+            {
+              "node_id": "e799cc82",
+              "path": "graph-api > Graph API overview > Graphs > StateGraph",
+              "title": "StateGraph",
+              "keywords": [
+                "StateGraph",
+                "State",
+                "graph",
+                "parameterized",
+                "class"
+              ],
+              "summary": "The StateGraph class is the primary graph class, parameterized by a user-defined State object.",
+              "nodes": []
+            },
+            {
+              "node_id": "8a56448f",
+              "path": "graph-api > Graph API overview > Graphs > Compiling your graph",
+              "title": "Compiling your graph",
+              "keywords": [
+                "compile",
+                "graph",
+                "state",
+                "nodes",
+                "edges",
+                "checkpointers",
+                "breakpoints",
+                "runtime args",
+                "orphaned nodes",
+                ".compile method"
+              ],
+              "summary": "Explains the process of compiling a graph in LangGraph, including basic structural checks and runtime configuration.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "d5fb4fcf",
+          "path": "graph-api > Graph API overview > State",
+          "title": "State",
+          "keywords": [
+            "State",
+            "TypedDict",
+            "Pydantic",
+            "reducer",
+            "schema",
+            "Nodes",
+            "Edges",
+            "Graph API",
+            "MessagesState",
+            "Overwrite"
+          ],
+          "summary": "Defines the State in Graph API, including schema (TypedDict/Pydantic) and reducer functions for state updates, with sub-sections on schema definition, reducers, and message handling.",
+          "nodes": [
+            {
+              "node_id": "360c35dd",
+              "path": "graph-api > Graph API overview > State > Schema",
+              "title": "Schema",
+              "keywords": [
+                "TypedDict",
+                "dataclass",
+                "Pydantic BaseModel",
+                "input_schema",
+                "output_schema",
+                "graph state",
+                "StateGraph",
+                "state channels",
+                "OverallState",
+                "PrivateState"
+              ],
+              "summary": "Describes methods to define graph state schemas using TypedDict, dataclass, or Pydantic BaseModel, and how to set explicit input/output schemas for control.",
+              "nodes": [
+                {
+                  "node_id": "78d81deb",
+                  "path": "graph-api > Graph API overview > State > Schema > Multiple schemas",
+                  "title": "Multiple schemas",
+                  "keywords": [
+                    "StateGraph",
+                    "input_schema",
+                    "output_schema",
+                    "TypedDict",
+                    "state channels",
+                    "OverallState",
+                    "PrivateState",
+                    "graph state",
+                    "internal schema",
+                    "node communication"
+                  ],
+                  "summary": "Explains how to use multiple schemas in LangGraph for internal communication and explicit input/output control, with examples of private and filtered schemas.",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "913adccb",
+              "path": "graph-api > Graph API overview > State > Reducers",
+              "title": "Reducers",
+              "keywords": [
+                "Reducer",
+                "State",
+                "Default Reducer",
+                "Overwrite",
+                "Graph API",
+                "TypedDict",
+                "Annotated",
+                "Node",
+                "update",
+                "LangGraph"
+              ],
+              "summary": "Explains reducer functions in Graph API state management, including default behavior and the Overwrite type for direct state updates.",
+              "nodes": [
+                {
+                  "node_id": "73c56f8c",
+                  "path": "graph-api > Graph API overview > State > Reducers > Default Reducer",
+                  "title": "Default Reducer",
+                  "keywords": [
+                    "Default Reducer",
+                    "State",
+                    "TypedDict",
+                    "Annotated",
+                    "operator.add",
+                    "Node",
+                    "update",
+                    "reducer function",
+                    "Graph API"
+                  ],
+                  "summary": "Explains the default reducer behavior in Graph API state management, showing how state updates are applied with and without custom reducer functions.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "2330baa2",
+                  "path": "graph-api > Graph API overview > State > Reducers > Overwrite",
+                  "title": "Overwrite",
+                  "keywords": [
+                    "Overwrite",
+                    "LangGraph",
+                    "reducer",
+                    "state",
+                    "bypass",
+                    "Graph API",
+                    "state value",
+                    "direct overwrite"
+                  ],
+                  "summary": "Introduces the Overwrite type in LangGraph for bypassing reducers to directly set state values.",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "14dfbab8",
+              "path": "graph-api > Graph API overview > State > Working with Messages in Graph State",
+              "title": "Working with Messages in Graph State",
+              "keywords": [
+                "LLM",
+                "HumanMessage",
+                "AIMessage",
+                "graph state",
+                "reducer function",
+                "add_messages",
+                "MessagesState",
+                "LangChain",
+                "serialization",
+                "LangGraph"
+              ],
+              "summary": "Explains using messages as LLM inputs, managing message lists in graph state with reducers, serialization, and the MessagesState prebuilt class.",
+              "nodes": [
+                {
+                  "node_id": "5c5817c8",
+                  "path": "graph-api > Graph API overview > State > Working with Messages in Graph State > Why use messages?",
+                  "title": "Why use messages?",
+                  "keywords": [
+                    "LLM",
+                    "chat model",
+                    "messages",
+                    "HumanMessage",
+                    "AIMessage",
+                    "LangChain",
+                    "input",
+                    "interface",
+                    "API"
+                  ],
+                  "summary": "Explains the use of messages as input for LLM chat models, referencing LangChain's interface and message types like HumanMessage and AIMessage.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "7aca2fb6",
+                  "path": "graph-api > Graph API overview > State > Working with Messages in Graph State > Using Messages in your Graph",
+                  "title": "Using Messages in your Graph",
+                  "keywords": [
+                    "Message",
+                    "graph state",
+                    "reducer function",
+                    "operator.add",
+                    "add_messages",
+                    "state update",
+                    "message IDs",
+                    "conversation history",
+                    "manual update",
+                    "human-in-the-loop"
+                  ],
+                  "summary": "Explains how to manage message lists in graph state using reducer functions, including appending with operator.add and updating existing messages with add_messages.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "77ef1a8a",
+                  "path": "graph-api > Graph API overview > State > Working with Messages in Graph State > Serialization",
+                  "title": "Serialization",
+                  "keywords": [
+                    "add_messages",
+                    "deserialization",
+                    "LangChain Message",
+                    "state updates",
+                    "reducer function",
+                    "GraphState",
+                    "HumanMessage",
+                    "serialization",
+                    "message channel",
+                    "dot notation"
+                  ],
+                  "summary": "Explains how the add_messages function deserializes message data into LangChain Message objects, supporting both object and dictionary formats for state updates.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "a28d92ae",
+                  "path": "graph-api > Graph API overview > State > Working with Messages in Graph State > MessagesState",
+                  "title": "MessagesState",
+                  "keywords": [
+                    "MessagesState",
+                    "AnyMessage",
+                    "add_messages",
+                    "reducer",
+                    "subclass",
+                    "state",
+                    "messages",
+                    "LangGraph"
+                  ],
+                  "summary": "MessagesState is a prebuilt state for managing message lists in LangGraph, commonly subclassed to add additional fields.",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "a867b852",
+          "path": "graph-api > Graph API overview > Nodes",
+          "title": "Nodes",
+          "keywords": [
+            "node",
+            "state",
+            "config",
+            "runtime",
+            "add_node",
+            "RunnableLambda",
+            "START",
+            "END",
+            "CachePolicy",
+            "StateGraph"
+          ],
+          "summary": "Defines nodes as Python functions in LangGraph, detailing their arguments (state, config, runtime) and how to add them to a graph. Covers special START and END nodes, and node caching.",
+          "nodes": [
+            {
+              "node_id": "5c9b4859",
+              "path": "graph-api > Graph API overview > Nodes > `START` Node",
+              "title": "`START` Node",
+              "keywords": [
+                "START",
+                "node",
+                "graph",
+                "add_edge",
+                "user input",
+                "initial node",
+                "LangGraph",
+                "constants",
+                "reference",
+                "execution"
+              ],
+              "summary": "The START Node is a special node in LangGraph that sends user input to the graph and determines initial node execution.",
+              "nodes": []
+            },
+            {
+              "node_id": "556b155e",
+              "path": "graph-api > Graph API overview > Nodes > `END` Node",
+              "title": "`END` Node",
+              "keywords": [
+                "END Node",
+                "terminal node",
+                "edges",
+                "LangGraph",
+                "graph.add_edge",
+                "node_a",
+                "special node",
+                "no actions"
+              ],
+              "summary": "The END Node is a special terminal node in LangGraph used to denote edges with no subsequent actions.",
+              "nodes": []
+            },
+            {
+              "node_id": "c105cccf",
+              "path": "graph-api > Graph API overview > Nodes > Node Caching",
+              "title": "Node Caching",
+              "keywords": [
+                "LangGraph",
+                "Node Caching",
+                "CachePolicy",
+                "key_func",
+                "ttl",
+                "InMemoryCache",
+                "StateGraph",
+                "cache key",
+                "hash",
+                "pickle"
+              ],
+              "summary": "Explains how to enable and configure node caching in LangGraph, including cache policies, key functions, and TTL settings.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "1011bff0",
+          "path": "graph-api > Graph API overview > Edges",
+          "title": "Edges",
+          "keywords": [
+            "Edges",
+            "Normal Edges",
+            "Conditional Edges",
+            "Entry Point",
+            "Conditional Entry Point",
+            "add_edge",
+            "add_conditional_edges",
+            "StateGraph",
+            "routing_function",
+            "superstep"
+          ],
+          "summary": "Overview of edge types in LangGraph for routing logic and parallel execution, including normal, conditional, entry, and conditional entry points.",
+          "nodes": [
+            {
+              "node_id": "36abdb76",
+              "path": "graph-api > Graph API overview > Edges > Normal Edges",
+              "title": "Normal Edges",
+              "keywords": [
+                "add_edge",
+                "StateGraph",
+                "node",
+                "edge",
+                "graph",
+                "direct edge",
+                "unconditional",
+                "LangGraph",
+                "API method",
+                "node connection"
+              ],
+              "summary": "Describes how to create a direct, unconditional edge from one node to another using the add_edge method in LangGraph.",
+              "nodes": []
+            },
+            {
+              "node_id": "96ac9869",
+              "path": "graph-api > Graph API overview > Edges > Conditional Edges",
+              "title": "Conditional Edges",
+              "keywords": [
+                "add_conditional_edges",
+                "routing_function",
+                "state",
+                "superstep",
+                "conditional edges",
+                "StateGraph",
+                "node",
+                "parallel execution",
+                "dictionary mapping"
+              ],
+              "summary": "Describes how to use conditional edges in LangGraph to optionally route to different nodes based on a routing function's return value.",
+              "nodes": []
+            },
+            {
+              "node_id": "c20d80db",
+              "path": "graph-api > Graph API overview > Edges > Entry point",
+              "title": "Entry point",
+              "keywords": [
+                "entry point",
+                "START",
+                "add_edge",
+                "graph",
+                "node",
+                "StateGraph",
+                "langgraph",
+                "edge"
+              ],
+              "summary": "Defines the entry point in a graph as the initial node(s) executed from the virtual START node using the add_edge method.",
+              "nodes": []
+            },
+            {
+              "node_id": "1b0415c3",
+              "path": "graph-api > Graph API overview > Edges > Conditional entry point",
+              "title": "Conditional entry point",
+              "keywords": [
+                "add_conditional_edges",
+                "START",
+                "routing_function",
+                "conditional entry point",
+                "LangGraph",
+                "StateGraph",
+                "node",
+                "dictionary mapping"
+              ],
+              "summary": "Describes how to use conditional entry points in LangGraph to route from the START node based on custom logic using add_conditional_edges.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "8fc72b5b",
+          "path": "graph-api > Graph API overview > `Send`",
+          "title": "`Send`",
+          "keywords": [
+            "Send",
+            "Nodes",
+            "Edges",
+            "State",
+            "map-reduce",
+            "conditional edges",
+            "LangGraph",
+            "dynamic edges",
+            "state management",
+            "downstream Node"
+          ],
+          "summary": "Introduces the Send API in LangGraph for dynamic edge creation and state management, particularly useful in map-reduce patterns where nodes generate variable outputs.",
+          "nodes": []
+        },
+        {
+          "node_id": "c8d60403",
+          "path": "graph-api > Graph API overview > `Command`",
+          "title": "`Command`",
+          "keywords": [
+            "Command",
+            "LangGraph",
+            "state update",
+            "control flow",
+            "conditional edges",
+            "subgraphs",
+            "goto",
+            "reducer",
+            "human-in-the-loop",
+            "graph API"
+          ],
+          "summary": "LangGraph's Command object enables combining state updates and control flow routing within a single node, supporting dynamic behavior and parent graph navigation.",
+          "nodes": [
+            {
+              "node_id": "510272d5",
+              "path": "graph-api > Graph API overview > `Command` > When should I use Command instead of conditional edges?",
+              "title": "When should I use Command instead of conditional edges?",
+              "keywords": [
+                "Command",
+                "conditional edges",
+                "graph state",
+                "routing",
+                "multi-agent handoffs",
+                "LangGraph",
+                "state update",
+                "node routing",
+                "API",
+                "graph API"
+              ],
+              "summary": "Use Command for state updates and routing; use conditional edges for routing only without state changes.",
+              "nodes": []
+            },
+            {
+              "node_id": "320fb1ad",
+              "path": "graph-api > Graph API overview > `Command` > Navigating to a node in a parent graph",
+              "title": "Navigating to a node in a parent graph",
+              "keywords": [
+                "Command",
+                "subgraphs",
+                "parent graph",
+                "goto",
+                "reducer",
+                "state schemas",
+                "multi-agent handoffs",
+                "LangGraph",
+                "Python",
+                "API"
+              ],
+              "summary": "Explains how to navigate from a subgraph node to a parent graph node using `Command.PARENT` in LangGraph, including key considerations for state updates and reducers.",
+              "nodes": []
+            },
+            {
+              "node_id": "ba9b74f0",
+              "path": "graph-api > Graph API overview > `Command` > Using inside tools",
+              "title": "Using inside tools",
+              "keywords": [
+                "graph state",
+                "tool",
+                "customer support",
+                "account number",
+                "ID",
+                "conversation",
+                "update",
+                "lookup"
+              ],
+              "summary": "Describes updating graph state from within tools, such as fetching customer data in support apps.",
+              "nodes": []
+            },
+            {
+              "node_id": "84877c5f",
+              "path": "graph-api > Graph API overview > `Command` > Human-in-the-loop",
+              "title": "Human-in-the-loop",
+              "keywords": [
+                "Command",
+                "interrupt()",
+                "human-in-the-loop",
+                "resume",
+                "user input",
+                "workflows",
+                "execution",
+                "langgraph.types"
+              ],
+              "summary": "Explains the use of Command in human-in-the-loop workflows for supplying user input and resuming execution after an interrupt.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "3575119e",
+          "path": "graph-api > Graph API overview > Graph migrations",
+          "title": "Graph migrations",
+          "keywords": [
+            "LangGraph",
+            "graph migrations",
+            "topology changes",
+            "state keys",
+            "checkpointer",
+            "interrupted threads",
+            "backwards compatibility",
+            "forwards compatibility",
+            "nodes",
+            "edges"
+          ],
+          "summary": "LangGraph supports graph definition migrations, including topology changes and state modifications, with considerations for interrupted threads and state key compatibility.",
+          "nodes": []
+        },
+        {
+          "node_id": "03ca98b8",
+          "path": "graph-api > Graph API overview > Runtime context",
+          "title": "Runtime context",
+          "keywords": [
+            "context_schema",
+            "Runtime",
+            "invoke",
+            "recursion_limit",
+            "GraphRecursionError",
+            "langgraph_step",
+            "RemainingSteps",
+            "StateGraph",
+            "RunnableConfig",
+            "super-steps"
+          ],
+          "summary": "Explains how to specify and use runtime context (like `llm_provider`) in a LangGraph graph via `context_schema`, and covers recursion limits and counter handling for graph execution control.",
+          "nodes": [
+            {
+              "node_id": "86765e78",
+              "path": "graph-api > Graph API overview > Runtime context > Recursion limit",
+              "title": "Recursion limit",
+              "keywords": [
+                "recursion_limit",
+                "GraphRecursionError",
+                "super-steps",
+                "config",
+                "invoke",
+                "stream",
+                "runtime",
+                "graph execution",
+                "LangGraph"
+              ],
+              "summary": "Sets the maximum super-steps a graph can execute before raising GraphRecursionError, default is 25, configurable at runtime via the config dictionary.",
+              "nodes": []
+            },
+            {
+              "node_id": "bbe004a6",
+              "path": "graph-api > Graph API overview > Runtime context > Accessing and handling the recursion counter",
+              "title": "Accessing and handling the recursion counter",
+              "keywords": [
+                "langgraph_step",
+                "RemainingSteps",
+                "recursion limit",
+                "GraphRecursionError",
+                "StateGraph",
+                "RunnableConfig",
+                "metadata",
+                "graceful degradation",
+                "conditional routing",
+                "step counter"
+              ],
+              "summary": "Explains how to access and handle the recursion counter in LangGraph, including step counter access, proactive handling with RemainingSteps, and comparison of proactive vs reactive approaches.",
+              "nodes": [
+                {
+                  "node_id": "0323e763",
+                  "path": "graph-api > Graph API overview > Runtime context > Accessing and handling the recursion counter > How it works",
+                  "title": "How it works",
+                  "keywords": [
+                    "step counter",
+                    "config",
+                    "metadata",
+                    "langgraph_step",
+                    "recursion limit",
+                    "stop",
+                    "GraphRecursionError",
+                    "LangGraph"
+                  ],
+                  "summary": "Explains the step counter storage and recursion limit check logic in LangGraph, including error handling for exceeded limits.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "02627db5",
+                  "path": "graph-api > Graph API overview > Runtime context > Accessing and handling the recursion counter > Accessing the current step counter",
+                  "title": "Accessing the current step counter",
+                  "keywords": [
+                    "step counter",
+                    "langgraph_step",
+                    "RunnableConfig",
+                    "metadata",
+                    "execution progress",
+                    "node",
+                    "StateGraph",
+                    "monitoring"
+                  ],
+                  "summary": "Access the current step counter in a node to monitor execution progress using the `langgraph_step` metadata.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "7d3523f5",
+                  "path": "graph-api > Graph API overview > Runtime context > Accessing and handling the recursion counter > Proactive recursion handling",
+                  "title": "Proactive recursion handling",
+                  "keywords": [
+                    "RemainingSteps",
+                    "LangGraph",
+                    "recursion limit",
+                    "StateGraph",
+                    "managed value",
+                    "conditional edges",
+                    "graceful degradation",
+                    "runtime context"
+                  ],
+                  "summary": "LangGraph's RemainingSteps managed value tracks steps before recursion limit, enabling graceful degradation and conditional routing in state graphs.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "ba1da9ee",
+                  "path": "graph-api > Graph API overview > Runtime context > Accessing and handling the recursion counter > Proactive vs reactive approaches",
+                  "title": "Proactive vs reactive approaches",
+                  "keywords": [
+                    "RemainingSteps",
+                    "GraphRecursionError",
+                    "proactive",
+                    "reactive",
+                    "recursion limit",
+                    "StateGraph",
+                    "conditional routing",
+                    "graceful degradation",
+                    "checkpoints",
+                    "try/catch"
+                  ],
+                  "summary": "Compares proactive (internal monitoring with RemainingSteps) and reactive (external try/catch) approaches for handling recursion limits in LangGraph, highlighting their detection, handling, and control flow differences.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "73ff5207",
+                  "path": "graph-api > Graph API overview > Runtime context > Accessing and handling the recursion counter > Other available metadata",
+                  "title": "Other available metadata",
+                  "keywords": [
+                    "langgraph_step",
+                    "langgraph_node",
+                    "langgraph_triggers",
+                    "langgraph_path",
+                    "langgraph_checkpoint_ns",
+                    "metadata",
+                    "config",
+                    "RunnableConfig"
+                  ],
+                  "summary": "Lists additional metadata keys available in config['metadata'] for runtime context inspection.",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "e09c79a5",
+          "path": "graph-api > Graph API overview > Visualization",
+          "title": "Visualization",
+          "keywords": [
+            "LangGraph",
+            "visualization",
+            "graphs",
+            "how-to guide",
+            "Graph API"
+          ],
+          "summary": "LangGraph provides built-in visualization tools for graphs, with a guide for more details.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

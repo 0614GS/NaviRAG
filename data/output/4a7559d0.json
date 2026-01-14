@@ -1,0 +1,130 @@
+{
+  "doc_id": "4a7559d0",
+  "doc_name": "pregel",
+  "summary": "Pregel is a runtime in LangGraph for executing graph-based applications using the Bulk Synchronous Parallel model with actors and channels.",
+  "keywords": [
+    "Pregel",
+    "actors",
+    "channels",
+    "Bulk Synchronous Parallel",
+    "StateGraph",
+    "Functional API",
+    "PregelNode",
+    "LastValue",
+    "Topic",
+    "BinaryOperatorAggregate"
+  ],
+  "structure": [
+    {
+      "node_id": "5bf30bdf",
+      "path": "pregel > LangGraph runtime",
+      "title": "LangGraph runtime",
+      "keywords": [
+        "Pregel",
+        "actors",
+        "channels",
+        "Bulk Synchronous Parallel",
+        "StateGraph",
+        "Functional API",
+        "PregelNode",
+        "LastValue",
+        "Topic",
+        "BinaryOperatorAggregate"
+      ],
+      "summary": "Pregel is LangGraph's runtime for executing graph-based applications, implementing a BSP model with actors and channels for parallel computation.",
+      "nodes": [
+        {
+          "node_id": "7cf31661",
+          "path": "pregel > LangGraph runtime > Overview",
+          "title": "Overview",
+          "keywords": [
+            "Pregel",
+            "actors",
+            "channels",
+            "Bulk Synchronous Parallel",
+            "plan phase",
+            "execution phase",
+            "update phase",
+            "input channels",
+            "parallel execution",
+            "LangGraph"
+          ],
+          "summary": "Pregel in LangGraph combines actors and channels, executing in steps with plan, execution, and update phases based on the Pregel/BSP model.",
+          "nodes": []
+        },
+        {
+          "node_id": "117ae677",
+          "path": "pregel > LangGraph runtime > Actors",
+          "title": "Actors",
+          "keywords": [
+            "actor",
+            "PregelNode",
+            "channels",
+            "Pregel algorithm",
+            "LangChain",
+            "Runnable interface"
+          ],
+          "summary": "An actor is a PregelNode that subscribes to, reads from, and writes to channels, implementing LangChain's Runnable interface.",
+          "nodes": []
+        },
+        {
+          "node_id": "cd125cd7",
+          "path": "pregel > LangGraph runtime > Channels",
+          "title": "Channels",
+          "keywords": [
+            "Channels",
+            "PregelNodes",
+            "LastValue",
+            "Topic",
+            "BinaryOperatorAggregate",
+            "update function",
+            "value type",
+            "update type",
+            "actors",
+            "LangGraph"
+          ],
+          "summary": "Channels in LangGraph facilitate communication between PregelNodes, featuring value types, update types, and functions. Built-in channels include LastValue, Topic, and BinaryOperatorAggregate for data transfer and aggregation.",
+          "nodes": []
+        },
+        {
+          "node_id": "2a1b9b35",
+          "path": "pregel > LangGraph runtime > Examples",
+          "title": "Examples",
+          "keywords": [
+            "Pregel",
+            "NodeBuilder",
+            "EphemeralValue",
+            "Topic",
+            "BinaryOperatorAggregate",
+            "LastValue",
+            "ChannelWriteEntry",
+            "input_channels",
+            "output_channels",
+            "invoke"
+          ],
+          "summary": "Examples of directly using the Pregel API to build and execute computational graphs with different node configurations and channel types.",
+          "nodes": []
+        },
+        {
+          "node_id": "2151f242",
+          "path": "pregel > LangGraph runtime > High-level API",
+          "title": "High-level API",
+          "keywords": [
+            "StateGraph",
+            "Functional API",
+            "Pregel",
+            "entrypoint",
+            "nodes",
+            "channels",
+            "compile",
+            "TypedDict",
+            "LangGraph",
+            "InMemorySaver"
+          ],
+          "summary": "Introduces two high-level APIs for creating Pregel applications in LangGraph: StateGraph (Graph API) and Functional API.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

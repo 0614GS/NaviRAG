@@ -1,0 +1,134 @@
+{
+  "doc_id": "7a60e6b5",
+  "doc_name": "cli",
+  "summary": "Deep Agents CLI is a command-line tool for building AI agents with persistent memory, supporting file operations, shell execution, web search, HTTP requests, task planning, and human-in-the-loop controls.",
+  "keywords": [
+    "Deep Agents CLI",
+    "persistent memory",
+    "human-in-the-loop",
+    "Tavily API",
+    "shell command execution",
+    "memory-first protocol",
+    "remote sandbox",
+    "task planning",
+    "HTTP requests",
+    "file operations"
+  ],
+  "structure": [
+    {
+      "node_id": "a83742",
+      "path": "cli > Deep Agents CLI",
+      "title": "Deep Agents CLI",
+      "keywords": [
+        "Deep Agents CLI",
+        "persistent memory",
+        "human-in-the-loop",
+        "Tavily API",
+        "shell command execution",
+        "memory-first protocol",
+        "remote sandbox",
+        "task planning",
+        "HTTP requests",
+        "file operations"
+      ],
+      "summary": "A CLI tool for building AI agents with persistent memory, supporting file operations, shell execution, web search, HTTP requests, task planning, and human-in-the-loop controls.",
+      "nodes": [
+        {
+          "node_id": "5d74f5",
+          "path": "cli > Deep Agents CLI > Quick start",
+          "title": "Quick start",
+          "keywords": [
+            "ANTHROPIC_API_KEY",
+            "deepagents-cli",
+            "uvx",
+            "Claude Sonnet 4",
+            "OPENAI_API_KEY",
+            "TAVILY_API_KEY",
+            ".env file",
+            "environment variable",
+            "pip",
+            "uv"
+          ],
+          "summary": "A quick start guide for Deep Agents CLI covering API key setup, CLI execution, and task assignment, with optional configuration for installation, model selection, and web search.",
+          "nodes": []
+        },
+        {
+          "node_id": "7bdfb6",
+          "path": "cli > Deep Agents CLI > Configuration",
+          "title": "Configuration",
+          "keywords": [
+            "--agent",
+            "--auto-approve",
+            "--sandbox",
+            "deepagents list",
+            "deepagents reset",
+            "sandbox-setup",
+            "modal",
+            "daytona",
+            "runloop",
+            "agent memory"
+          ],
+          "summary": "Configuration options and commands for Deep Agents CLI, including command-line flags and agent management utilities.",
+          "nodes": []
+        },
+        {
+          "node_id": "c18810",
+          "path": "cli > Deep Agents CLI > Interactive mode",
+          "title": "Interactive mode",
+          "keywords": [
+            "slash commands",
+            "bash commands",
+            "keyboard shortcuts",
+            "CLI session",
+            "token usage",
+            "conversation history",
+            "auto-approve",
+            "external editor",
+            "interrupt",
+            "exit"
+          ],
+          "summary": "Describes interactive mode features in Deep Agents CLI, including slash commands, bash command execution, and keyboard shortcuts.",
+          "nodes": []
+        },
+        {
+          "node_id": "c088b0",
+          "path": "cli > Deep Agents CLI > Set project conventions with memories",
+          "title": "Set project conventions with memories",
+          "keywords": [
+            "memory-first protocol",
+            "memories",
+            "AGENT_NAME",
+            "markdown files",
+            "research",
+            "response",
+            "learning",
+            "snake_case",
+            "api-conventions.md",
+            "database-schema.md"
+          ],
+          "summary": "Agents use memory-first protocol to store, retrieve, and apply project conventions across sessions via markdown files.",
+          "nodes": []
+        },
+        {
+          "node_id": "9746c8",
+          "path": "cli > Deep Agents CLI > Use remote sandboxes",
+          "title": "Use remote sandboxes",
+          "keywords": [
+            "remote sandbox",
+            "Runloop",
+            "Daytona",
+            "Modal",
+            "setup.sh",
+            "environment variables",
+            "parallel execution",
+            "reproducibility",
+            "CLI",
+            "sandbox provider"
+          ],
+          "summary": "Guide to using remote sandboxes for safe, isolated code execution with providers like Runloop, Daytona, and Modal, including setup and configuration steps.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

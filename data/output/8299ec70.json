@@ -1,0 +1,160 @@
+{
+  "doc_id": "8299ec70",
+  "doc_name": "deploy",
+  "summary": "Guide to deploying LangGraph agents on LangSmith Cloud, covering prerequisites, deployment steps, and integration with GitHub, Studio, REST API, and Python SDK.",
+  "keywords": [
+    "LangSmith Cloud",
+    "LangGraph",
+    "GitHub",
+    "Deployment",
+    "API URL",
+    "Studio",
+    "REST API",
+    "Python SDK",
+    "agent",
+    "repository"
+  ],
+  "structure": [
+    {
+      "node_id": "2264c201",
+      "path": "deploy > LangSmith Deployment",
+      "title": "LangSmith Deployment",
+      "keywords": [
+        "LangSmith Cloud",
+        "LangGraph",
+        "GitHub",
+        "Deployment",
+        "API URL",
+        "Studio",
+        "REST API",
+        "Python SDK",
+        "agent",
+        "repository"
+      ],
+      "summary": "Guide to deploying LangGraph agents on LangSmith Cloud, a managed platform for stateful, long-running agents, covering prerequisites and deployment steps.",
+      "nodes": [
+        {
+          "node_id": "5acd7a22",
+          "path": "deploy > LangSmith Deployment > Prerequisites",
+          "title": "Prerequisites",
+          "keywords": [
+            "GitHub",
+            "LangSmith",
+            "account",
+            "deployment",
+            "prerequisites"
+          ],
+          "summary": "Lists the required accounts (GitHub and LangSmith) needed before starting the deployment process.",
+          "nodes": []
+        },
+        {
+          "node_id": "ab783e02",
+          "path": "deploy > LangSmith Deployment > Deploy your agent",
+          "title": "Deploy your agent",
+          "keywords": [
+            "LangSmith",
+            "LangGraph",
+            "GitHub",
+            "Deployment",
+            "API URL",
+            "Studio",
+            "REST API",
+            "Python SDK",
+            "agent",
+            "repository"
+          ],
+          "summary": "A guide to deploying LangGraph agents on LangSmith, covering GitHub setup, deployment steps, testing in Studio, and API integration.",
+          "nodes": [
+            {
+              "node_id": "68b13b84",
+              "path": "deploy > LangSmith Deployment > Deploy your agent > 1. Create a repository on GitHub",
+              "title": "1. Create a repository on GitHub",
+              "keywords": [
+                "GitHub",
+                "repository",
+                "LangSmith",
+                "deployment",
+                "LangGraph",
+                "application",
+                "code",
+                "private",
+                "public",
+                "quickstart"
+              ],
+              "summary": "A GitHub repository (public or private) is required for deploying LangGraph-compatible applications on LangSmith.",
+              "nodes": []
+            },
+            {
+              "node_id": "38fd7e89",
+              "path": "deploy > LangSmith Deployment > Deploy your agent > 2. Deploy to LangSmith",
+              "title": "2. Deploy to LangSmith",
+              "keywords": [
+                "LangSmith",
+                "Deployments",
+                "New Deployment",
+                "GitHub",
+                "Repository",
+                "Deployment details",
+                "Submit",
+                "Agent",
+                "Navigate",
+                "Link repository"
+              ],
+              "summary": "Steps to deploy an agent to LangSmith, including navigating to deployments, creating a new deployment, linking a GitHub repository, and submitting the deployment.",
+              "nodes": []
+            },
+            {
+              "node_id": "31d211b8",
+              "path": "deploy > LangSmith Deployment > Deploy your agent > 3. Test your application in Studio",
+              "title": "3. Test your application in Studio",
+              "keywords": [
+                "LangSmith",
+                "Studio",
+                "deployment",
+                "graph",
+                "application",
+                "test",
+                "deploy",
+                "agent"
+              ],
+              "summary": "Instructions for testing a deployed application in LangSmith Studio by selecting the deployment and opening the graph view.",
+              "nodes": []
+            },
+            {
+              "node_id": "a71705ce",
+              "path": "deploy > LangSmith Deployment > Deploy your agent > 4. Get the API URL for your deployment",
+              "title": "4. Get the API URL for your deployment",
+              "keywords": [
+                "API URL",
+                "LangGraph",
+                "Deployment details",
+                "clipboard",
+                "deployment"
+              ],
+              "summary": "Instructions for copying the API URL from the LangGraph deployment details view.",
+              "nodes": []
+            },
+            {
+              "node_id": "c845eded",
+              "path": "deploy > LangSmith Deployment > Deploy your agent > 5. Test the API",
+              "title": "5. Test the API",
+              "keywords": [
+                "LangGraph SDK",
+                "REST API",
+                "agent",
+                "stream_mode",
+                "langgraph.json",
+                "runs.stream",
+                "assistant_id",
+                "deployment-url",
+                "LangSmith API Key"
+              ],
+              "summary": "Provides instructions for testing a deployed LangGraph agent API using Python SDK and REST API calls.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

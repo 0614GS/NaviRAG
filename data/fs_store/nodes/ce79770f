@@ -1,0 +1,1 @@
+{"node_id": "ce79770f", "title": "Prerequisites", "path": "test > Test > Prerequisites", "content": "First, make sure you have [`pytest`](https://docs.pytest.org/) installed:\n\n```bash  theme={null}\n$ pip install -U pytest\n```", "summary": "Install pytest as a prerequisite for testing.", "keywords": ["pytest", "pip", "install", "testing", "prerequisites"]}

@@ -1,0 +1,146 @@
+{
+  "doc_id": "8ac79470",
+  "doc_name": "observability",
+  "summary": "Introduction to LangSmith Observability for tracing application steps, enabling debugging, evaluation, and monitoring via runs and traces.",
+  "keywords": [
+    "LangSmith",
+    "traces",
+    "tracing_context",
+    "LANGSMITH_TRACING",
+    "LANGSMITH_API_KEY",
+    "anonymizer",
+    "metadata",
+    "project_name",
+    "runs",
+    "observability"
+  ],
+  "structure": [
+    {
+      "node_id": "bd9aca5f",
+      "path": "observability > LangSmith Observability",
+      "title": "LangSmith Observability",
+      "keywords": [
+        "LangSmith",
+        "traces",
+        "tracing_context",
+        "LANGSMITH_TRACING",
+        "LANGSMITH_API_KEY",
+        "anonymizer",
+        "metadata",
+        "project_name",
+        "runs",
+        "observability"
+      ],
+      "summary": "Introduction to LangSmith Observability for tracing application steps, enabling debugging, evaluation, and monitoring via runs and traces.",
+      "nodes": [
+        {
+          "node_id": "273d07db",
+          "path": "observability > LangSmith Observability > Prerequisites",
+          "title": "Prerequisites",
+          "keywords": [
+            "LangSmith",
+            "API key",
+            "account",
+            "sign up",
+            "smith.langchain.com",
+            "log in",
+            "Create an API key",
+            "Prerequisites"
+          ],
+          "summary": "Requirements for using LangSmith Observability: a LangSmith account and an API key.",
+          "nodes": []
+        },
+        {
+          "node_id": "c73bd2e3",
+          "path": "observability > LangSmith Observability > Enable tracing",
+          "title": "Enable tracing",
+          "keywords": [
+            "LANGSMITH_TRACING",
+            "LANGSMITH_API_KEY",
+            "tracing",
+            "environment variables",
+            "project name",
+            "default",
+            "LangSmith",
+            "trace",
+            "LangGraph"
+          ],
+          "summary": "Instructions for enabling tracing in LangSmith by setting environment variables and configuring project names.",
+          "nodes": []
+        },
+        {
+          "node_id": "e232dbd3",
+          "path": "observability > LangSmith Observability > Trace selectively",
+          "title": "Trace selectively",
+          "keywords": [
+            "LangSmith",
+            "tracing_context",
+            "context manager",
+            "invocations",
+            "tracing",
+            "selective tracing",
+            "LANGSMITH_TRACING",
+            "agent.invoke"
+          ],
+          "summary": "Explains how to selectively trace specific invocations in LangSmith using the `tracing_context` context manager to control tracing behavior.",
+          "nodes": []
+        },
+        {
+          "node_id": "99ee8b56",
+          "path": "observability > LangSmith Observability > Log to a project",
+          "title": "Log to a project",
+          "keywords": [
+            "LANGSMITH_PROJECT",
+            "tracing_context",
+            "project_name",
+            "environment variable",
+            "Python",
+            "logging",
+            "LangSmith",
+            "observability"
+          ],
+          "summary": "Explains how to set a project name for logging in LangSmith, both statically via environment variable and dynamically via Python context manager.",
+          "nodes": []
+        },
+        {
+          "node_id": "16ac3ec6",
+          "path": "observability > LangSmith Observability > Add metadata to traces",
+          "title": "Add metadata to traces",
+          "keywords": [
+            "metadata",
+            "tags",
+            "tracing_context",
+            "agent.invoke",
+            "LangSmith",
+            "traces",
+            "observability",
+            "session_id",
+            "user_id",
+            "environment"
+          ],
+          "summary": "Explains how to add custom metadata and tags to traces in LangSmith using agent.invoke config or ls.tracing_context for observability.",
+          "nodes": []
+        },
+        {
+          "node_id": "9361cdbe",
+          "path": "observability > LangSmith Observability > Use anonymizers to prevent logging of sensitive data in traces",
+          "title": "Use anonymizers to prevent logging of sensitive data in traces",
+          "keywords": [
+            "anonymizer",
+            "LangSmith",
+            "traces",
+            "sensitive data",
+            "masking",
+            "Social Security Number",
+            "pattern",
+            "redact",
+            "LangChainTracer",
+            "Client"
+          ],
+          "summary": "Describes how to use anonymizers in LangSmith to mask sensitive data, such as Social Security Numbers, in traces to prevent logging.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

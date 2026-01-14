@@ -1,0 +1,209 @@
+{
+  "doc_id": "3a535b93",
+  "doc_name": "workflows-agents",
+  "summary": "Introduces workflows with predetermined paths and dynamic agents, covering setup, LLM augmentations, prompt chaining, parallelization, routing, orchestrator-worker, evaluator-optimizer patterns, and agent systems.",
+  "keywords": [
+    "workflows",
+    "agents",
+    "LLM",
+    "LangGraph",
+    "tool calling",
+    "structured outputs",
+    "StateGraph",
+    "parallelization",
+    "routing",
+    "orchestrator-worker"
+  ],
+  "structure": [
+    {
+      "node_id": "d71df1ae",
+      "path": "workflows-agents > Workflows and agents",
+      "title": "Workflows and agents",
+      "keywords": [
+        "workflows",
+        "agents",
+        "LLM",
+        "LangGraph",
+        "tool calling",
+        "structured outputs",
+        "StateGraph",
+        "parallelization",
+        "routing",
+        "orchestrator-worker"
+      ],
+      "summary": "Introduces workflows with predetermined paths and dynamic agents, covering setup, LLM augmentations, prompt chaining, parallelization, routing, orchestrator-worker, evaluator-optimizer patterns, and agent systems.",
+      "nodes": [
+        {
+          "node_id": "005e01e7",
+          "path": "workflows-agents > Workflows and agents > Setup",
+          "title": "Setup",
+          "keywords": [
+            "ChatAnthropic",
+            "structured outputs",
+            "tool calling",
+            "langchain_core",
+            "langchain-anthropic",
+            "langgraph",
+            "ANTHROPIC_API_KEY",
+            "claude-sonnet-4-5-20250929"
+          ],
+          "summary": "Setup instructions for building workflows and agents using a chat model with structured outputs and tool calling, including dependency installation and LLM initialization with Anthropic.",
+          "nodes": []
+        },
+        {
+          "node_id": "e26b524e",
+          "path": "workflows-agents > Workflows and agents > LLMs and augmentations",
+          "title": "LLMs and augmentations",
+          "keywords": [
+            "LLMs",
+            "tool calling",
+            "structured outputs",
+            "short-term memory",
+            "augmentations",
+            "workflows",
+            "agentic systems",
+            "bind_tools",
+            "with_structured_output",
+            "Pydantic"
+          ],
+          "summary": "Introduces LLM augmentations like tool calling, structured outputs, and short-term memory to customize LLMs for workflows and agentic systems.",
+          "nodes": []
+        },
+        {
+          "node_id": "d942eb61",
+          "path": "workflows-agents > Workflows and agents > Prompt chaining",
+          "title": "Prompt chaining",
+          "keywords": [
+            "LLM",
+            "Prompt chaining",
+            "StateGraph",
+            "TypedDict",
+            "conditional edges",
+            "gate function",
+            "workflow",
+            "LangGraph",
+            "Graph API",
+            "Functional API"
+          ],
+          "summary": "Prompt chaining involves sequential LLM calls where each processes the previous output, used for tasks like translation and content verification.",
+          "nodes": []
+        },
+        {
+          "node_id": "8803a93c",
+          "path": "workflows-agents > Workflows and agents > Parallelization",
+          "title": "Parallelization",
+          "keywords": [
+            "Parallelization",
+            "LLM",
+            "StateGraph",
+            "TypedDict",
+            "aggregator",
+            "subtasks",
+            "workflow",
+            "Graph API",
+            "Functional API",
+            "call_llm"
+          ],
+          "summary": "Explains parallelization in LLM workflows, where tasks are split into independent subtasks or run multiple times to increase speed and confidence, with code examples.",
+          "nodes": []
+        },
+        {
+          "node_id": "c6ce0a85",
+          "path": "workflows-agents > Workflows and agents > Routing",
+          "title": "Routing",
+          "keywords": [
+            "Routing",
+            "StateGraph",
+            "with_structured_output",
+            "conditional_edges",
+            "TypedDict",
+            "BaseModel",
+            "Literal",
+            "LLM",
+            "workflow",
+            "entrypoint"
+          ],
+          "summary": "Routing workflows process inputs and direct them to specialized tasks, such as handling product questions by routing to pricing, refunds, or returns processes.",
+          "nodes": []
+        },
+        {
+          "node_id": "0c98775a",
+          "path": "workflows-agents > Workflows and agents > Orchestrator-worker",
+          "title": "Orchestrator-worker",
+          "keywords": [
+            "orchestrator",
+            "worker",
+            "subtasks",
+            "parallelization",
+            "LangGraph",
+            "Send API",
+            "StateGraph",
+            "TypedDict",
+            "llm_call",
+            "synthesizer"
+          ],
+          "summary": "Describes the orchestrator-worker pattern where an orchestrator decomposes tasks, delegates subtasks to workers, and synthesizes results, with examples for dynamic workflows like code generation.",
+          "nodes": [
+            {
+              "node_id": "c82e4ca7",
+              "path": "workflows-agents > Workflows and agents > Orchestrator-worker > Creating workers in LangGraph",
+              "title": "Creating workers in LangGraph",
+              "keywords": [
+                "LangGraph",
+                "Send API",
+                "orchestrator-worker",
+                "StateGraph",
+                "TypedDict",
+                "conditional edges",
+                "parallel workers",
+                "llm_call",
+                "synthesizer",
+                "State"
+              ],
+              "summary": "Explains how to create worker nodes in LangGraph using the Send API for orchestrator-worker workflows, with a code example for parallel report section generation.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "5fae171e",
+          "path": "workflows-agents > Workflows and agents > Evaluator-optimizer",
+          "title": "Evaluator-optimizer",
+          "keywords": [
+            "evaluator-optimizer",
+            "LLM",
+            "feedback loop",
+            "human-in-the-loop",
+            "structured output",
+            "StateGraph",
+            "conditional edges",
+            "workflow",
+            "optimizer",
+            "evaluation"
+          ],
+          "summary": "An evaluator-optimizer workflow uses one LLM to generate a response and another to evaluate it, iterating with feedback until the response meets specific success criteria, such as in translation tasks.",
+          "nodes": []
+        },
+        {
+          "node_id": "556a165b",
+          "path": "workflows-agents > Workflows and agents > Agents",
+          "title": "Agents",
+          "keywords": [
+            "LLM",
+            "tools",
+            "feedback loops",
+            "autonomy",
+            "LangGraph",
+            "StateGraph",
+            "tool_calls",
+            "conditional edges",
+            "MessagesState",
+            "bind_tools"
+          ],
+          "summary": "Agents are LLM-powered systems that autonomously use tools in feedback loops to solve unpredictable problems, with more decision-making freedom than workflows.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

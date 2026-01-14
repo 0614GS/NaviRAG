@@ -1,0 +1,154 @@
+{
+  "doc_id": "da783670",
+  "doc_name": "use-time-travel",
+  "summary": "Explains LangGraph's time-travel feature for analyzing, debugging, and exploring non-deterministic AI agent decisions by resuming execution from checkpoints.",
+  "keywords": [
+    "LangGraph",
+    "time-travel",
+    "checkpoint",
+    "invoke",
+    "stream",
+    "get_state_history",
+    "update_state",
+    "thread_id",
+    "checkpoint_id",
+    "interrupt"
+  ],
+  "structure": [
+    {
+      "node_id": "d3bcfa54",
+      "path": "use-time-travel > Use time-travel",
+      "title": "Use time-travel",
+      "keywords": [
+        "LangGraph",
+        "time-travel",
+        "checkpoint",
+        "invoke",
+        "stream",
+        "get_state_history",
+        "update_state",
+        "thread_id",
+        "checkpoint_id",
+        "interrupt"
+      ],
+      "summary": "Explains LangGraph's time-travel feature for analyzing, debugging, and exploring non-deterministic AI agent decisions by resuming execution from checkpoints.",
+      "nodes": [
+        {
+          "node_id": "8d884576",
+          "path": "use-time-travel > Use time-travel > In a workflow",
+          "title": "In a workflow",
+          "keywords": [
+            "LangGraph",
+            "StateGraph",
+            "checkpoint",
+            "graph.invoke",
+            "update_state",
+            "InMemorySaver",
+            "thread_id",
+            "TypedDict",
+            "workflow",
+            "time-travel"
+          ],
+          "summary": "Demonstrates using time-travel in a LangGraph workflow to generate jokes, manage checkpoints, modify state, and resume execution.",
+          "nodes": [
+            {
+              "node_id": "1ee8d51c",
+              "path": "use-time-travel > Use time-travel > In a workflow > Setup",
+              "title": "Setup",
+              "keywords": [
+                "LangGraph",
+                "StateGraph",
+                "InMemorySaver",
+                "init_chat_model",
+                "TypedDict",
+                "checkpointer",
+                "workflow",
+                "Anthropic API",
+                "Claude Sonnet",
+                "State"
+              ],
+              "summary": "Setup instructions for a LangGraph workflow, including package installation, API key configuration, and building a joke generation graph.",
+              "nodes": []
+            },
+            {
+              "node_id": "c097c050",
+              "path": "use-time-travel > Use time-travel > In a workflow > 1. Run the graph",
+              "title": "1. Run the graph",
+              "keywords": [
+                "graph.invoke",
+                "config",
+                "thread_id",
+                "state",
+                "topic",
+                "joke",
+                "uuid",
+                "output",
+                "workflow",
+                "time-travel"
+              ],
+              "summary": "Demonstrates how to invoke a graph to generate a joke based on a topic, using a unique thread ID for configuration.",
+              "nodes": []
+            },
+            {
+              "node_id": "6f663efa",
+              "path": "use-time-travel > Use time-travel > In a workflow > 2. Identify a checkpoint",
+              "title": "2. Identify a checkpoint",
+              "keywords": [
+                "checkpoint",
+                "state history",
+                "graph.get_state_history",
+                "configurable",
+                "checkpoint_id",
+                "next",
+                "values",
+                "workflow",
+                "reverse chronological order",
+                "selected_state"
+              ],
+              "summary": "Demonstrates how to identify a checkpoint in a workflow by listing state history and selecting a specific state to view its details.",
+              "nodes": []
+            },
+            {
+              "node_id": "be70097e",
+              "path": "use-time-travel > Use time-travel > In a workflow > 3. Update the state",
+              "title": "3. Update the state",
+              "keywords": [
+                "update_state",
+                "checkpoint",
+                "thread_id",
+                "checkpoint_id",
+                "CompiledStateGraph",
+                "configurable",
+                "state",
+                "workflow",
+                "LangGraph",
+                "API"
+              ],
+              "summary": "Explains how to use the `update_state` method to create a new checkpoint with updated state values in a workflow.",
+              "nodes": []
+            },
+            {
+              "node_id": "ba3b8a1a",
+              "path": "use-time-travel > Use time-travel > In a workflow > 4. Resume execution from the checkpoint",
+              "title": "4. Resume execution from the checkpoint",
+              "keywords": [
+                "graph.invoke",
+                "checkpoint",
+                "resume execution",
+                "new_config",
+                "workflow",
+                "time-travel",
+                "LangGraph",
+                "configuration",
+                "state",
+                "execution"
+              ],
+              "summary": "Demonstrates how to resume workflow execution from a checkpoint using the `graph.invoke` method with a new configuration.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

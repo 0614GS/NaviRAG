@@ -1,0 +1,93 @@
+{
+  "doc_id": "47d7df4e",
+  "doc_name": "ui",
+  "summary": "A Next.js application for conversational interaction with LangChain agents, featuring real-time chat, tool visualization, and debugging capabilities.",
+  "keywords": [
+    "Agent Chat UI",
+    "Next.js",
+    "LangChain agent",
+    "create_agent",
+    "real-time chat",
+    "tool visualization",
+    "time-travel debugging",
+    "state forking",
+    "LangSmith",
+    "generative UI"
+  ],
+  "structure": [
+    {
+      "node_id": "a8d6f3bb",
+      "path": "ui > Agent Chat UI",
+      "title": "Agent Chat UI",
+      "keywords": [
+        "Agent Chat UI",
+        "Next.js",
+        "LangChain agent",
+        "create_agent",
+        "real-time chat",
+        "tool visualization",
+        "time-travel debugging",
+        "state forking",
+        "LangSmith",
+        "generative UI"
+      ],
+      "summary": "A Next.js app for conversational interaction with LangChain agents, featuring real-time chat, tool visualization, and debugging capabilities.",
+      "nodes": [
+        {
+          "node_id": "d4a6cad6",
+          "path": "ui > Agent Chat UI > Quick start",
+          "title": "Quick start",
+          "keywords": [
+            "Agent Chat UI",
+            "hosted version",
+            "deployment URL",
+            "local server",
+            "tool calls",
+            "interrupts",
+            "chatting",
+            "Vercel"
+          ],
+          "summary": "Quick start guide for Agent Chat UI: use hosted version, connect agent via URL, and start chatting with automatic tool detection.",
+          "nodes": []
+        },
+        {
+          "node_id": "4235cc09",
+          "path": "ui > Agent Chat UI > Local development",
+          "title": "Local development",
+          "keywords": [
+            "Agent Chat UI",
+            "npx",
+            "create-agent-chat-app",
+            "git clone",
+            "pnpm",
+            "local development",
+            "repository",
+            "dependencies",
+            "dev server"
+          ],
+          "summary": "Instructions for running Agent Chat UI locally via npx or git clone, including setup and start commands.",
+          "nodes": []
+        },
+        {
+          "node_id": "c6bf038f",
+          "path": "ui > Agent Chat UI > Connect to your agent",
+          "title": "Connect to your agent",
+          "keywords": [
+            "Agent Chat UI",
+            "Graph ID",
+            "Deployment URL",
+            "LangSmith API key",
+            "local agent",
+            "deployed agents",
+            "interrupted threads",
+            "tool calls",
+            "tool result messages",
+            "langgraph.json"
+          ],
+          "summary": "Instructions for connecting Agent Chat UI to local or deployed agents, including required configuration fields and optional LangSmith API key setup.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

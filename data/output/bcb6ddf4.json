@@ -1,0 +1,182 @@
+{
+  "doc_id": "bcb6ddf4",
+  "doc_name": "quickstart",
+  "summary": "A guide to building a research agent with planning, file tools, and subagents, covering setup, execution, and next steps.",
+  "keywords": [
+    "DeepAgents",
+    "TavilyClient",
+    "create_deep_agent",
+    "internet_search",
+    "subagents",
+    "write_file",
+    "read_file",
+    "ANTHROPIC_API_KEY",
+    "TAVILY_API_KEY",
+    "LangGraph"
+  ],
+  "structure": [
+    {
+      "node_id": "60d82b",
+      "path": "quickstart > Quickstart",
+      "title": "Quickstart",
+      "keywords": [
+        "DeepAgents",
+        "TavilyClient",
+        "create_deep_agent",
+        "internet_search",
+        "subagents",
+        "write_file",
+        "read_file",
+        "ANTHROPIC_API_KEY",
+        "TAVILY_API_KEY",
+        "LangGraph"
+      ],
+      "summary": "A guide to building a research agent with planning, file tools, and subagents, covering setup, execution, and next steps.",
+      "nodes": [
+        {
+          "node_id": "f9f2fd",
+          "path": "quickstart > Quickstart > Prerequisites",
+          "title": "Prerequisites",
+          "keywords": [
+            "API key",
+            "DeepAgents",
+            "TavilyClient",
+            "create_deep_agent",
+            "internet_search",
+            "ANTHROPIC_API_KEY",
+            "TAVILY_API_KEY",
+            "pip",
+            "uv",
+            "Poetry"
+          ],
+          "summary": "Prerequisites for using DeepAgents, including API key setup, dependency installation, and initial agent configuration.",
+          "nodes": [
+            {
+              "node_id": "09e740",
+              "path": "quickstart > Quickstart > Prerequisites > Step 1: Install dependencies",
+              "title": "Step 1: Install dependencies",
+              "keywords": [
+                "deepagents",
+                "tavily-python",
+                "pip",
+                "uv",
+                "poetry",
+                "install",
+                "dependencies",
+                "sync"
+              ],
+              "summary": "Install DeepAgents and Tavily Python dependencies using pip, uv, or Poetry.",
+              "nodes": []
+            },
+            {
+              "node_id": "27129c",
+              "path": "quickstart > Quickstart > Prerequisites > Step 2: Set up your API keys",
+              "title": "Step 2: Set up your API keys",
+              "keywords": [
+                "ANTHROPIC_API_KEY",
+                "TAVILY_API_KEY",
+                "API keys",
+                "export",
+                "environment variables"
+              ],
+              "summary": "Instructions for setting up API keys for Anthropic and Tavily services.",
+              "nodes": []
+            },
+            {
+              "node_id": "b66998",
+              "path": "quickstart > Quickstart > Prerequisites > Step 3: Create a search tool",
+              "title": "Step 3: Create a search tool",
+              "keywords": [
+                "TavilyClient",
+                "internet_search",
+                "api_key",
+                "search",
+                "query",
+                "max_results",
+                "topic",
+                "include_raw_content",
+                "DeepAgents"
+              ],
+              "summary": "Demonstrates creating a search tool using the Tavily API for internet searches within a DeepAgents framework.",
+              "nodes": []
+            },
+            {
+              "node_id": "8dd522",
+              "path": "quickstart > Quickstart > Prerequisites > Step 4: Create a deep agent",
+              "title": "Step 4: Create a deep agent",
+              "keywords": [
+                "deep agent",
+                "system prompt",
+                "expert researcher",
+                "internet_search",
+                "create_deep_agent",
+                "tools",
+                "research",
+                "search tool",
+                "agent",
+                "API"
+              ],
+              "summary": "Create a deep agent with a system prompt for expert research and internet search tool.",
+              "nodes": []
+            },
+            {
+              "node_id": "e98de3",
+              "path": "quickstart > Quickstart > Prerequisites > Step 5: Run the agent",
+              "title": "Step 5: Run the agent",
+              "keywords": [
+                "agent",
+                "invoke",
+                "messages",
+                "role",
+                "user",
+                "content",
+                "langgraph",
+                "response",
+                "print"
+              ],
+              "summary": "Demonstrates how to execute an agent by invoking it with a user query and printing the response.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "548327",
+          "path": "quickstart > Quickstart > What happened?",
+          "title": "What happened?",
+          "keywords": [
+            "deep agent",
+            "write_todos",
+            "internet_search",
+            "write_file",
+            "read_file",
+            "subagents",
+            "research task",
+            "context management",
+            "report synthesis"
+          ],
+          "summary": "Describes the automated steps a deep agent takes to complete a research task, including planning, research, context management, subagent delegation, and report synthesis.",
+          "nodes": []
+        },
+        {
+          "node_id": "c89f34",
+          "path": "quickstart > Quickstart > Next steps",
+          "title": "Next steps",
+          "keywords": [
+            "deep agent",
+            "customization",
+            "middleware",
+            "long-term memory",
+            "deployment",
+            "LangGraph",
+            "system prompts",
+            "tools",
+            "subagents",
+            "persistent memory"
+          ],
+          "summary": "Guidance for further development after building a deep agent, covering customization, middleware, memory, and deployment.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

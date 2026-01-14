@@ -1,0 +1,95 @@
+{
+  "doc_id": "64473523",
+  "doc_name": "customization",
+  "summary": "A guide to customizing deep agents by configuring core components like models, system prompts, tools, and advanced features such as subagents and interrupts.",
+  "keywords": [
+    "create_deep_agent",
+    "system prompt",
+    "tools",
+    "subagents",
+    "model identifier",
+    "LangChain",
+    "ChatOllama",
+    "TavilyClient",
+    "interrupts",
+    "planning tool"
+  ],
+  "structure": [
+    {
+      "node_id": "c10a7d",
+      "path": "customization > Customize Deep Agents",
+      "title": "Customize Deep Agents",
+      "keywords": [
+        "create_deep_agent",
+        "system prompt",
+        "tools",
+        "subagents",
+        "model identifier",
+        "LangChain",
+        "ChatOllama",
+        "TavilyClient",
+        "interrupts",
+        "planning tool"
+      ],
+      "summary": "Guide to customizing deep agents by configuring core components like model, system prompt, tools, and features such as subagents and interrupts.",
+      "nodes": [
+        {
+          "node_id": "a0b1cf",
+          "path": "customization > Customize Deep Agents > Model",
+          "title": "Model",
+          "keywords": [
+            "deepagents",
+            "claude-sonnet-4-5-20250929",
+            "model identifier",
+            "LangChain",
+            "init_chat_model",
+            "create_deep_agent",
+            "ChatOllama",
+            "gpt-5",
+            "llama3.1"
+          ],
+          "summary": "Explains how to customize the model used by deepagents, either via a model identifier string or a LangChain model object.",
+          "nodes": []
+        },
+        {
+          "node_id": "5018f0",
+          "path": "customization > Customize Deep Agents > System prompt",
+          "title": "System prompt",
+          "keywords": [
+            "system prompt",
+            "deep agents",
+            "customize",
+            "planning tool",
+            "file system tools",
+            "subagents",
+            "create_deep_agent",
+            "research",
+            "Claude Code",
+            "use case"
+          ],
+          "summary": "Deep agents have a default system prompt for planning and tools, but custom prompts are needed for specific use cases, as shown in a research agent example.",
+          "nodes": []
+        },
+        {
+          "node_id": "0d5784",
+          "path": "customization > Customize Deep Agents > Tools",
+          "title": "Tools",
+          "keywords": [
+            "create_deep_agent",
+            "internet_search",
+            "write_todos",
+            "ls",
+            "read_file",
+            "write_file",
+            "edit_file",
+            "task",
+            "TavilyClient",
+            "tools"
+          ],
+          "summary": "Describes how to provide custom tools to deep agents and lists default tools available, including file operations and task management.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

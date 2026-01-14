@@ -23,10 +23,12 @@ os.environ['OPENAI_BASE_URL'] = os.getenv("SI_BASE_URL")
 # os.environ['OPENAI_BASE_URL'] = os.getenv("OPENROUTER_API_KEY")
 
 # 关键词和摘要的提取模型
-extract_model = ChatOpenAI(model="Qwen/Qwen2.5-32B-Instruct", temperature=0)
+extract_model = ChatOpenAI(model="deepseek-ai/DeepSeek-V3.2", temperature=0)
 
 
 # extract_model = ChatOpenAI(model="Qwen/Qwen3-Omni-30B-A3B-Instruct", temperature=0)
+
+
 # extract_model = ChatOpenAI(model="gpt-oss-120b", temperature=0)
 
 # 获取扁平化的node列表
@@ -141,13 +143,13 @@ async def generate_metadata_with_llm(title: str, path: str, content: str, childr
     """
 
     class outputSchema(BaseModel):
-        keywords: List[str] = Field(description="一个字符串列表，包含5-10个关键技术名词（API名称、特定概念等）")
-        summary: str = Field(description="50字以内的中文内容极简摘要，需涵盖子章节的核心主题")
+        keywords: List[str] = Field(description="一个字符串列表，包含5-10个关键技术名词（API名称、特定概念等），in English")
+        summary: str = Field(description="50字以内的极简摘要，需涵盖子章节的核心主题，in English")
 
     system_prompt = """
     你是一个专业的技术文档分析助手。请根据提供的文档节点信息提取元数据。
     请返回指定格式，包含以下字段：
-    1. "summary": 50字以内的中文内容极简摘要。如果是父节点，需涵盖子节点的核心主题，in English。
+    1. "summary": 50字以内的内容极简摘要。如果是父节点，需涵盖子节点的核心主题，in English。
     2. "keywords": 一个字符串列表，包含5-10个关键技术名词（API名称、特定概念等），in English。
     """
 
@@ -181,11 +183,11 @@ async def generate_metadata_with_llm(title: str, path: str, content: str, childr
             time.sleep(5)  # 等待后重试
 
 
+# 全局并发限制
+sem = asyncio.Semaphore(15)
+
+
 # 树的递归处理与 ID 生成
-# 全局并发限制，防止瞬间打爆 LLM API (例如限制并发数为 10)
-sem = asyncio.Semaphore(10)
-
-
 async def process_tree_recursive(nodes: List[Dict], parent_path: str) -> List[Dict]:
     """
     异步递归遍历树。
@@ -226,7 +228,7 @@ async def process_tree_recursive(nodes: List[Dict], parent_path: str) -> List[Di
                 content=content,
                 children_summary=children_info_for_parent
             )
-        node_id = str(uuid.uuid4())[:6]
+        node_id = str(uuid.uuid4())[:8]
         # 4. 构建完整存储对象 (Metadata + Content) 并存入 DB
         full_content_obj = {
             "node_id": node_id,
@@ -293,10 +295,10 @@ async def analyze_markdown_file(file_path: str):
     )
 
     # 获取文件的metadata
-    doc_overview = generate_doc_global_summary(file_name, processed_tree)
+    doc_overview = await generate_doc_global_summary(file_name, processed_tree)
 
     # 为整个文档生成 doc_id 并存入 doc_tree_store
-    doc_id = str(uuid.uuid4())[:4]
+    doc_id = str(uuid.uuid4())[:8]
     doc_data = {
         "doc_id": doc_id,
         "doc_name": file_name,
@@ -305,16 +307,14 @@ async def analyze_markdown_file(file_path: str):
         "structure": processed_tree
     }
 
-    doc_tree_store.mset([
-        (doc_id, doc_data)
-    ])
+    await asyncio.to_thread(doc_tree_store.mset, [(doc_id, doc_data)])
 
     print(f"文档 {file_name} 处理完成。DocID: {doc_id}, 导航树已存入 doc_tree_store")
 
     return doc_data
 
 
-def generate_doc_global_summary(doc_name: str, level1_nodes: List[Dict]) -> Dict:
+async def generate_doc_global_summary(doc_name: str, level1_nodes: List[Dict]) -> Dict:
     """基于所有一级标题的信息，生成整篇文档的总览摘要和关键词"""
 
     class outputSchema(BaseModel):
@@ -343,7 +343,7 @@ def generate_doc_global_summary(doc_name: str, level1_nodes: List[Dict]) -> Dict
     max_retries = 3
     for attempt in range(max_retries):
         try:
-            response = extract_model.with_structured_output(schema=outputSchema).invoke([
+            response = await extract_model.with_structured_output(schema=outputSchema).ainvoke([
                 SystemMessage(system_prompt),
                 HumanMessage(user_prompt)
             ])
@@ -369,21 +369,23 @@ async def batch_process_markdowns(input_dir: str, output_dir: str):
     # 用于存储所有文档的元数据，最后生成全局索引
     global_index_list = []
 
-    for md_file in md_files:
-        doc_result = await analyze_markdown_file(md_file)
+    tasks = [analyze_markdown_file(md_file) for md_file in md_files]
 
-        with open(os.path.join(output_dir, doc_result["doc_id"] + ".json"), "w", encoding="utf-8") as f:
-            json.dump(doc_result, f, indent=2, ensure_ascii=False)
+    results = await asyncio.gather(*tasks)
+
+    for result in results:
+        with open(os.path.join(output_dir, result["doc_id"] + ".json"), "w", encoding="utf-8") as f:
+            json.dump(result, f, indent=2, ensure_ascii=False)
 
         # 收集元数据用于全局索引
         global_index_list.append({
-            "doc_id": doc_result["doc_id"],
-            "doc_name": doc_result["doc_name"],
-            "keywords": doc_result["keywords"],
-            "summary": doc_result["summary"]
+            "doc_id": result["doc_id"],
+            "doc_name": result["doc_name"],
+            "keywords": result["keywords"],
+            "summary": result["summary"]
         })
 
-        print(f"收集文档: {doc_result['doc_name']} (ID: {doc_result['doc_id']})")
+        print(f"收集文档: {result['doc_name']} (ID: {result['doc_id']})")
 
     # 生成顶层目录索引 json
     global_index_path = os.path.join(output_dir, "global_index.json")
@@ -392,7 +394,7 @@ async def batch_process_markdowns(input_dir: str, output_dir: str):
 
 
 if __name__ == "__main__":
-    INPUT_DIR = "../data/input/deepagents"
+    INPUT_DIR = "../data/input/langgraph"
     OUTPUT_DIR = "../data/output"
 
     asyncio.run(batch_process_markdowns(INPUT_DIR, OUTPUT_DIR))

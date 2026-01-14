@@ -1,0 +1,410 @@
+{
+  "doc_id": "7fada8a1",
+  "doc_name": "subagents",
+  "summary": "Explains how to use subagents in Deep Agents for task delegation and context isolation, covering configuration, implementation, and best practices.",
+  "keywords": [
+    "subagents",
+    "context quarantine",
+    "CompiledSubAgent",
+    "LangGraph",
+    "TavilyClient",
+    "general-purpose subagent",
+    "system_prompt",
+    "tools",
+    "model",
+    "task delegation"
+  ],
+  "structure": [
+    {
+      "node_id": "a4e8a9",
+      "path": "subagents > Subagents",
+      "title": "Subagents",
+      "keywords": [
+        "subagents",
+        "context quarantine",
+        "CompiledSubAgent",
+        "LangGraph",
+        "TavilyClient",
+        "general-purpose subagent",
+        "system_prompt",
+        "tools",
+        "model",
+        "task delegation"
+      ],
+      "summary": "Explains how to use subagents in Deep Agents for task delegation and context isolation, covering configuration, implementation, and best practices.",
+      "nodes": [
+        {
+          "node_id": "e5961a",
+          "path": "subagents > Subagents > Why use subagents?",
+          "title": "Why use subagents?",
+          "keywords": [
+            "subagents",
+            "context bloat",
+            "tools",
+            "main agent",
+            "context window",
+            "intermediate results",
+            "multi-step tasks",
+            "model capabilities",
+            "high-level coordination",
+            "overhead"
+          ],
+          "summary": "Subagents address context bloat by isolating detailed tool outputs, keeping the main agent focused on high-level coordination and receiving only final results.",
+          "nodes": []
+        },
+        {
+          "node_id": "1d6f19",
+          "path": "subagents > Subagents > Configuration",
+          "title": "Configuration",
+          "keywords": [
+            "SubAgent",
+            "CompiledSubAgent",
+            "system_prompt",
+            "tools",
+            "model",
+            "middleware",
+            "interrupt_on",
+            "Runnable",
+            "LangGraph",
+            "configuration"
+          ],
+          "summary": "Configuration options for subagents, including dictionary-based definitions and CompiledSubAgent for LangGraph integration.",
+          "nodes": [
+            {
+              "node_id": "2e83bf",
+              "path": "subagents > Subagents > Configuration > SubAgent (Dictionary-based)",
+              "title": "SubAgent (Dictionary-based)",
+              "keywords": [
+                "name",
+                "description",
+                "system_prompt",
+                "tools",
+                "model",
+                "middleware",
+                "interrupt_on",
+                "task()",
+                "BaseChatModel",
+                "Dictionary-based"
+              ],
+              "summary": "Defines subagents using dictionaries with required fields (name, description, system_prompt, tools) and optional fields (model, middleware, interrupt_on).",
+              "nodes": []
+            },
+            {
+              "node_id": "f7f564",
+              "path": "subagents > Subagents > Configuration > CompiledSubAgent",
+              "title": "CompiledSubAgent",
+              "keywords": [
+                "CompiledSubAgent",
+                "LangGraph",
+                "graph",
+                "Runnable",
+                "compile",
+                "workflow",
+                "configuration",
+                "subagent"
+              ],
+              "summary": "Describes the CompiledSubAgent configuration for using pre-built LangGraph graphs in complex workflows, including its fields: name, description, and runnable.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "c84c86",
+          "path": "subagents > Subagents > Using SubAgent",
+          "title": "Using SubAgent",
+          "keywords": [
+            "SubAgent",
+            "TavilyClient",
+            "internet_search",
+            "create_deep_agent",
+            "research-agent",
+            "system_prompt",
+            "tools",
+            "model",
+            "gpt-4o",
+            "claude-sonnet-4-5-20250929"
+          ],
+          "summary": "Demonstrates how to create a subagent for internet research using the Tavily API and integrate it into a DeepAgents system.",
+          "nodes": []
+        },
+        {
+          "node_id": "4570f5",
+          "path": "subagents > Subagents > Using CompiledSubAgent",
+          "title": "Using CompiledSubAgent",
+          "keywords": [
+            "CompiledSubAgent",
+            "LangGraph",
+            "create_deep_agent",
+            "subagents",
+            "custom_graph",
+            "create_agent",
+            "runnable",
+            "data-analyzer",
+            "specialized_tools"
+          ],
+          "summary": "Demonstrates how to use CompiledSubAgent to integrate a custom pre-built LangGraph graph as a specialized subagent within a DeepAgent.",
+          "nodes": []
+        },
+        {
+          "node_id": "bdbb20",
+          "path": "subagents > Subagents > The general-purpose subagent",
+          "title": "The general-purpose subagent",
+          "keywords": [
+            "general-purpose subagent",
+            "context isolation",
+            "main agent",
+            "delegate",
+            "multi-step task",
+            "tool calls",
+            "concise result",
+            "intermediate results",
+            "task delegation"
+          ],
+          "summary": "The general-purpose subagent in deep agents isolates complex multi-step tasks, enabling the main agent to delegate and receive concise results without intermediate tool call clutter.",
+          "nodes": [
+            {
+              "node_id": "bc20de",
+              "path": "subagents > Subagents > The general-purpose subagent > When to use it",
+              "title": "When to use it",
+              "keywords": [
+                "general-purpose subagent",
+                "context isolation",
+                "main agent",
+                "delegate",
+                "multi-step task",
+                "tool calls",
+                "concise result",
+                "intermediate results",
+                "task delegation",
+                "quantum computing"
+              ],
+              "summary": "The general-purpose subagent is used for isolating complex multi-step tasks, allowing the main agent to delegate and receive concise results without intermediate tool call clutter.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "cd3b33",
+          "path": "subagents > Subagents > Best practices",
+          "title": "Best practices",
+          "keywords": [
+            "subagent",
+            "system_prompt",
+            "tools",
+            "model",
+            "description",
+            "main agent",
+            "confidence score",
+            "output format",
+            "best practices",
+            "key insights"
+          ],
+          "summary": "Guidelines for optimizing subagent design, including clear descriptions, detailed prompts, focused tools, model selection, and concise output formatting.",
+          "nodes": [
+            {
+              "node_id": "94f563",
+              "path": "subagents > Subagents > Best practices > Write clear descriptions",
+              "title": "Write clear descriptions",
+              "keywords": [
+                "subagent",
+                "main agent",
+                "description",
+                "financial data",
+                "investment insights",
+                "confidence scores",
+                "best practices",
+                "clear descriptions"
+              ],
+              "summary": "Provides guidelines for writing specific subagent descriptions to help the main agent select the appropriate subagent, with examples of good and bad descriptions.",
+              "nodes": []
+            },
+            {
+              "node_id": "b579dc",
+              "path": "subagents > Subagents > Best practices > Keep system prompts detailed",
+              "title": "Keep system prompts detailed",
+              "keywords": [
+                "system_prompt",
+                "research-agent",
+                "internet_search",
+                "output format",
+                "tools",
+                "subagents",
+                "synthesize findings",
+                "cite sources",
+                "searchable queries",
+                "comprehensive summary"
+              ],
+              "summary": "Illustrates best practices for writing detailed system prompts in subagents, using a research agent example with specific instructions and output formatting.",
+              "nodes": []
+            },
+            {
+              "node_id": "655bec",
+              "path": "subagents > Subagents > Best practices > Minimize tool sets",
+              "title": "Minimize tool sets",
+              "keywords": [
+                "subagents",
+                "tools",
+                "focus",
+                "security",
+                "email_agent",
+                "send_email",
+                "validate_email",
+                "web_search",
+                "database_query",
+                "file_upload"
+              ],
+              "summary": "Recommends limiting subagents to essential tools to enhance focus and security, with examples of focused vs. unfocused tool sets.",
+              "nodes": []
+            },
+            {
+              "node_id": "6610d2",
+              "path": "subagents > Subagents > Best practices > Choose models by task",
+              "title": "Choose models by task",
+              "keywords": [
+                "subagents",
+                "model",
+                "claude-sonnet-4-5-20250929",
+                "openai:gpt-5",
+                "system_prompt",
+                "tools",
+                "contract-reviewer",
+                "financial-analyst"
+              ],
+              "summary": "Guidelines for selecting appropriate AI models for different subagent tasks, with examples for legal review and financial analysis.",
+              "nodes": []
+            },
+            {
+              "node_id": "975ece",
+              "path": "subagents > Subagents > Best practices > Return concise results",
+              "title": "Return concise results",
+              "keywords": [
+                "subagents",
+                "system_prompt",
+                "key insights",
+                "confidence score",
+                "recommended next actions",
+                "raw data",
+                "intermediate calculations",
+                "tool outputs"
+              ],
+              "summary": "Instruct subagents to provide summaries, key insights, and recommendations instead of raw data or intermediate outputs.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0bc8a1",
+          "path": "subagents > Subagents > Common patterns",
+          "title": "Common patterns",
+          "keywords": [
+            "subagents",
+            "create_deep_agent",
+            "data-collector",
+            "data-analyzer",
+            "report-writer",
+            "system_prompt",
+            "tools",
+            "workflow",
+            "delegates"
+          ],
+          "summary": "Describes a pattern of using multiple specialized subagents (e.g., data-collector, analyzer, report-writer) for coordinated workflows like data analysis and reporting.",
+          "nodes": [
+            {
+              "node_id": "401467",
+              "path": "subagents > Subagents > Common patterns > Multiple specialized subagents",
+              "title": "Multiple specialized subagents",
+              "keywords": [
+                "subagents",
+                "create_deep_agent",
+                "data-collector",
+                "data-analyzer",
+                "report-writer",
+                "system_prompt",
+                "tools",
+                "workflow",
+                "delegates"
+              ],
+              "summary": "Describes creating multiple specialized subagents (data-collector, data-analyzer, report-writer) for a coordinated data analysis and reporting workflow.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "b5e5a3",
+          "path": "subagents > Subagents > Troubleshooting",
+          "title": "Troubleshooting",
+          "keywords": [
+            "subagent",
+            "main agent",
+            "delegation",
+            "task() tool",
+            "context bloat",
+            "system_prompt",
+            "filesystem",
+            "quick-researcher",
+            "deep-researcher",
+            "troubleshooting"
+          ],
+          "summary": "Solutions for subagent delegation issues, context bloat, and incorrect subagent selection in multi-agent systems.",
+          "nodes": [
+            {
+              "node_id": "ec7989",
+              "path": "subagents > Subagents > Troubleshooting > Subagent not being called",
+              "title": "Subagent not being called",
+              "keywords": [
+                "subagent",
+                "main agent",
+                "delegation",
+                "task() tool",
+                "description",
+                "system prompt",
+                "create_deep_agent",
+                "context",
+                "complex tasks",
+                "web search"
+              ],
+              "summary": "Solutions for main agent not delegating tasks: improve subagent descriptions and instruct main agent to delegate using task() tool.",
+              "nodes": []
+            },
+            {
+              "node_id": "616558",
+              "path": "subagents > Subagents > Troubleshooting > Context still getting bloated",
+              "title": "Context still getting bloated",
+              "keywords": [
+                "subagents",
+                "context bloat",
+                "system_prompt",
+                "concise results",
+                "filesystem",
+                "raw data",
+                "analysis summary",
+                "troubleshooting"
+              ],
+              "summary": "Solutions for preventing context bloat in subagents: instruct concise outputs and use filesystem for large data.",
+              "nodes": []
+            },
+            {
+              "node_id": "39f081",
+              "path": "subagents > Subagents > Troubleshooting > Wrong subagent being selected",
+              "title": "Wrong subagent being selected",
+              "keywords": [
+                "subagents",
+                "main agent",
+                "quick-researcher",
+                "deep-researcher",
+                "description",
+                "troubleshooting",
+                "selection",
+                "differentiation",
+                "research",
+                "task"
+              ],
+              "summary": "Addresses the issue of the main agent incorrectly selecting subagents by recommending clear differentiation in their descriptions, such as distinguishing between quick and deep research tasks.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

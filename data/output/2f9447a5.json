@@ -1,0 +1,36 @@
+{
+  "doc_id": "2f9447a5",
+  "doc_name": "install",
+  "summary": "Instructions for installing the LangGraph package and its optional LangChain integration, including commands for pip and uv.",
+  "keywords": [
+    "LangGraph",
+    "pip",
+    "uv",
+    "LangChain",
+    "installation",
+    "LLMs",
+    "tools",
+    "integrations",
+    "Python 3.10+"
+  ],
+  "structure": [
+    {
+      "node_id": "c824ba22",
+      "path": "install > Install LangGraph",
+      "title": "Install LangGraph",
+      "keywords": [
+        "LangGraph",
+        "pip",
+        "uv",
+        "LangChain",
+        "installation",
+        "LLMs",
+        "tools",
+        "integrations",
+        "Python 3.10+"
+      ],
+      "summary": "Instructions for installing the base LangGraph package and optional LangChain integration, including pip and uv commands.",
+      "nodes": []
+    }
+  ]
+}

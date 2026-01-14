@@ -1,0 +1,243 @@
+{
+  "doc_id": "4b095f4e",
+  "doc_name": "human-in-the-loop",
+  "summary": "Configures human approval for sensitive tool operations using LangGraph's interrupt capabilities, covering basic setup, decision types, and handling multiple tool calls.",
+  "keywords": [
+    "interrupt_on",
+    "allowed_decisions",
+    "tool",
+    "create_deep_agent",
+    "checkpointer",
+    "MemorySaver",
+    "approve",
+    "edit",
+    "reject",
+    "subagent"
+  ],
+  "structure": [
+    {
+      "node_id": "562fdc",
+      "path": "human-in-the-loop > Human-in-the-loop",
+      "title": "Human-in-the-loop",
+      "keywords": [
+        "interrupt_on",
+        "allowed_decisions",
+        "tool",
+        "create_deep_agent",
+        "checkpointer",
+        "MemorySaver",
+        "approve",
+        "edit",
+        "reject",
+        "subagent"
+      ],
+      "summary": "Configures human approval for sensitive tool operations using LangGraph's interrupt capabilities, covering basic setup, decision types, and handling multiple tool calls.",
+      "nodes": [
+        {
+          "node_id": "511d5a",
+          "path": "human-in-the-loop > Human-in-the-loop > Basic configuration",
+          "title": "Basic configuration",
+          "keywords": [
+            "interrupt_on",
+            "allowed_decisions",
+            "tool",
+            "create_deep_agent",
+            "checkpointer",
+            "MemorySaver",
+            "approve",
+            "edit",
+            "reject",
+            "configuration"
+          ],
+          "summary": "Configures the `interrupt_on` parameter to enable, disable, or customize human-in-the-loop interrupts for specific tools in an agent.",
+          "nodes": []
+        },
+        {
+          "node_id": "17e37b",
+          "path": "human-in-the-loop > Human-in-the-loop > Decision types",
+          "title": "Decision types",
+          "keywords": [
+            "allowed_decisions",
+            "approve",
+            "edit",
+            "reject",
+            "tool call",
+            "human review",
+            "interrupt_on",
+            "delete_file",
+            "write_file",
+            "critical_operation"
+          ],
+          "summary": "Describes the allowed_decisions list for human review of tool calls, including approve, edit, and reject options, with configurable settings per tool.",
+          "nodes": []
+        },
+        {
+          "node_id": "238472",
+          "path": "human-in-the-loop > Human-in-the-loop > Handle interrupts",
+          "title": "Handle interrupts",
+          "keywords": [
+            "__interrupt__",
+            "action_requests",
+            "review_configs",
+            "Command(resume)",
+            "configurable",
+            "thread_id",
+            "agent.invoke",
+            "allowed_decisions",
+            "decisions"
+          ],
+          "summary": "Demonstrates handling agent execution interrupts by checking for pending actions, displaying them to the user for review, and resuming with user decisions.",
+          "nodes": []
+        },
+        {
+          "node_id": "6676d9",
+          "path": "human-in-the-loop > Human-in-the-loop > Multiple tool calls",
+          "title": "Multiple tool calls",
+          "keywords": [
+            "agent",
+            "interrupt",
+            "tool calls",
+            "approve",
+            "reject",
+            "action_requests",
+            "decisions",
+            "Command",
+            "invoke",
+            "configurable"
+          ],
+          "summary": "Demonstrates handling multiple tool call approvals in a single interrupt, requiring sequential decisions.",
+          "nodes": []
+        },
+        {
+          "node_id": "cb8f57",
+          "path": "human-in-the-loop > Human-in-the-loop > Edit tool arguments",
+          "title": "Edit tool arguments",
+          "keywords": [
+            "edit",
+            "tool arguments",
+            "allowed decisions",
+            "action_request",
+            "args",
+            "agent.invoke",
+            "Command",
+            "decisions",
+            "__interrupt__"
+          ],
+          "summary": "Demonstrates how to edit tool arguments, such as email recipient, before execution when 'edit' is an allowed decision.",
+          "nodes": []
+        },
+        {
+          "node_id": "41144b",
+          "path": "human-in-the-loop > Human-in-the-loop > Subagent interrupts",
+          "title": "Subagent interrupts",
+          "keywords": [
+            "subagent",
+            "interrupt_on",
+            "create_deep_agent",
+            "tools",
+            "override",
+            "configuration",
+            "main agent",
+            "file-manager",
+            "approval",
+            "interrupt"
+          ],
+          "summary": "Subagents can override the main agent's interrupt settings with their own `interrupt_on` configuration for specific tools.",
+          "nodes": []
+        },
+        {
+          "node_id": "c9bedf",
+          "path": "human-in-the-loop > Human-in-the-loop > Best practices",
+          "title": "Best practices",
+          "keywords": [
+            "checkpointer",
+            "thread_id",
+            "action_requests",
+            "interrupt_on",
+            "allowed_decisions",
+            "MemorySaver",
+            "langgraph",
+            "create_deep_agent",
+            "Command",
+            "get_user_decision"
+          ],
+          "summary": "Best practices for human-in-the-loop agents, covering checkpoints, thread IDs, decision-action order matching, and risk-based interrupt configurations.",
+          "nodes": [
+            {
+              "node_id": "901443",
+              "path": "human-in-the-loop > Human-in-the-loop > Best practices > Always use a checkpointer",
+              "title": "Always use a checkpointer",
+              "keywords": [
+                "checkpointer",
+                "MemorySaver",
+                "human-in-the-loop",
+                "agent state",
+                "interrupt",
+                "resume",
+                "langgraph",
+                "create_deep_agent",
+                "persist"
+              ],
+              "summary": "Using a checkpointer is essential for human-in-the-loop to save agent state between interruptions and resumptions.",
+              "nodes": []
+            },
+            {
+              "node_id": "528268",
+              "path": "human-in-the-loop > Human-in-the-loop > Best practices > Use the same thread ID",
+              "title": "Use the same thread ID",
+              "keywords": [
+                "thread_id",
+                "config",
+                "agent",
+                "resume",
+                "invoke",
+                "configurable",
+                "Command"
+              ],
+              "summary": "Explains the necessity of using the same thread ID when resuming an agent interaction to maintain continuity.",
+              "nodes": []
+            },
+            {
+              "node_id": "1cf073",
+              "path": "human-in-the-loop > Human-in-the-loop > Best practices > Match decision order to actions",
+              "title": "Match decision order to actions",
+              "keywords": [
+                "action_requests",
+                "decisions",
+                "__interrupt__",
+                "get_user_decision",
+                "agent.invoke",
+                "Command",
+                "resume",
+                "interrupts",
+                "user decision",
+                "order matching"
+              ],
+              "summary": "Ensures decisions list order matches action_requests for proper handling of user interruptions in agent interactions.",
+              "nodes": []
+            },
+            {
+              "node_id": "7b2cf7",
+              "path": "human-in-the-loop > Human-in-the-loop > Best practices > Tailor configurations by risk",
+              "title": "Tailor configurations by risk",
+              "keywords": [
+                "interrupt_on",
+                "allowed_decisions",
+                "approve",
+                "edit",
+                "reject",
+                "delete_file",
+                "send_email",
+                "write_file",
+                "read_file",
+                "list_files"
+              ],
+              "summary": "Configure human-in-the-loop tools with different interrupt levels based on risk: high risk allows approve/edit/reject, medium risk allows approve/reject, low risk has no interrupts.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -22,31 +22,49 @@ search_model = ChatOpenAI(
 )
 
 grade_model = ChatOpenAI(
-    model="Qwen/Qwen3-32B",
+    model="MiniMaxAI/MiniMax-M2",
     temperature=0
 )
 
 
 def select_docs(state: State):
     class output(BaseModel):
-        doc_ids: List[str] = Field(description="相关文档的doc_id")
+        doc_ids: List[str] = Field(description="选中的相关文档 ID 列表")
+        reasoning: str = Field(description="简要说明为什么选择这些文档，以及它们如何覆盖用户的问题")
 
-    system_prompt = f"""你是一个 LangChain 生态系统的语义路由专家。
-    你的任务是分析用户的提问，仔细阅读目录中对每个文件的summary和keywords，从提供的目录列表中挑选出所有可能回答用户问题的doc_id。
-
-    【操作指南】：
-    1. 优先选择直接相关的技术模块。
-    2. 仅输出目录中的doc_id组成的列表。如果没有任何标签相关，请返回空列表 []。
-    
-    langchain生态文档目录如下：
-    {global_index}"""
-
+    # 1. 提取 Query
     query = state["query"]
+
+    # 2. 优化后的系统提示词
+    system_prompt = f"""你是一个专业的技术文档路由专家。
+    你的任务是阅读【文档索引库】，并根据用户的【搜索意图】，挑选出所有可能包含答案的文档 `doc_id`。
+    
+    ### 角色逻辑：
+    - 你不仅看关键词匹配，更要理解技术组件之间的依赖关系。
+    - 采用“宁可稍微扩大范围，也不漏掉关键文档”的策略（High Recall）。
+    
+    ### 文档索引库 (Global Index):
+    {global_index}
+    
+    ### 筛选准则：
+    1. **直接关联**：文档的 `keywords` 或 `summary` 直接提到了问题中的技术名词。
+    2. **场景关联**：用户描述的是一个场景（如“部署”），你需要关联到相关的 `cli`、`backends` 或 `quickstart` 等文档。
+    3. **概念覆盖**：如果问题涉及底层原理，挑选 `overview` 或 `concepts` 类文档。
+    
+    ### 输出要求：
+    - 必须返回 `doc_ids` 列表。
+    - 如果用户的问题完全属于闲聊或与本技术栈毫无关系，请返回空列表 []。
+    """
+
+    # 3. 执行调用
     response = search_model.with_structured_output(schema=output).invoke([
-        SystemMessage(
-            content=system_prompt),
-        HumanMessage(content=f"这是提问'{query}'")
+        SystemMessage(content=system_prompt),
+        HumanMessage(content=f"用户的搜索意图：'{query}'\n请给出最相关的文档列表。")
     ])
+
+    print(f"--- [Router] 选定的文档: {response.doc_ids} ---")
+    print(f"--- [Router] 理由: {response.reasoning} ---")
+
     return {"doc_ids": response.doc_ids}
 
 
@@ -78,7 +96,8 @@ def select_nodes(state: State):
         """
         for tree_structure in trees]
     msg_list = [
-        [SystemMessage(content=system_prompt), HumanMessage(content=f"用户的问题是：'{query}'。请给出最相关的 node_id列表。")]
+        [SystemMessage(content=system_prompt),
+         HumanMessage(content=f"用户的问题是：'{query}'。请给出最相关的 node_id列表。")]
         for system_prompt in system_prompt_list]
     # 调用模型
     response_list = search_model.with_structured_output(schema=output).batch(msg_list)
@@ -93,7 +112,7 @@ def select_nodes(state: State):
 def grade_node_content(state: State):
     class output(BaseModel):
         ans: Literal["yes", "no"] = Field(description="判断内容是否能回答问题或与问题高度相关")
-        # reason: str = Field(description="简要解释判断理由（可选，用于调试）")
+        reason: str = Field(description="简要解释判断理由（可选，用于调试）")
 
     node_ids = state["node_ids"]
     if not node_ids:
@@ -110,27 +129,27 @@ def grade_node_content(state: State):
 
         # 核心优化：提供多维度的上下文
         system_prompt = f"""你是一个专业的技术文档审查专家。
-你的任务是判断下方提供的【文档片段】是否包含足够的信息来回答、或者与用户的【问题】直接相关。
-
-【评分标准】：
-1. 能够直接回答用户的问题或提供操作步骤 -> yes
-2. 虽然不能完全回答，但提供了关键背景、定义或相关的配置参数 -> yes
-3. 内容仅提及关键词但属于无关主题，或者内容完全为空 -> no
-4. 内容是无法理解的代码片段或目录列表且无解释说明 -> no
-
-【用户的原始问题】：
-{query}
-"""
+        你的任务是判断下方提供的【文档片段】是否包含足够的信息来回答、或者与用户的【问题】直接相关。
+        
+        【评分标准】：
+        1. 能够直接回答用户的问题或提供操作步骤 -> yes
+        2. 虽然不能完全回答，但提供了关键背景、定义或相关的配置参数 -> yes
+        3. 内容仅提及关键词但属于无关主题，或者内容完全为空 -> no
+        4. 内容是无法理解的代码片段或目录列表且无解释说明 -> no
+        
+        【用户的原始问题】：
+        {query}
+        """
 
         user_content = f"""
-### 待评估文档信息：
-- 章节路径: {node.get('path', '未知')}
-- 章节核心摘要: {node.get('summary', '无')}
-- 核心内容: 
----
-{node.get('content', '')}
----
-"""
+        ### 待评估文档信息：
+        - 章节路径: {node.get('path', '未知')}
+        - 核心内容: 
+        ---
+        {node.get('content', '')}
+        ---
+        """
+
         msg_list.append([
             SystemMessage(content=system_prompt),
             HumanMessage(content=user_content)
@@ -142,7 +161,7 @@ def grade_node_content(state: State):
     final_nodes = []
     for i, response in enumerate(response_list):
         print(response.ans)
-        # print(response.reason)
+        print(response.reason)
 
         if response.ans == "yes":
             # 返回完整的节点对象，方便后续 Agent 引用 path 和 content

@@ -1,0 +1,246 @@
+{
+  "doc_id": "f4cfe9fe",
+  "doc_name": "sql-agent",
+  "summary": "A tutorial on building a custom SQL agent with LangGraph for database querying, covering setup, tool integration, workflow implementation, and human-in-the-loop review.",
+  "keywords": [
+    "LangGraph",
+    "SQL agent",
+    "SQLDatabaseToolkit",
+    "StateGraph",
+    "ToolNode",
+    "human-in-the-loop",
+    "Chinook database",
+    "conditional edge",
+    "MessagesState",
+    "Graph API"
+  ],
+  "structure": [
+    {
+      "node_id": "29313dad",
+      "path": "sql-agent > Build a custom SQL agent",
+      "title": "Build a custom SQL agent",
+      "keywords": [
+        "LangGraph",
+        "SQL agent",
+        "SQLDatabaseToolkit",
+        "StateGraph",
+        "ToolNode",
+        "human-in-the-loop",
+        "Chinook database",
+        "conditional edge",
+        "MessagesState",
+        "Graph API"
+      ],
+      "summary": "A tutorial on building a custom SQL agent with LangGraph for database querying, covering setup, tool integration, workflow implementation, and human-in-the-loop review.",
+      "nodes": [
+        {
+          "node_id": "052635d9",
+          "path": "sql-agent > Build a custom SQL agent > Concepts",
+          "title": "Concepts",
+          "keywords": [
+            "SQL agent",
+            "Tools",
+            "SQL databases",
+            "LangGraph",
+            "Graph API",
+            "state",
+            "nodes",
+            "edges",
+            "conditional edges",
+            "human-in-the-loop"
+          ],
+          "summary": "Introduces key concepts for building a custom SQL agent, including tools for SQL databases, the LangGraph Graph API, and human-in-the-loop processes.",
+          "nodes": []
+        },
+        {
+          "node_id": "6d108a83",
+          "path": "sql-agent > Build a custom SQL agent > Setup",
+          "title": "Setup",
+          "keywords": [
+            "pip",
+            "langchain",
+            "langgraph",
+            "langchain-community",
+            "LangSmith",
+            "LANGSMITH_TRACING",
+            "LANGSMITH_API_KEY",
+            "SQL agent",
+            "custom agent",
+            "environment variables"
+          ],
+          "summary": "Setup instructions for a custom SQL agent, including installation via pip and LangSmith configuration for monitoring.",
+          "nodes": [
+            {
+              "node_id": "fec8fcd4",
+              "path": "sql-agent > Build a custom SQL agent > Setup > Installation",
+              "title": "Installation",
+              "keywords": [
+                "pip",
+                "langchain",
+                "langgraph",
+                "langchain-community",
+                "installation",
+                "SQL agent",
+                "custom agent",
+                "setup"
+              ],
+              "summary": "Installation instructions for setting up a custom SQL agent using pip to install LangChain, LangGraph, and LangChain-Community.",
+              "nodes": []
+            },
+            {
+              "node_id": "94f3da7f",
+              "path": "sql-agent > Build a custom SQL agent > Setup > LangSmith",
+              "title": "LangSmith",
+              "keywords": [
+                "LangSmith",
+                "environment variables",
+                "LANGSMITH_TRACING",
+                "LANGSMITH_API_KEY",
+                "chain",
+                "agent",
+                "monitoring",
+                "debugging",
+                "setup"
+              ],
+              "summary": "Instructions for setting up LangSmith to monitor and debug SQL agent chains by configuring environment variables.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0b052090",
+          "path": "sql-agent > Build a custom SQL agent > 1. Select an LLM",
+          "title": "1. Select an LLM",
+          "keywords": [
+            "init_chat_model",
+            "ChatOpenAI",
+            "ChatAnthropic",
+            "AzureChatOpenAI",
+            "ChatGoogleGenerativeAI",
+            "ChatBedrock",
+            "ChatHuggingFace",
+            "tool-calling",
+            "LangChain",
+            "API key"
+          ],
+          "summary": "Instructions for selecting and initializing LLMs with tool-calling support from various providers (OpenAI, Anthropic, Azure, Google Gemini, AWS Bedrock, HuggingFace) using LangChain.",
+          "nodes": []
+        },
+        {
+          "node_id": "7e026d16",
+          "path": "sql-agent > Build a custom SQL agent > 2. Configure the database",
+          "title": "2. Configure the database",
+          "keywords": [
+            "SQLite",
+            "Chinook database",
+            "SQLDatabase",
+            "langchain_community",
+            "database wrapper",
+            "sample database",
+            "GCS bucket",
+            "SQL queries",
+            "database setup",
+            "Chinook.db"
+          ],
+          "summary": "This section guides users to set up a SQLite database for the tutorial by downloading the sample Chinook database and using LangChain's SQLDatabase wrapper to interact with it.",
+          "nodes": []
+        },
+        {
+          "node_id": "95220a00",
+          "path": "sql-agent > Build a custom SQL agent > 3. Add tools for database interactions",
+          "title": "3. Add tools for database interactions",
+          "keywords": [
+            "SQLDatabaseToolkit",
+            "sql_db_query",
+            "sql_db_schema",
+            "sql_db_list_tables",
+            "sql_db_query_checker",
+            "langchain_community",
+            "agent_toolkits",
+            "database wrapper",
+            "SQL query",
+            "tool description"
+          ],
+          "summary": "Introduces using SQLDatabaseToolkit from langchain_community to add tools for database interactions, including query execution, schema viewing, table listing, and query validation.",
+          "nodes": []
+        },
+        {
+          "node_id": "3181a3ab",
+          "path": "sql-agent > Build a custom SQL agent > 4. Define application steps",
+          "title": "4. Define application steps",
+          "keywords": [
+            "ToolNode",
+            "sql_db_schema",
+            "sql_db_query",
+            "sql_db_list_tables",
+            "generate_query_system_prompt",
+            "check_query_system_prompt",
+            "bind_tools",
+            "tool_choice",
+            "MessagesState",
+            "AIMessage"
+          ],
+          "summary": "Defines custom nodes for a SQL agent's key steps: listing tables, getting schema, generating queries, and checking queries, with code examples for each.",
+          "nodes": []
+        },
+        {
+          "node_id": "37ba1e7d",
+          "path": "sql-agent > Build a custom SQL agent > 5. Implement the agent",
+          "title": "5. Implement the agent",
+          "keywords": [
+            "Graph API",
+            "StateGraph",
+            "conditional edge",
+            "MessagesState",
+            "agent.compile()",
+            "agent.stream()",
+            "sql_db_schema",
+            "sql_db_query",
+            "LangGraph",
+            "workflow"
+          ],
+          "summary": "Assembles a custom SQL agent workflow using LangGraph's Graph API, defining conditional edges for query generation and execution, and demonstrates its invocation with a sample query.",
+          "nodes": []
+        },
+        {
+          "node_id": "22ef5d7e",
+          "path": "sql-agent > Build a custom SQL agent > 6. Implement human-in-the-loop review",
+          "title": "6. Implement human-in-the-loop review",
+          "keywords": [
+            "LangGraph",
+            "interrupt",
+            "human-in-the-loop",
+            "SQL query",
+            "persistence layer",
+            "ToolNode",
+            "checkpointer",
+            "Command",
+            "StateGraph",
+            "RunnableConfig"
+          ],
+          "summary": "Demonstrates implementing human-in-the-loop review for SQL agent queries using LangGraph's interrupt and persistence features to pause execution for approval, editing, or feedback.",
+          "nodes": []
+        },
+        {
+          "node_id": "4b90850e",
+          "path": "sql-agent > Build a custom SQL agent > Next steps",
+          "title": "Next steps",
+          "keywords": [
+            "LangSmith",
+            "LangGraph",
+            "SQL agent",
+            "evaluate",
+            "MCP",
+            "Claude",
+            "VSCode",
+            "documentation",
+            "GitHub",
+            "integration"
+          ],
+          "summary": "Guidance on evaluating SQL agents and LangGraph applications using LangSmith, with additional resources for documentation editing and integration.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}

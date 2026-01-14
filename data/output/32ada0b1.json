@@ -1,0 +1,492 @@
+{
+  "doc_id": "32ada0b1",
+  "doc_name": "persistence",
+  "summary": "LangGraph's persistence layer uses checkpointers to save graph state snapshots in threads, enabling human-in-the-loop, memory, time travel, and fault-tolerance.",
+  "keywords": [
+    "checkpointers",
+    "threads",
+    "checkpoint",
+    "StateSnapshot",
+    "Memory Store",
+    "InMemorySaver",
+    "SqliteSaver",
+    "PostgresSaver",
+    "human-in-the-loop",
+    "fault-tolerance"
+  ],
+  "structure": [
+    {
+      "node_id": "78fb81e1",
+      "path": "persistence > Persistence",
+      "title": "Persistence",
+      "keywords": [
+        "checkpointers",
+        "threads",
+        "checkpoint",
+        "StateSnapshot",
+        "Memory Store",
+        "InMemorySaver",
+        "SqliteSaver",
+        "PostgresSaver",
+        "human-in-the-loop",
+        "fault-tolerance"
+      ],
+      "summary": "LangGraph's persistence layer uses checkpointers to save graph state snapshots in threads, enabling human-in-the-loop, memory, time travel, and fault-tolerance.",
+      "nodes": [
+        {
+          "node_id": "ad0e2909",
+          "path": "persistence > Persistence > Threads",
+          "title": "Threads",
+          "keywords": [
+            "thread",
+            "thread_id",
+            "checkpointer",
+            "checkpoint",
+            "state",
+            "run",
+            "persistence",
+            "interrupt",
+            "configurable",
+            "LangSmith API"
+          ],
+          "summary": "Threads are unique identifiers for checkpoints in LangGraph, storing graph state and enabling state persistence and retrieval via thread_id.",
+          "nodes": []
+        },
+        {
+          "node_id": "f834c3d3",
+          "path": "persistence > Persistence > Checkpoints",
+          "title": "Checkpoints",
+          "keywords": [
+            "StateSnapshot",
+            "checkpoint",
+            "PregelTask",
+            "thread_id",
+            "configurable",
+            "get_state",
+            "get_state_history",
+            "replay",
+            "update_state",
+            "InMemorySaver"
+          ],
+          "summary": "Defines checkpoints as thread state snapshots (StateSnapshot) in LangGraph, detailing their properties, persistence, and usage for state restoration and replay.",
+          "nodes": [
+            {
+              "node_id": "5d09b914",
+              "path": "persistence > Persistence > Checkpoints > Get state",
+              "title": "Get state",
+              "keywords": [
+                "graph.get_state",
+                "StateSnapshot",
+                "thread_id",
+                "checkpoint_id",
+                "configurable",
+                "checkpoint",
+                "metadata",
+                "values",
+                "parent_config",
+                "tasks"
+              ],
+              "summary": "Retrieves the latest or a specific checkpointed state of a graph using a thread identifier, returning a StateSnapshot object.",
+              "nodes": []
+            },
+            {
+              "node_id": "1ee3d48d",
+              "path": "persistence > Persistence > Checkpoints > Get state history",
+              "title": "Get state history",
+              "keywords": [
+                "get_state_history",
+                "StateSnapshot",
+                "thread_id",
+                "checkpoint",
+                "PregelTask",
+                "configurable",
+                "metadata",
+                "CompiledStateGraph"
+              ],
+              "summary": "Explains how to retrieve the full chronological history of a graph execution thread using `graph.get_state_history()`, returning a list of StateSnapshot objects.",
+              "nodes": []
+            },
+            {
+              "node_id": "10ac5756",
+              "path": "persistence > Persistence > Checkpoints > Replay",
+              "title": "Replay",
+              "keywords": [
+                "LangGraph",
+                "replay",
+                "checkpoint_id",
+                "thread_id",
+                "graph.invoke",
+                "configurable",
+                "time-travel",
+                "execution",
+                "fork",
+                "step"
+              ],
+              "summary": "Explains how to replay a graph execution from a checkpoint in LangGraph, specifying required parameters and behavior.",
+              "nodes": []
+            },
+            {
+              "node_id": "4116592f",
+              "path": "persistence > Persistence > Checkpoints > Update state",
+              "title": "Update state",
+              "keywords": [
+                "update_state",
+                "config",
+                "thread_id",
+                "checkpoint_id",
+                "reducer",
+                "values",
+                "as_node",
+                "CompiledStateGraph",
+                "TypedDict",
+                "LangGraph"
+              ],
+              "summary": "Explains how to edit graph state using update_state, covering config, values, and as_node parameters.",
+              "nodes": [
+                {
+                  "node_id": "dfc9e31a",
+                  "path": "persistence > Persistence > Checkpoints > Update state > `config`",
+                  "title": "`config`",
+                  "keywords": [
+                    "config",
+                    "thread_id",
+                    "checkpoint_id",
+                    "update state",
+                    "fork"
+                  ],
+                  "summary": "Specifies thread_id for state updates, optionally checkpoint_id for forking.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "4a6f3c1d",
+                  "path": "persistence > Persistence > Checkpoints > Update state > `values`",
+                  "title": "`values`",
+                  "keywords": [
+                    "update_state",
+                    "reducer",
+                    "channel",
+                    "state",
+                    "CompiledStateGraph",
+                    "values",
+                    "graph",
+                    "schema",
+                    "TypedDict",
+                    "Annotated"
+                  ],
+                  "summary": "Explains how `update_state` uses `values` to update graph state, applying reducers where defined, with an example showing differential updates.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "2fd615f8",
+                  "path": "persistence > Persistence > Checkpoints > Update state > `as_node`",
+                  "title": "`as_node`",
+                  "keywords": [
+                    "as_node",
+                    "update_state",
+                    "CompiledStateGraph",
+                    "node",
+                    "checkpoints",
+                    "state update",
+                    "time-travel",
+                    "forking state",
+                    "next steps",
+                    "LangGraph"
+                  ],
+                  "summary": "Explains the optional `as_node` parameter in `update_state` to control the next node's execution by specifying the source node.",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "985b77b0",
+          "path": "persistence > Persistence > Memory Store",
+          "title": "Memory Store",
+          "keywords": [
+            "Memory Store",
+            "InMemoryStore",
+            "namespace",
+            "store.put",
+            "store.search",
+            "Semantic Search",
+            "embedding model",
+            "LangGraph",
+            "checkpointer",
+            "BaseStore"
+          ],
+          "summary": "Introduces the Memory Store for cross-thread data persistence in LangGraph, covering basic operations, semantic search, and integration with checkpoints.",
+          "nodes": [
+            {
+              "node_id": "4b7ef27b",
+              "path": "persistence > Persistence > Memory Store > Basic Usage",
+              "title": "Basic Usage",
+              "keywords": [
+                "InMemoryStore",
+                "namespace",
+                "store.put",
+                "store.search",
+                "Item",
+                "memory_id",
+                "key-value pair",
+                "timestamp",
+                "uuid",
+                "Python class"
+              ],
+              "summary": "Demonstrates basic operations of InMemoryStore, including initialization, namespace definition, memory storage with put, and retrieval with search.",
+              "nodes": []
+            },
+            {
+              "node_id": "bdd1a704",
+              "path": "persistence > Persistence > Memory Store > Semantic Search",
+              "title": "Semantic Search",
+              "keywords": [
+                "Semantic Search",
+                "InMemoryStore",
+                "embedding model",
+                "init_embeddings",
+                "fields",
+                "index",
+                "search",
+                "embed",
+                "dims",
+                "namespace_for_memory"
+              ],
+              "summary": "Enables semantic search in memory store using embedding models for natural language queries, with configurable fields for embedding.",
+              "nodes": []
+            },
+            {
+              "node_id": "1379e929",
+              "path": "persistence > Persistence > Memory Store > Using in LangGraph",
+              "title": "Using in LangGraph",
+              "keywords": [
+                "in_memory_store",
+                "LangGraph",
+                "checkpointer",
+                "BaseStore",
+                "RunnableConfig",
+                "semantic search",
+                "thread_id",
+                "user_id",
+                "namespace",
+                "store.search"
+              ],
+              "summary": "Explains how to integrate and use the in_memory_store with a checkpointer in LangGraph for cross-thread data persistence, including code examples for graph compilation, memory storage, retrieval via semantic search, and configuration for LangSmith.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "f23b70c1",
+          "path": "persistence > Persistence > Checkpointer libraries",
+          "title": "Checkpointer libraries",
+          "keywords": [
+            "BaseCheckpointSaver",
+            "InMemorySaver",
+            "SqliteSaver",
+            "PostgresSaver",
+            "SerializerProtocol",
+            "JsonPlusSerializer",
+            "EncryptedSerializer",
+            "AsyncSqliteSaver",
+            "AsyncPostgresSaver",
+            "StateSnapshot"
+          ],
+          "summary": "Introduces LangGraph's checkpointer libraries, including the base interface, in-memory, SQLite, and Postgres implementations for state persistence.",
+          "nodes": [
+            {
+              "node_id": "8474541d",
+              "path": "persistence > Persistence > Checkpointer libraries > Checkpointer interface",
+              "title": "Checkpointer interface",
+              "keywords": [
+                "BaseCheckpointSaver",
+                "put",
+                "put_writes",
+                "get_tuple",
+                "list",
+                "aput",
+                "aput_writes",
+                "aget_tuple",
+                "alist",
+                "StateSnapshot"
+              ],
+              "summary": "Defines the BaseCheckpointSaver interface with core methods for storing, fetching, and listing checkpoints, including async variants for asynchronous graph execution.",
+              "nodes": []
+            },
+            {
+              "node_id": "8dda26c7",
+              "path": "persistence > Persistence > Checkpointer libraries > Serializer",
+              "title": "Serializer",
+              "keywords": [
+                "Serializer",
+                "JsonPlusSerializer",
+                "pickle_fallback",
+                "EncryptedSerializer",
+                "LANGGRAPH_AES_KEY",
+                "ormsgpack",
+                "msgpack encoder",
+                "Pandas dataframes",
+                "serde",
+                "BaseCheckpointSaver"
+              ],
+              "summary": "Serializer objects serialize channel values for checkpointing, with default JsonPlusSerializer and options for pickle fallback and encryption.",
+              "nodes": [
+                {
+                  "node_id": "f52c78c0",
+                  "path": "persistence > Persistence > Checkpointer libraries > Serializer > Serialization with `pickle`",
+                  "title": "Serialization with `pickle`",
+                  "keywords": [
+                    "JsonPlusSerializer",
+                    "pickle_fallback",
+                    "ormsgpack",
+                    "JSON",
+                    "msgpack encoder",
+                    "Pandas dataframes",
+                    "InMemorySaver",
+                    "serde",
+                    "serializer",
+                    "checkpointer"
+                  ],
+                  "summary": "Describes using the `pickle_fallback` argument in `JsonPlusSerializer` to handle objects like Pandas dataframes not supported by the default msgpack encoder.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "dcbbe726",
+                  "path": "persistence > Persistence > Checkpointer libraries > Serializer > Encryption",
+                  "title": "Encryption",
+                  "keywords": [
+                    "EncryptedSerializer",
+                    "BaseCheckpointSaver",
+                    "from_pycryptodome_aes",
+                    "LANGGRAPH_AES_KEY",
+                    "CipherProtocol",
+                    "SqliteSaver",
+                    "PostgresSaver",
+                    "serde",
+                    "encryption",
+                    "AES key"
+                  ],
+                  "summary": "Describes how to enable optional encryption for persisted state in checkpointers using EncryptedSerializer, typically via environment variable LANGGRAPH_AES_KEY.",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "8fa3418d",
+          "path": "persistence > Persistence > Capabilities",
+          "title": "Capabilities",
+          "keywords": [
+            "checkpointers",
+            "human-in-the-loop",
+            "memory",
+            "time travel",
+            "fault-tolerance",
+            "graph steps",
+            "superstep",
+            "state",
+            "debug",
+            "error recovery"
+          ],
+          "summary": "Checkpointers in LangGraph enable human-in-the-loop workflows, memory retention, time travel for debugging, and fault-tolerance in graph executions.",
+          "nodes": [
+            {
+              "node_id": "679f20a8",
+              "path": "persistence > Persistence > Capabilities > Human-in-the-loop",
+              "title": "Human-in-the-loop",
+              "keywords": [
+                "checkpointers",
+                "human-in-the-loop",
+                "workflows",
+                "graph steps",
+                "state",
+                "inspection",
+                "interruption",
+                "approval",
+                "resume execution",
+                "how-to guides"
+              ],
+              "summary": "Checkpointers enable human-in-the-loop workflows by allowing inspection, interruption, and approval of graph steps, with state viewing and resumable execution.",
+              "nodes": []
+            },
+            {
+              "node_id": "0d2bebe4",
+              "path": "persistence > Persistence > Capabilities > Memory",
+              "title": "Memory",
+              "keywords": [
+                "checkpointers",
+                "memory",
+                "interactions",
+                "conversations",
+                "thread",
+                "follow-up messages",
+                "retention",
+                "human interactions"
+              ],
+              "summary": "Checkpointers enable memory retention between interactions, allowing follow-up messages in conversations to recall previous ones.",
+              "nodes": []
+            },
+            {
+              "node_id": "9f07b102",
+              "path": "persistence > Persistence > Capabilities > Time Travel",
+              "title": "Time Travel",
+              "keywords": [
+                "checkpointers",
+                "time travel",
+                "graph executions",
+                "debug",
+                "fork",
+                "graph state",
+                "checkpoints",
+                "replay",
+                "alternative trajectories"
+              ],
+              "summary": "Checkpointers enable time travel for replaying and debugging prior graph executions, and allow forking graph state at checkpoints to explore alternative trajectories.",
+              "nodes": []
+            },
+            {
+              "node_id": "acec1e39",
+              "path": "persistence > Persistence > Capabilities > Fault-tolerance",
+              "title": "Fault-tolerance",
+              "keywords": [
+                "LangGraph",
+                "checkpointing",
+                "fault-tolerance",
+                "superstep",
+                "graph node",
+                "pending writes",
+                "error recovery",
+                "graph execution",
+                "mid-execution failure",
+                "successful nodes"
+              ],
+              "summary": "LangGraph's checkpointing enables fault-tolerance by allowing restart from the last successful superstep and storing pending writes from successful nodes to avoid re-execution after failures.",
+              "nodes": [
+                {
+                  "node_id": "67e1a45a",
+                  "path": "persistence > Persistence > Capabilities > Fault-tolerance > Pending writes",
+                  "title": "Pending writes",
+                  "keywords": [
+                    "LangGraph",
+                    "graph node",
+                    "superstep",
+                    "checkpoint writes",
+                    "fault-tolerance",
+                    "pending writes",
+                    "graph execution",
+                    "resume",
+                    "mid-execution failure",
+                    "successful nodes"
+                  ],
+                  "summary": "LangGraph stores pending checkpoint writes from successful nodes when a node fails mid-execution, preventing re-execution upon resumption.",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
