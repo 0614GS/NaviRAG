@@ -1,4 +1,4 @@
-# 🚀 Vectorless RAG：层级推理检索增强生成系统
+# 🚀 NaviRAG：层级推理检索增强生成系统
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
