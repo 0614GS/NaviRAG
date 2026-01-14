@@ -97,6 +97,7 @@ print(response)
 │   ├── fs_store/
 │   │   ├── docs/           # 文档树存储 (doc_id -> tree)
 │   │   └── nodes/          # 原子正文存储 (node_id -> text)
+│   ├── md2tree.py          # Markdown 解析与索引构建脚本
 │   └── storage.py          # 基于 Key-Value 的存储实现
 ├── core/
 │   ├── agent.py            # 主 Agent 逻辑，整合工具
