@@ -93,7 +93,7 @@ print(response)
 ```
 ├── data/
 │   ├── input/              # 原始 Markdown 文档
-│   ├── output/             # 文档导航树索引 (doc_id.json)
+│   ├── output/             # 文档导航树索引 (doc_id.json 以及 global_index.json)
 │   ├── fs_store/
 │   │   ├── docs/           # 文档树存储 (doc_id -> tree)
 │   │   └── nodes/          # 原子正文存储 (node_id -> text)
@@ -109,9 +109,7 @@ print(response)
 │   ├── tools/              # 工具模块，包括检索器
 │   │   └── local_retriever.py # 本地检索工具
 │   └── mcp_clients/        # MCP 客户端实现
-├── global_index.json       # 全局顶级索引 (doc_id, summary, keywords)
 ├── requirements.txt        # Python 依赖
-├── AGENTS.md               # 开发指南和流程
 └── README.md               # 本文件
 ```
 
