@@ -1,4 +1,6 @@
 .env
 .idea
+.langgraph_api
 __pycache__/
 /opencode.json
+/langgraph.json
