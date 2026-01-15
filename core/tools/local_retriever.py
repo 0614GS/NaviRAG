@@ -4,7 +4,7 @@ from langchain_core.tools import tool
 from core.workflow.graph import search_workflow
 
 
-@tool("search_local_docs", description="从本地中获取langchain官方文档的关于问题的相关片段")
+@tool("search_local_docs", description="从本地中获取langchain官方文档的关于问题的相关片段，优先使用此工具获取有关langchain文档的信息")
 def search_local_docs(query: str) -> list[str]:
     """
     :param query: 想要查询的相关内容，要足够具体
