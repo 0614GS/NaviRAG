@@ -2,7 +2,12 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688.svg)](https://fastapi.tiangolo.com/)
+[![LangChain](https://img.shields.io/badge/LangChain-1.2-1c3c3c.svg)](https://www.langchain.com/)
+[![LangGraph](https://img.shields.io/badge/LangGraph-1.0-1c3c3c.svg)](https://langchain-ai.github.io/langgraph/)
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169e1.svg)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/Docker-✓-2496ed.svg)](https://www.docker.com/)
 
 NaviRAG 是一个**层级推理检索增强生成（RAG）系统**，用文档树结构替代传统的向量嵌入检索。系统解析 Markdown 文档的 H1–H6 标题层级，由 LLM 自底向上生成摘要和关键词，构建导航树；在对话时，AI Agent 自主调用工具沿树探索，精准定位并阅读原文内容，最终给出有据可循的回答。
 
@@ -22,14 +27,24 @@ NaviRAG 是一个**层级推理检索增强生成（RAG）系统**，用文档�
 - **多轮对话**：会话历史自动持久化，切换对话不丢失上下文
 
 ### 技术栈
-| 层级 | 技术 |
-|------|------|
-| 后端框架 | FastAPI (Python 3.11+) |
-| AI 框架 | LangChain (ReAct Agent + 工具调用) |
-| ORM | SQLAlchemy 2.0 (异步 PostgreSQL) |
-| 数据库 | PostgreSQL 16 |
-| 前端 | React 19 + TypeScript + TailwindCSS 3 |
-| 部署 | Docker Compose (Nginx 反向代理 + SSE 支持) |
+
+| 层级 | 技术 | 版本 |
+|------|------|------|
+| 语言 | Python | 3.11+ |
+| Web 框架 | FastAPI | 0.115+ |
+| AI Agent | LangChain (ReAct + create_agent) | 1.2+ |
+| 工作流 | LangGraph | 1.0+ |
+| LLM 客户端 | langchain-openai | 0.3+ |
+| ORM | SQLAlchemy (异步) | 2.0+ |
+| 迁移 | Alembic | 1.13+ |
+| 数据库 | PostgreSQL | 16 |
+| 异步驱动 | asyncpg | 0.29+ |
+| 前端框架 | React | 19 |
+| 类型检查 | TypeScript | 5.7+ |
+| 构建工具 | Vite | 6 |
+| CSS | TailwindCSS | 3.4 |
+| Markdown 渲染 | react-markdown + remark-gfm | 10 / 4 |
+| 容器化 | Docker + Docker Compose | — |
 
 ---
 
