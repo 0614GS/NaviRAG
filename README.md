@@ -1,199 +1,192 @@
-# 🚀 NaviRAG：层级推理检索增强生成系统
+# NaviRAG — 基于树状结构的智能文档检索系统
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
 
-一个基于文档层级结构和大型语言模型（LLM）推理的检索增强生成（RAG）系统，摒弃传统向量嵌入，告别语义模糊，实现工业级文档检索精度。
+NaviRAG 是一个**层级推理检索增强生成（RAG）系统**，用文档树结构替代传统的向量嵌入检索。系统解析 Markdown 文档的 H1–H6 标题层级，由 LLM 自底向上生成摘要和关键词，构建导航树；在对话时，AI Agent 自主调用工具沿树探索，精准定位并阅读原文内容，最终给出有据可循的回答。
 
-## 💡 核心设计哲学
+---
 
-本项目摒弃了传统的"切片 → 向量化 → 相似度匹配"流程，采用 **树状推理** 路径：
+## 1. 功能特性
 
-* **结构感知索引**：自动解析 Markdown H1-H6 层级，保留文档血统和逻辑关联。
-* **自底向上合成**：节点摘要从底部向上汇聚。子节点关键词支撑父节点，父节点摘要浓缩子节点，形成全方位、多维度的导航树。
-* **全局到局部路由**：
-  1. 通过 `global_index.json` 确定文档范围。
-  2. 通过精简的 `doc_nav_tree` 导航到具体的 `node_id`。
-  3. 从 `node_content_store` 提取原子级正文。
-* **智能对话 Agent**：基于 LangChain Agent 框架，整合本地文档检索工具（search_local_docs）和外部 MCP 客户端工具，实现多工具协作的对话系统。Agent 能够理解用户查询，自动调用检索工作流获取相关文档片段，并结合其他工具生成准确回答。
+### 文档管理
+- **Markdown 上传与索引**：上传 `.md`/`.markdown`/`.txt` 文件，后台自动解析 H1–H6 标题树，LLM 生成逐层摘要和关键词，存入 PostgreSQL
+- **文档列表与状态跟踪**：实时查看索引状态（等待中 / 索引中 / 已索引 / 失败），支持删除和重新索引
+- **层级树浏览**：点击文档展开章节树，再点击任意节点即可查看原文内容
 
-## 🛠️ 技术特性
+### 智能对话
+- **Agentic 自主检索**：AI Agent 自主决定检索策略 — 先列出所有文档，再浏览相关文档的目录树，最后读取具体章节内容
+- **流式 SSE 输出**：实时展示 LLM token 生成过程，检索工具调用内联显示在回答中
+- **溯源引用**：回答末尾列出引用来源 `[1]` `[2]` …，点击即可查看原始文档内容
+- **多轮对话**：会话历史自动持久化，切换对话不丢失上下文
 
-- ✅ **Markdown 结构化解析**：自动构建树状结构，支持代码块过滤，防止内容干扰。
-- ✅ **双层索引机制**：
-  - **全局索引**：跨文档导航，快速定位相关文件。
-  - **本地导航树**：文档内导航，LLM 像读目录一样精准定位章节。
-- ✅ **原子级存储**：导航树与正文内容解耦，索引极其轻量（Token 消耗降低 80%）。
-- ✅ **Pydantic 强制 Schema**：所有 LLM 输出均经过格式验证，确保 Summary 与 Keywords 的稳定性。
-- ✅ **高性能并发处理**：采用异步 IO (`asyncio.gather`) 实现多文档、多节点的并行索引构建。
-- ✅ **对话 Agent**：集成检索工具，支持自然语言对话，结合本地文档检索和外部 MCP 工具。
+### 技术栈
+| 层级 | 技术 |
+|------|------|
+| 后端框架 | FastAPI (Python 3.11+) |
+| AI 框架 | LangChain (ReAct Agent + 工具调用) |
+| ORM | SQLAlchemy 2.0 (异步 PostgreSQL) |
+| 数据库 | PostgreSQL 16 |
+| 前端 | React 19 + TypeScript + TailwindCSS 3 |
+| 部署 | Docker Compose (Nginx 反向代理 + SSE 支持) |
 
-## 🎯 适用场景
+---
 
-NaviRAG 适用于需要精准、结构化文档检索和智能问答的场景：
+## 2. 核心原理
 
-- **文档格式**：目前仅支持markdown格式
-- **技术文档检索**：为编程框架（如 LangGraph）或 API 文档构建索引，实现精准章节定位和问题解答。
-- **企业知识库**：处理内部文档（如手册、指南），支持员工快速查询相关信息，避免信息过载。
-- **学术研究辅助**：分析论文或研究文档的层级结构，提供基于推理的检索，帮助研究者定位关键章节。
-- **智能客服系统**：结合本地文档和在线资源，构建对话 Agent，为用户提供多源信息的综合回答。
-- **内容创作工具**：为作家或编辑提供文档结构导航，帮助快速查找和引用相关内容。
+### 2.1 索引管道
 
-## 📋 系统要求
+```
+Markdown 文件 → md_parser (正则 H1–H6 解析，代码块过滤)
+              → 栈算法构建嵌套树 {title, content, children}
+              → process_tree_recursive (自底向上 LLM 元数据生成)
+              → 写入 PostgreSQL (documents + nodes)
+```
 
-- Python 3.10+
-- 依赖包见 `requirements.txt`
+**自底向上合成**：叶子节点先生成摘要和关键词，父节点汇总所有子节点信息后再生成自己的元数据。同级节点 LLM 调用并发执行（Semaphore(15) 控制并发）。
 
-## 🚀 快速开始
+**存储解耦**：
+- `documents` 表：存原始全文（`raw_content`）、文档级摘要、导航树结构（`tree_structure` JSONB，含每个节点的 `node_id`、`title`、`path`，不含正文）
+- `nodes` 表：存每个节点的完整正文（`content`）、摘要、关键词
+- 导航树与正文分离，LLM 浏览目录时 Token 消耗极低
 
-### 1. 环境设置
+### 2.2 Agentic 检索
+
+```
+用户提问 → Agent 接收查询 + 对话历史
+         → Agent 自主规划：list_documents → get_doc_tree → get_node_content
+         → 流式返回 tokens + 工具调用状态 + 溯源引用
+         → 保存回答到 chat_messages + source_references
+```
+
+**三个检索工具**：
+- `list_documents()` — 列出所有已索引文档的 ID、名称、摘要
+- `get_doc_tree(doc_id)` — 获取指定文档的完整目录树（无正文）
+- `get_node_content(node_ids)` — 批量获取节点的完整正文
+
+**中间件**：SummarizationMiddleware（压缩超长历史）、ToolRetryMiddleware（工具调用 3 次重试 + 指数退避）、ModelFallbackMiddleware（模型故障自动切换）
+
+### 2.3 与向量检索的本质区别
+
+| | 传统向量 RAG | NaviRAG |
+|---|---|---|
+| 索引方式 | Embedding → 向量相似度 | 文档树 → LLM 推理导航 |
+| 检索粒度 | 固定 chunk（语义断裂） | 原生章节（保留文档结构） |
+| 可解释性 | 黑盒分数排序 | 树路径 + 溯源引用 |
+| 跨文档 | 需额外路由逻辑 | 全局索引 + 逐文档探索 |
+
+---
+
+## 3. Docker 部署
+
+### 3.1 前期准备
 
 ```bash
-# 创建虚拟环境
-python -m venv venv
-
-# 激活环境
-# Windows
-venv\Scripts\activate
-# Unix/MacOS
-source venv/bin/activate
-
-# 安装依赖
-pip install -r requirements.txt
+git clone <repo-url>
+cd NaviRAG
 ```
 
-### 2. 构建文档索引
+在 `backend/` 目录下创建 `.env` 文件（参考 `.env.example`）：
 
-将要构建索引的 Markdown 文档放入 `/data/input` 文件夹，然后运行：
+```env
+# 数据库（Docker 模式使用组件方式配置）
+POSTGRES_SERVER=postgres
+POSTGRES_PORT=5432
+POSTGRES_USER=navirag
+POSTGRES_PASSWORD=navirag
+POSTGRES_DB=navirag
+
+# LLM API（OpenAI 兼容接口）
+OPENAI_API_KEY=your_api_key_here
+OPENAI_BASE_URL=https://api.openai.com/v1
+
+# 应用
+DEBUG=false
+```
+
+### 3.2 一键启动
 
 ```bash
-python data/md2tree.py
+docker compose -f docker/docker-compose.yml up -d
 ```
 
-系统将自动扫描文档，生成全局 ID，并构建多层级摘要。
+启动三个服务：
+- **postgres** — PostgreSQL 16，数据持久化在 `pgdata` 卷
+- **backend** — FastAPI 后端，端口 8000，等待 postgres 健康检查通过后启动
+- **frontend** — Nginx + React 前端，端口 80，反向代理 `/api/` 到后端
 
-### 3. 使用检索器
+### 3.3 数据库迁移
 
-```python
-# 输入：str = query
-# 输出：list = [node_1, node_2, ...]
+```bash
+# 进入 backend 目录
+cd backend
 
-# 检索器逻辑：
-# 1. 加载全局索引
-# 2. LLM 决策目标文档 (Doc Routing)
-# 3. 加载目标文档的轻量级 Tree
-# 4. LLM 决策目标节点 (Node Routing)
-# 5. LLM 评价节点内容 (Node Grading)
-# 6. 返回相关节点的内容
+# 执行迁移
+uv run alembic upgrade head
 ```
 
-### 4. 使用对话 Agent
+### 3.4 验证部署
 
-Agent 整合了本地文档检索和外部工具，支持对话式查询：
+```bash
+# 健康检查
+curl http://localhost:8000/api/v1/health
 
-```python
-from core.agent import agent
-
-# Agent 已预构建，包含本地检索工具和 MCP 客户端工具
-response = agent.invoke("如何使用长期记忆？")
-print(response)
+# 打开前端
+# 浏览器访问 http://localhost
 ```
 
-## 📂 项目结构
+### 3.5 本地开发
 
-```
-├── data/
-│   ├── input/              # 原始 Markdown 文档
-│   ├── output/             # 文档导航树索引 (doc_id.json 以及 global_index.json)
-│   ├── fs_store/
-│   │   ├── docs/           # 文档树存储 (doc_id -> tree)
-│   │   └── nodes/          # 原子正文存储 (node_id -> text)
-│   ├── md2tree.py          # Markdown 解析与索引构建脚本
-│   └── storage.py          # 基于 Key-Value 的存储实现
-├── core/
-│   ├── agent.py            # 主 Agent 逻辑，整合工具
-│   ├── workflow/           # LangGraph 节点处理逻辑
-│   │   ├── graph.py        # 检索工作流图
-│   │   ├── nodes.py        # 工作流节点实现
-│   │   ├── states.py       # 工作流状态定义
-│   │   └── prompts.py      # 提示词模板
-│   ├── models/             # 数据模型和模式
-│   ├── tools/              # 工具模块，包括检索器
-│   │   └── local_retriever.py # 本地检索工具
-│   └── mcp_clients/        # MCP 客户端实现
-├── requirements.txt        # Python 依赖
-└── README.md               # 本文件
+```bash
+# 1. 启动 PostgreSQL
+docker compose -f docker/docker-compose.yml up postgres -d
+
+# 2. 安装后端依赖 + 启动
+cd backend
+uv sync
+uv run alembic upgrade head
+uv run uvicorn app.main:app --reload --port 8000
+
+# 3. 安装前端依赖 + 启动
+cd frontend
+npm install
+npm run dev        # http://localhost:5173，API 自动代理到 localhost:8000
 ```
 
-## 🔄 工作流程
-
-### 索引构建流程
-
-基于 `md2tree.py`，索引构建采用以下步骤：
-
-1. **文档解析**：读取 Markdown 文件，使用正则表达式提取 H1-H6 标题及其内容，构建扁平节点列表，支持代码块过滤。
-2. **树状结构构建**：使用栈算法将扁平节点转换为嵌套树结构，保留层级关系。
-3. **元数据生成**：递归遍历树，自底向上使用 LLM 生成每个节点的摘要（summary）和关键词（keywords）。子节点信息用于增强父节点元数据，并发处理多个节点以提高效率。
-4. **全局索引生成**：为每个文档生成全局摘要和关键词，创建文档级索引（doc_id, summary, keywords）。
-5. **存储保存**：将导航树和原子级内容分别存储在 `doc_tree_store` 和 `node_content_store` 中。
-
-### Agent 回复生成原理
-
-Agent 基于 LangChain 的 `create_agent` 框架，实现多工具协作：
-
-- **工具集成**：整合本地检索工具 `search_local_docs`（调用 LangGraph 工作流进行文档检索）和外部 MCP 客户端工具（支持在线文档查询）。
-- **推理过程**：接收用户查询，Agent 使用 LLM 推理决定调用哪些工具。本地工具查询索引后的文档片段，MCP 工具查询在线资源。
-- **回复合成**：结合工具返回的结果，LLM 生成连贯的自然语言回答，实现本地和在线文档的无缝融合。
-
-### 节点索引 (Node Metadata)
-每个节点包含关键词，对信息密集的技术文档至关重要。节点在构建时会参考子节点信息：
-
-```json
-{
-  "node_id": "0006",
-  "path": "backends > Backends > Built-in backends > StoreBackend (LangGraph Store)",
-  "title": "StoreBackend (LangGraph Store)",
-  "keywords": ["StoreBackend", "LangGraph Store", "InMemoryStore", "BaseStore", "deep agents", "cross-thread storage"],
-  "summary": "Describes the configuration and usage of StoreBackend with LangGraph Store for durable cross-thread storage in deep agents.",
-  "nodes": []
-}
+本地开发时 `.env` 中的数据库配置使用：
+```env
+POSTGRES_SERVER=localhost   # 非 Docker 环境下用 localhost
+POSTGRES_PORT=5432
+POSTGRES_USER=navirag
+POSTGRES_PASSWORD=navirag
+POSTGRES_DB=navirag
 ```
 
-### 文档树（Doc Tree）
-每个文档有自己的 doc_id，它的树作为一个导航目录供 LLM 阅读：
+### 3.6 项目结构
 
-```json
-{
-  "doc_id": "doc_0001",
-  "doc_name": "backends",
-  "summary": "Configure and route filesystem backends for deep agents with policy enforcement, including built-in and custom options.",
-  "keywords": ["filesystem backends", "deep agent", "CompositeBackend", "BackendProtocol", "policy hooks", "virtual filesystem"],
-  "structure": [{"node_1": "node"}, {"node_2": "node"}]
-}
 ```
-
-### 全局索引
-每个文件的元数据列表 (doc_id, summary, keywords)：
-
-```json
-[
-  {
-    "doc_id": "doc_0001",
-    "doc_name": "backends",
-    "keywords": ["filesystem backends", "deep agent", "CompositeBackend", "BackendProtocol", "policy hooks", "virtual filesystem"],
-    "summary": "Configure and route filesystem backends for deep agents with policy enforcement, including built-in and custom options."
-  }
-]
+NaviRAG/
+├── backend/
+│   ├── app/
+│   │   ├── agent/          # ReAct Agent + 检索工具 + 中间件
+│   │   ├── api/v1/          # REST API: chat, documents, health
+│   │   ├── core/            # 共享模型定义
+│   │   ├── db/              # SQLAlchemy ORM + 查询函数
+│   │   ├── indexing/        # Markdown 解析 + LLM 元数据生成
+│   │   └── schemas/         # Pydantic 请求/响应模型
+│   ├── migrations/          # Alembic 数据库迁移
+│   ├── Dockerfile
+│   └── pyproject.toml
+├── frontend/
+│   ├── src/
+│   │   ├── components/      # React 组件
+│   │   ├── hooks/           # useChat 等自定义 Hook
+│   │   ├── api/             # API 客户端 + SSE 流解析
+│   │   └── types/           # TypeScript 类型定义
+│   ├── Dockerfile
+│   └── nginx.conf
+├── docker/
+│   └── docker-compose.yml
+└── README.md
 ```
-
-## 🤝 贡献
-
-欢迎贡献！请随时提交 Pull Request。
-
-## 📄 许可证
-
-本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件。
-
-## 🙏 致谢
-
-本项目参考了 [pageIndex](https://github.com/VectifyAI/PageIndex) 进行文档导航树构建。

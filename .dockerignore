@@ -1,3 +1,8 @@
+# Git
+.git/
+.gitignore
+.gitattributes
+
 # Environment
 .env
 .env.local
@@ -8,7 +13,6 @@
 .vscode/
 *.swp
 *.swo
-*~
 
 # Python
 __pycache__/
@@ -31,12 +35,23 @@ uploads/
 .DS_Store
 Thumbs.db
 
-# Misc
-*.log
-.langgraph_api
-langgraph.json
-opencode.json
-AGENTS.md
-
 # Docker
 docker-compose.override.yml
+Dockerfile
+.dockerignore
+docker/
+
+# Documentation
+CLAUDE.md
+README.md
+LICENSE
+AGENTS.md
+
+# Logs
+*.log
+
+# Misc
+data/
+core/
+opencode.json
+langgraph.json
