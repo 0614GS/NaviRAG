@@ -3,10 +3,10 @@
 from typing import Optional
 
 from langchain.agents import create_agent
-from langchain_openai import ChatOpenAI
 
 from app.agent.tools import list_documents, get_doc_tree, get_node_content
 from app.agent.middleware import get_middlewares
+from app.core.models import agent_model
 
 SYS_PROMPT = """你是一个技术文档助手，帮助用户理解和查找本地文档中的信息。
 
@@ -30,12 +30,6 @@ SYS_PROMPT = """你是一个技术文档助手，帮助用户理解和查找本�
 - 回答时标注信息来源（文档名称、章节路径）
 - 如果找不到相关内容，如实告知用户
 - 回答要简洁准确，直接回应用户的问题"""
-
-# Agent 模型不需要 JSON mode，ReAct 需要自由输出
-agent_model = ChatOpenAI(
-    model="deepseek-v4-flash",
-    temperature=0,
-)
 
 _agent: Optional = None
 

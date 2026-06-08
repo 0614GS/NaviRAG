@@ -29,7 +29,7 @@ async def index_document(doc_id: str, content: str, filename: str) -> str:
     print(f"[Pipeline] 开始索引文档: {filename} (ID: {doc_id})")
     print(f"{'='*60}")
 
-    # 1. 解析 Markdown → 树结构（纯 CPU，无 DB）
+    # 1. 解析 Markdown → 树结构
     tree_structure = parse_document(content)
     print(f"[Pipeline] 解析完成，共 {len(tree_structure)} 个顶层节点")
 

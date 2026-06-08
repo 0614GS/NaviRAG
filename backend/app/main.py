@@ -1,19 +1,13 @@
 """NaviRAG FastAPI 应用入口"""
 
-import os
 from contextlib import asynccontextmanager
 
-import dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.db.session import init_db, close_db
 from app.api.v1 import health, documents, chat
-
-dotenv.load_dotenv()
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY", settings.LLM_API_KEY)
-os.environ["OPENAI_BASE_URL"] = os.getenv("OPENAI_BASE_URL", settings.LLM_BASE_URL)
 
 
 @asynccontextmanager

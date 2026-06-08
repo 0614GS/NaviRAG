@@ -13,22 +13,10 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 
+from app.core.models import extract_model
+
 # 全局并发控制（控制 LLM 并发调用数量）
 _sem = asyncio.Semaphore(15)
-
-# 元数据提取模型（懒加载，避免导入时就需要 API key）
-_extract_model = None
-
-
-def _get_extract_model() -> ChatOpenAI:
-    global _extract_model
-    if _extract_model is None:
-        _extract_model = ChatOpenAI(
-            model="deepseek-v4-flash",
-            temperature=0,
-            model_kwargs={"response_format": {"type": "json_object"}},
-        )
-    return _extract_model
 
 
 class NodeMetadata(BaseModel):
@@ -50,7 +38,7 @@ async def generate_metadata_with_llm(
 ) -> Dict:
     """调用 LLM 生成 Summary 和 Keywords（使用 JSON mode）"""
     if model is None:
-        model = _get_extract_model()
+        model = extract_model
 
     system_prompt = """
     你是一个专业的技术文档分析助手。请根据提供的文档节点信息提取元数据。
@@ -213,7 +201,7 @@ async def generate_doc_overview(doc_name: str, top_level_nodes: List[Dict]) -> D
     max_retries = 3
     for attempt in range(max_retries):
         try:
-            response = await _get_extract_model().ainvoke([
+            response = await extract_model.ainvoke([
                 SystemMessage(system_prompt),
                 HumanMessage(user_prompt)
             ])
